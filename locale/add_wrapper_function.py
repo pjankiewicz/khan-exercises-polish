@@ -70,7 +70,7 @@ class ParseExerciseFiles():
             re.compile("&[a-z]+;",RE_OPTIONS),
             
             # <var> tag
-            re.compile("<var>.*?<\/var>",RE_OPTIONS),            
+            re.compile("<var>[^\"]*?<\/var>",RE_OPTIONS),            
             
             # functions
             re.compile("[a-z]+\([^)]*\)",RE_OPTIONS),
