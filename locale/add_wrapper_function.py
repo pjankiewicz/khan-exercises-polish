@@ -10,6 +10,8 @@ RE_INCLUDE = [
     re.compile("<title>(.*?)<\/title>",RE_OPTIONS),
 ]
 
+TRANSLATION_FILE = "en.js"
+
 # ignore text that includes only <code>, <var>
 RE_IGNORE = [
     re.compile("^<code>[^<>]+<\/code>$",RE_OPTIONS),
@@ -18,6 +20,8 @@ RE_IGNORE = [
     # ignore the blocks with defined t() [translation function]
     re.compile("_\(.*?\)",RE_OPTIONS),
 ]
+
+RE_RULES = re.compile("^t\[""([^\]]+)""\] = ""([^\]]+)""$",RE_OPTIONS)
     
 DEBUG = False
 
@@ -54,8 +58,6 @@ class ParseExerciseFiles():
         for regex in RE_INCLUDE:
             s.extend(regex.findall(html))
         return list(set(s))
-            
-
 
     def is_valid_to_translate(self,html):
         """
@@ -69,14 +71,22 @@ class ParseExerciseFiles():
         
 p = ParseExerciseFiles()
 
-outputfile = open("en.js","w")
+# if file exists try to parse existing rules
+if os.path.exists(TRANSLATION_FILE):
+    with open(TRANSLATION_FILE) as outputfile:
+        html = outputfile.read()
+        # 
+        for t in RE_RULES.findall(html):
+            print t
+
+# overwrite file
+outputfile = open(TRANSLATION_FILE,"w")
 
 # generic texts which appear more than once
 outputfile.write("# Text that appeared more than once\n\n")
 for text,filename in p.texts.items():
     if len(filename) > 1:
         outputfile.write('# %s\nt["%s"] = ""\n\n' % (", ".join(list(filename)),text))
-
 
 # texts that appear only once (sorted by filename)
 outputfile.write("# Text that appeared one time\n\n")        
