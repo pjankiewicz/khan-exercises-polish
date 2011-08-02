@@ -245,7 +245,21 @@ jQuery.fn.tmplCleanup = function() {
 	} );
 };
 
+// replaces html inside objects with i18n attribute
+jQuery.fn.i18n = function() {
+	jQuery("*[i18n]").each( function( elem ) { 
+		// translate text
+		var tmpHtml = jQuery(this).html()
+		if (T[tmpHtml] !== undefined) {
+    			jQuery(this).html(T[tmpHtml]);
+		}
+	});
+}
+
 jQuery.fn.tmpl = function() {
+	// check i18n
+	jQuery.fn.i18n();
+
 	// Call traverse() for each element in the jQuery object
 	for ( var i = 0, l = this.length; i < l; i++ ) {
 		traverse( this[i] );
