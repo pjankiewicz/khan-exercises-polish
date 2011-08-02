@@ -14,7 +14,7 @@ RE_INCLUDE = [
 RE_IGNORE = [
     re.compile("^<code>[^<>]+<\/code>$",RE_OPTIONS),
     re.compile("^<var>[^<>]+<\/var>$",RE_OPTIONS),
-    re.compile("^<code><var>[^<>]+<\/code><\/var>$",RE_OPTIONS),
+    re.compile("^<code><var>[^<>]+<\/var><\/code>$",RE_OPTIONS),
     # ignore the blocks with defined t() [translation function]
     re.compile("_\(.*?\)",RE_OPTIONS),
 ]
