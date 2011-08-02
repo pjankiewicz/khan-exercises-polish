@@ -1,8 +1,10 @@
 import re
 import os
 import pprint
+import string
 
 EXERCISE_PATH = os.path.join("..","exercises")
+TRANSLATION_FILE = "en.js"
 
 RE_OPTIONS = re.M|re.I|re.DOTALL
 RE_INCLUDE = [
@@ -10,16 +12,15 @@ RE_INCLUDE = [
     re.compile("<title>(.*?)<\/title>",RE_OPTIONS),
 ]
 
-TRANSLATION_FILE = "en.js"
-
 # ignore text that includes only <code>, <var>
 RE_IGNORE = [
     re.compile("^<code>[^<>]+<\/code>$",RE_OPTIONS),
     re.compile("^<var>[^<>]+<\/var>$",RE_OPTIONS),
     re.compile("^<code><var>[^<>]+<\/var><\/code>$",RE_OPTIONS),
     # ignore the blocks with defined t() [translation function]
-    re.compile("_\(.*?\)",RE_OPTIONS),
+    re.compile("_\(.*?\)",RE_OPTIONS)
 ]
+
 
 RE_RULES = re.compile("^t\[""([^\]]+)""\] = ""([^\]]+)""$",RE_OPTIONS)
     
@@ -59,53 +60,89 @@ class ParseExerciseFiles():
             s.extend(regex.findall(html))
         return list(set(s))
 
-    def is_valid_to_translate(self,html):
+    def is_valid_to_translate(self,html,debug=False):
         """
         Checks if the text is valid for translation
         """
-        for regex in RE_IGNORE:
-            if len(regex.findall(html)) > 0:
-                return False
+    
+        CLEAN_RULES = [
+            # html tags &middot;
+            re.compile("&[a-z]+;",RE_OPTIONS),
+            
+            # <var> tag
+            re.compile("<var>.*?<\/var>",RE_OPTIONS),            
+            
+            # functions
+            re.compile("[a-z]+\([^)]*\)",RE_OPTIONS),
+            
+            # tags & closing tags
+            re.compile("<[\/]?[^<>]*>",RE_OPTIONS),
+            
+            # latex \a{}{} \a{} \a
+            re.compile(r"\\[a-zA-Z]*{[^}]*}{[^}]*}",RE_OPTIONS),        
+            re.compile(r"\\[a-zA-Z]*{[^}]*}",RE_OPTIONS),
+            re.compile(r"\\[a-zA-Z]*",RE_OPTIONS),
+            
+            # UPPER case more than 2 letters
+            re.compile("[A-Z0-9_]{2,}"),
+            #re.compile("[a-z0-9_]{2,}",RE_OPTIONS),
+            
+            # single characters
+            re.compile(r"\b[a-zA-Z0-9]{1}\b"),
+            
+            # anything that is not alphanumeric
+            re.compile("[^a-zA-Z]*",RE_OPTIONS),
+        ]
         
-        return True
+        for rule in CLEAN_RULES:
+            if debug == True:
+                print html
+            html = re.sub(rule,"",html)
         
-p = ParseExerciseFiles()
+        if len(html) > 0:
+            return True
+        else:
+            return False    
+        
+def parse():
+    p = ParseExerciseFiles()
+    # if file exists try to parse existing rules
+    if os.path.exists(TRANSLATION_FILE):
+        with open(TRANSLATION_FILE) as outputfile:
+            html = outputfile.read()
+            # 
+            for t in RE_RULES.findall(html):
+                print t
 
-# if file exists try to parse existing rules
-if os.path.exists(TRANSLATION_FILE):
-    with open(TRANSLATION_FILE) as outputfile:
-        html = outputfile.read()
-        # 
-        for t in RE_RULES.findall(html):
-            print t
+    # overwrite file
+    outputfile = open(TRANSLATION_FILE,"w")
 
-# overwrite file
-outputfile = open(TRANSLATION_FILE,"w")
+    # generic texts which appear more than once
+    outputfile.write("# Text that appeared more than once\n\n")
+    for text,filename in p.texts.items():
+        if len(filename) > 1:
+            outputfile.write('# %s\nt["%s"] = ""\n\n' % (", ".join(list(filename)),text))
 
-# generic texts which appear more than once
-outputfile.write("# Text that appeared more than once\n\n")
-for text,filename in p.texts.items():
-    if len(filename) > 1:
-        outputfile.write('# %s\nt["%s"] = ""\n\n' % (", ".join(list(filename)),text))
+    # texts that appear only once (sorted by filename)
+    outputfile.write("# Text that appeared one time\n\n")        
+    unique_texts = [[text,list(filename)[0]] for text,filename in p.texts.items() if len(filename) == 1]
 
-# texts that appear only once (sorted by filename)
-outputfile.write("# Text that appeared one time\n\n")        
-unique_texts = [[text,list(filename)[0]] for text,filename in p.texts.items() if len(filename) == 1]
+    # aggregate files
+    unique_texts_aggr = {}
+    for text,filename in unique_texts:
+        if filename not in unique_texts_aggr:
+            unique_texts_aggr[filename] = [text]
+        else:
+            unique_texts_aggr[filename].append(text)
 
-# aggregate files
-unique_texts_aggr = {}
-for text,filename in unique_texts:
-    if filename not in unique_texts_aggr:
-        unique_texts_aggr[filename] = [text]
-    else:
-        unique_texts_aggr[filename].append(text)
+    # create sorted list
+    for filename in sorted(unique_texts_aggr.keys()):
+        texts = sorted(unique_texts_aggr[filename])
+        outputfile.write('# %s\n\n' % (filename,))
+        for t in texts:
+            outputfile.write('t["%s"] = "%s"\n' % (t,t))
+        outputfile.write("\n\n")
 
-# create sorted list
-for filename in sorted(unique_texts_aggr.keys()):
-    texts = sorted(unique_texts_aggr[filename])
-    outputfile.write('# %s\n\n' % (filename,))
-    for t in texts:
-        outputfile.write('t["%s"] = "%s"\n' % (t,t))
-    outputfile.write("\n\n")
+    outputfile.close()
 
-outputfile.close()
+parse()
