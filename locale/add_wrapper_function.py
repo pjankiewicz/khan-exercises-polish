@@ -8,7 +8,7 @@ TRANSLATION_FILE = "en.js"
 
 RE_OPTIONS = re.M|re.I|re.DOTALL
 RE_INCLUDE = [
-    re.compile("<p[^<>]*>(.*?)<\/p>",RE_OPTIONS),
+    re.compile("<p([^<>]*)>(.*?)<\/p>",RE_OPTIONS),
     re.compile("<title>(.*?)<\/title>",RE_OPTIONS),
 ]
 
@@ -25,6 +25,27 @@ RE_IGNORE = [
 RE_RULES = re.compile("^t\[""([^\]]+)""\] = ""([^\]]+)""$",RE_OPTIONS)
     
 DEBUG = False
+
+"""
+Read existing translation
+Read texts to be translated from exerises
+    use tags i18n to get 
+    use heurestics
+        exclude those translations which are marked as translatable (first column)
+If existing translation is changed:
+    don't overwrite it
+else:
+    overwrite
+    
+Translation file format (columns):
+- is valid for translation
+- text to be translated
+- translation
+- has translation
+- exercise list
+- is used in exercises (if there is no such text in exercises it means that 
+                        it is no longer used - probably was changed)
+"""
 
 class ParseExerciseFiles():
     def __init__(self):
@@ -48,7 +69,7 @@ class ParseExerciseFiles():
         Searches html for different tags
         """
         for t in self.parse_text(html):
-            if self.is_valid_to_translate(t):
+            if self.is_valid_to_translate_heurestics_heurestics(t):
                 if t not in self.texts:
                     self.texts[t] = {filename,}
                 else:
@@ -60,7 +81,7 @@ class ParseExerciseFiles():
             s.extend(regex.findall(html))
         return list(set(s))
 
-    def is_valid_to_translate(self,html,debug=False):
+    def is_valid_to_translate_heurestics(self,html,debug=False):
         """
         Checks if the text is valid for translation
         """
@@ -104,8 +125,11 @@ class ParseExerciseFiles():
         else:
             return False    
         
+        
+
 def parse():
     p = ParseExerciseFiles()
+
     # if file exists try to parse existing rules
     if os.path.exists(TRANSLATION_FILE):
         with open(TRANSLATION_FILE) as outputfile:
