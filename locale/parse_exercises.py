@@ -4,7 +4,10 @@ import os
 import pprint
 import string
 import sqlite3
-from remass.remass import RegexMass
+from useful.remass import RegexMass
+from useful.joinfiles import joinfiles
+import sqlite_export
+import csv
 
 recomp = re.compile
 
@@ -12,8 +15,8 @@ EXERCISES_PATH = os.path.join(os.getcwd(),"..","exercises","*.html")
 TRANSLATION_FILE = "en.js"
 RE_OPTIONS = re.M|re.I|re.DOTALL
 TRANSLATION_TAGS_RE = [
-    recomp("<p[^<>]*>(.*?)<\/p>",RE_OPTIONS),
-    recomp("<title>(.*?)<\/title>",RE_OPTIONS),
+    recomp("<p[^<>]*>(.+?)<\/p>",RE_OPTIONS),
+    recomp("<title>(.+?)<\/title>",RE_OPTIONS),
 ]
 CLEAN_RULES = [
     # html tags &middot;
@@ -101,18 +104,35 @@ class Translate():
         self.conn.commit()
     
     def update(self):
+        # eksportuje do jednego pliku wszystko
         def export_to_csv():
             sqlite_export.export("translations.sqlite","translations","translation.csv")
         
-        import sqlite_export
+        # eksportuje do wielu plików
+        def export_to_many_files():
+            for ind,filename in enumerate(self.sql("SELECT DISTINCT filename FROM translations"),):
+                filename = filename[0]
+                # jeżeli jest to jedno z tłumaczeń występujących w więcej niz 1 miejscu
+                if filename.find(",") > 0:
+                    save_filename = "{0}.csv".format(ind)
+                else:
+                    save_filename = filename.replace(".html",".csv")
+                sqlite_export.export("translations.sqlite","translations","translations/%s" % (save_filename),"filename = '%s'" % (filename,))    
         
-        if os.path.exists("translation.csv"):
-            # otwiera plik
-            # dodaje tłumaczenia, których nie ma w bazie
-            # update'uje wszystkie tłumaczenia z pliku
-            pass
+        # łączy pliki z tłumaczeniami, żeby się nie bawić w wiele plików
+        joinfiles("translations/*.csv","translations.csv")
+    
+        print "Otwieram istniejące tłumaczenia..."
+        for line in csv.reader(open("translations.csv")):
+            # jeżeli coś jest przetłumaczone 
+            content = line[0]
+            translation = line[1].decode("utf-8")
+            if content != translation:
+                # poprawiam tłumaczenie w bazie
+                self.sql("UPDATE translations SET translation = ? WHERE content = ?", (translation, content))
+        self.conn.commit()
             
-        export_to_csv()
+        export_to_many_files()
     
     def add_new(self):
         pass
