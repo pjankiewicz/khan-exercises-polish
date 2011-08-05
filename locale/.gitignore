@@ -1,2 +1,5 @@
+remass
+todo.txt
+*.sqlite
 *.js
 *.py~
