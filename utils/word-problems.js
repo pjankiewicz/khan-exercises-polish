@@ -110,7 +110,86 @@ jQuery.extend( KhanUtil, {
             // nie powinno się zdarzyć
             return word;
         }
-    }
+    },
+
+	// Ported from https://github.com/clojure/clojure/blob/master/src/clj/clojure/pprint/cl_format.clj#L285
+	cardinal: function( n ) {
+		var cardinalScales = ["", "tysiąc", "milion", "miliard", "bilion", "biliard", "trylion", "sekstylion", "septylion", "oktylion", "nonylion", "decylion", "sekstylionów", "duodecylion", "tredecylion", "quattuordecylion", "quindecylion", "seksdecylion", "septendecylion", "octodecylion", "novemdecylion", "vigintylion"];
+		var cardinalUnits = ["jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć", "dziesięć", "jedenaście","dwanaście","trzynaście","czternaście","piętnaście","szesnaście","siedemnaście","osiemnaście","dziewiętnaście"];
+		var cardinalTens = ["", "", "dwadzieścia","trzydzieści", "czterdzieści", "pół", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt"];
+        var cardinalHundreds = ["sto","dwieście","trzysta","czterysta","pięćset","sześćset","siedemset","osiemset","dziewięćset"]
+		// For formatting numbers less than 1000
+		var smallNumberWords = function( n ) {
+			var hundredDigit = Math.floor( n / 100 );
+			var rest = n % 100;
+			var str = "";
+
+			if ( hundredDigit ) {
+				str += cardinalHundreds[ hundredDigit ];
+			}
+
+			if ( hundredDigit && rest ) {
+				str += " ";
+			}
+
+			if ( rest ) {
+				if ( rest < 20 ) {
+					str += cardinalUnits [ rest ];
+				} else {
+					var tenDigit = Math.floor( rest / 10 );
+					var unitDigit = rest % 10;
+
+					if ( tenDigit ) {
+						str += cardinalTens [ tenDigit ];
+					}
+
+					if ( tenDigit && unitDigit ) {
+						str += "-";
+					}
+
+					if ( unitDigit ) {
+						str += cardinalUnits [ unitDigit ];
+					}
+				}
+			}
+
+			return str;
+		};
+
+		if ( n == 0 ) return "zero";
+		else {
+			var neg = false;
+			if ( n < 0 ) {
+				neg = true;
+				n = Math.abs( n );
+			}
+
+			var words = [];
+			var scale = 0;
+			while ( n > 0 ) {
+				var end = n % 1000;
+
+				if ( end > 0 ) {
+					if ( scale > 0 ) {
+						words.unshift( cardinalScales[ scale ] );
+					}
+
+					words.unshift( smallNumberWords( end ) );
+				}
+
+				n = Math.floor( n / 1000 );
+				scale += 1;
+			}
+
+			if ( neg ) words.unshift( "negative" );
+			return words.join( " " );
+		}
+	},
+
+	Cardinal: function( n ) {
+		var card = KhanUtil.cardinal( n );
+		return card.charAt(0).toUpperCase() + card.slice(1);
+	},
 });
 
 jQuery.extend( KhanUtil, {
