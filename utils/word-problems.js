@@ -66,8 +66,27 @@ var WORD_CONJUGATION = {
     "egzamin":[["egzaminu","egzaminowi","egzamin","egzaminem","egzaminie"]],
     "test":[["testu","testowi","test","testem","teście"]],
     "quiz":[["quizu","quizowi","quiz","quizem","quizie"]],
-    "rok":[["roku","roku","rok","rokiem","roku"],["lata","lat","lata","latami","latach"]]
+    "rok":[["roku","roku","rok","rokiem","roku"],["lata","lat","lata","latami","latach"]],
+    "Ania": [["Ani"]],
+    "Bartek": [["Bartka"]],
+    "Czarek": [["Czarka"]],
+    "Daniel": [["Daniela"]],
+    "Emilia": [["Emilii"]],
+    "Gabriela": [["Gabrieli"]],
+    "Irek": [["Irka"]],
+    "Joasia": [["Joasi"]],
+    "Kuba": [["Kuby"]],
+    "Leszek": [["Leszka"]],
+    "Michał": [["Michała"]],
+    "Natalia": [["Natalii"]],
+    "Olek": [["Olka"]],
+    "Sylwia": [["Sylwii"]],
+    "Tamara": [["Tamary"]],
+    "Urszula": [["Urszuli"]]
 };
+
+
+
 
 GENDER_FORMS = {
     "starszy":"starsza",
@@ -76,15 +95,13 @@ GENDER_FORMS = {
 
 // Kocham polską gramatykę :^
 jQuery.extend( KhanUtil, {
-    wordGender: (function(){
-        return function( word, gender ) {
-            if ( gender == "m") {
-                return word;
-            } else {
-                return GENDER_FORMS[word];
-            }
+    wordGender: function( word, gender ) {
+        if ( gender == "m") {
+            return word;
+        } else {
+            return GENDER_FORMS[word];
         }
-    })(),
+    },
 
     conjugate: function( word, caseNum, plural ) {
 
@@ -100,9 +117,9 @@ jQuery.extend( KhanUtil, {
         if ( plural == 1 && caseNum == 1 ) {
             return word
         } else if ( plural == 1 && caseNum > 1 ) {
-            // dodaje jedynkę ponieważ dla liczby pojedyńczej nie wpisywałem mianowników
+            // odejmuje jeszcze jedynkę ponieważ dla liczby pojedyńczej nie wpisywałem mianowników
             // ponieważ są one jako klucz w tej tabeli
-            return WORD_CONJUGATION[ word ][0][ caseNum - 1 + 1 ];
+            return WORD_CONJUGATION[ word ][0][ caseNum - 1 - 1 ];
         } else if ( plural == 2 ) {
             // już w przypadku liczby mnogiej wszystko wraca do normy
             return WORD_CONJUGATION[ word ][1][ caseNum - 1 ]
@@ -235,7 +252,10 @@ jQuery.extend( KhanUtil, {
 			return word;
 		};
 
-		return function(value, arg) {
+		return function(value, arg, addValue) {
+            if ( addValue == null) {
+                addValue = true;            
+            }
 
 			if ( typeof value === "number" ) {
 
@@ -250,7 +270,11 @@ jQuery.extend( KhanUtil, {
                     arg = KhanUtil.conjugate( arg, 2, 2 );
                 }
 
-				return value + " " + arg;
+                if (addValue == true) {
+    				return value + " " + arg;   
+                } else {
+                    return arg;                
+                }
 			} else if ( typeof value === "string" ) {
 				return pluralizeWord(value);
 			}
@@ -387,9 +411,13 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	jQuery.extend( KhanUtil, {
 
 		person: function( i ) {
-			return people[i - 1][0];
+    	    return people[i - 1][0];
 		},
 
+		ofPerson: function( i ) {
+            return KhanUtil.conjugate(people[i - 1][0], 2);            
+		},
+        
 		personVar: function( i ) {
 			return people[i - 1][0].charAt(0).toLowerCase();
 		},
@@ -417,6 +445,26 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		His: function( i ) {
 			return people[i - 1][1] == "m" ? "Jego" : "Jej";
 		},
+
+        was: function ( i ) {
+            return people[i - 1][1] == "m" ? "był" : "była";
+        },
+
+        had: function ( i ) {
+            return people[i - 1][1] == "m" ? "miał" : "miała";  
+        },
+
+        older: function( i ) {
+            return KhanUtil.wordGender("starszy",people[i - 1][1]);
+        },
+
+        younger: function( i ) {
+            return KhanUtil.wordGender("młodszy",people[i - 1][1]);
+        },
+
+        years: function ( n, addValue ) {
+            return KhanUtil.plural( n, "rok", addValue );
+        },
 
 		vehicle: function( i ) {
 			return vehicles[i - 1];
