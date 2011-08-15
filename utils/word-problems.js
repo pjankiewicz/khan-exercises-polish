@@ -6,10 +6,117 @@
 // Note that initials (-Var) are guaranteed to be unique in each category,
 // but not across them.
 
+// odmiany przez przypadki wszystkich słów
+// "słowo" : [[liczba pojedyncza],[liczba mnoga]]
+// 1. (M.) mianownik - Kto? Co? - żółw, żółwie
+// 2. (D.) dopełniacz - Kogo? Czego? (Czyj?) - żółwia, żółwi
+// 3. (C.) celownik - Komu? Czemu? - żółwiowi, żółwiom
+// 4. (B.) biernik - Kogo? Co? - żółwia, żółwi
+// 5. (N.) narzędnik - Kim? Czym? - żółwiem, żółwiami
+// 6. (Ms.) miejscownik - O kim? O czym? - żółwiu, żółwiach
+
+var WORD_CONJUGATION = {
+    "Paweł": ["Pawła","Pawłowi","Pawła","Pawłem","Pawle"],
+    "on": ["jego","jemu","jego","nim","nim"],
+    "ona": ["jej","jej","ją","nią","niej"],
+    "długopis" : [["długopisu","długopisowi","długopis","długopisem","długopisie"],
+                  ["długopisy","długopisów","długopisom","długopisy","długopisami","długopisach"]],
+    "ołówek": [["ołówka","ołówkowi","ołówek","ołówkiem","ołówku"],
+               ["ołówki","ołówków","ołówkom","ołówki","ołókami","ołówkach"]],
+    "zeszyt": [["zeszytu","zeszytowi","zeszyt","zeszytem","zeszycie"],
+               ["zeszyty","zeszytów","zeszytom","zeszyty","zeszytom","zeszytach"]],
+    "młotek": [["młotka","młotkowi","młotek","młotkiem","młotku"],
+               ["młotki","młotków","młotkom","młotki","młotkami","młotkach"]],
+    "gwóźdź": [["gwoździa","gwoździowi","gwóźdź","gwoździem","gwoździu"],
+               ["gwoździe","gwoździ","gwoździom","gwoździe","gwoździami","gwoździach"]],
+    "piła": [["piły","pile","piłę","piłą","pile"],
+             ["piły","pił","piłom","piły","piłami","piłach"]],
+    "banan": [["banana","bananowi","banana","bananem","bananie"],
+              ["banany","bananów","bananom","banany","bananami","bananach"]],
+    "bochenek chleba": [["bochenka chleba","bochenkowi chleba","bochenek chleba","bochenkiem chleba","bochenku chleba"],
+                        ["bochenki chleba","bochenków chleba","bochenkom chleba","bochenki chleba","bochenkami chleba","bochenkach chleba"]],
+    "litr mleka": [["litra mleka","litrowi mleka","litr mleka","litrem mleka","litrze mleka"],
+                   ["litry mleka","litrów mleka","litrom mleka","litry mleka","litrom mleka","litrach mleka"]],
+    "ziemniak": [["ziemniaka","ziemniakowi","ziemniaka","ziemniaku","ziemniakiem"],
+                 ["ziemniaki","ziemniaków","ziemniakom","ziemniak","ziemniakami","ziemniakach"]],
+    "zabawka": [["zabawki","zabawce","zabawkę","zabawką","zabawce"],
+                ["zabawki","zabawek","zabawkom","zabawki","zabawkami","zabawkach"]],
+    "gra": [["gry","grze","grę","grą","grze"],
+            ["gry","gier","grom","gry","grami","grach"]],
+    "pamiątka": [["pamiątki","pamiątce","pamiątkę","pamiątką","pamiątce"]
+                 ["pamiątki","pamiątek","pamiątkom","pamiątki","pamiątkami","pamiątkach"]],
+    "pluszowy miś":[["pluszowego misia","pluszowemu misiowi","pluszowego misia","pluszowym misiem","pluszowym misiu"],
+                    ["pluszowe misie","pluszowych misi","pluszowym misiom","pluszowe misie","pluszowymi misiami","pluszowych misiach"]],
+    "gra komputerowa":[["grę komputerową","grze komputerowej","grę komputerową","grą komputerową","grze komputerowej"],
+                       ["gry komputerowe","gier komputerowych","grom komputerowym","gry komputerowe","grami komputerowymi","grach komputerowych"]],
+    "resorak":[["resoraka","resorakowi","resoraka","resorakiem","resoraku"],
+               ["resoraki","resoraków","resorakom","resoraki","resorakami","resorakach"]],
+    "lalka":[["lalki","lalce","lalkę","lalką","lalce"],
+             ["lalki","lalek","lalka","lalka","lalkami","lalkami"]],
+    "rower":[["rowera","rowerowi","rower","rowerem","rowerze"]],
+    "samochód":[["samochodu","samochodowi","samochód","samochodem","samochodzie"]],
+    "koń":[["konia","koniowi","konia","koniem","koniu"]],
+    "motor":[["motoru","motorowi","motor","motorem","motorze"]],
+    "skuter":[["skutera","skuterowi","skuter","skuterem","skuterze"]],
+    "pociąg":[["pociągu","pociągowi","pociąg","pociągiem","pociągu"]],
+    "matematyka":[["matematyki","matematyce","matematykę","matematyką","matematyce"]],
+    "chemia":[["chemii","chemii","chemię","chemią","chemii"]],
+    "geografia":[["geografii","geografii","geografię","geografią","geografii"]],
+    "język angielski":[["języka angielskiego","językowi angielskiemu","język angielski","językiem angielskim","języku angielskim"]],
+    "egzamin":[["egzaminu","egzaminowi","egzamin","egzaminem","egzaminie"]],
+    "test":[["testu","testowi","test","testem","teście"]],
+    "quiz":[["quizu","quizowi","quiz","quizem","quizie"]],
+    "rok":[["roku","roku","rok","rokiem","roku"],["lata","lat","lata","latami","latach"]]
+};
+
+GENDER_FORMS = {
+    "starszy":"starsza",
+    "młodszy":"młodsza"
+};
+
+// Kocham polską gramatykę :^
+jQuery.extend( KhanUtil, {
+    wordGender: (function(){
+        return function( word, gender ) {
+            if ( gender == "m") {
+                return word;
+            } else {
+                return GENDER_FORMS[word];
+            }
+        }
+    })(),
+
+    conjugate: function( word, caseNum, plural ) {
+
+        if ( plural == null ) {
+            plural = 1;    
+        }
+        
+        if ( caseNum == null ) {
+            caseNum = 1;
+        }
+
+        // jeżeli liczba pojedyńcza i mianownik to zwróć to samo słowo
+        if ( plural == 1 && caseNum == 1 ) {
+            return word
+        } else if ( plural == 1 && caseNum > 1 ) {
+            // dodaje jedynkę ponieważ dla liczby pojedyńczej nie wpisywałem mianowników
+            // ponieważ są one jako klucz w tej tabeli
+            return WORD_CONJUGATION[ word ][0][ caseNum - 1 + 1 ];
+        } else if ( plural == 2 ) {
+            // już w przypadku liczby mnogiej wszystko wraca do normy
+            return WORD_CONJUGATION[ word ][1][ caseNum - 1 ]
+        } else {
+            // nie powinno się zdarzyć
+            return word;
+        }
+    }
+});
+
 jQuery.extend( KhanUtil, {
 	toSentence: function( array, conjunction ) {
 		if ( conjunction == null ) {
-			conjunction = "and";
+			conjunction = "i";
 		}
 
 		if ( array.length == 0 ) {
@@ -31,84 +138,40 @@ jQuery.extend( KhanUtil, {
 	// - plural(NUMBER, singular, plural):
 	//		- return "NUMBER word"
 	plural: (function() {
-		var oneOffs = {
-			'quiz': 'quizzes',
-			'shelf': 'shelves',
-			'loaf': 'loaves',
-			'potato': 'potatoes'
-		};
-
 		var pluralizeWord = function(word) {
-
 			// noone really needs extra spaces at the edges, do they?
 			word = jQuery.trim( word );
 
 			// determine if our word is all caps.  If so, we'll need to
 			// re-capitalize at the end
 			var isUpperCase = (word.toUpperCase() == word);
-			var oneOff = oneOffs[word.toLowerCase()];
-			var words = word.split(/\s+/);
 
-			// first handle simple one-offs
-			if ( oneOff ) {
-				return oneOff;
+            // tworze liczbę  mnogą
+            KhanUtil.conjugate(word,1,2);
+
+			if ( isUpperCase ) {
+				word = word.toUpperCase();
 			}
-
-			// multiple words
-			else if ( words.length > 1 ) {
-				// for 3-word phrases where the middle word is 'in' or 'of',
-				// pluralize the first word
-				if ( words.length == 3 && /\b(in|of)\b/i.test(words[1]) ) {
-					words[0] = KhanUtil.plural( words[0] );
-				}
-
-				// otherwise, just pluraize the last word
-				else {
-					words[ words.length-1 ] =
-						KhanUtil.plural( words[ words.length-1 ] );
-				}
-
-				return words.join(" ");
-			}
-
-			// single words
-			else {
-				// "-y" => "-ies"
-				if ( /[^aeiou]y$/i.test( word ) ) {
-					word = word.replace(/y$/i, "ies");
-				}
-
-				// add "es"; things like "fish" => "fishes"
-				else if ( /[sxz]$/i.test( word ) || /[bcfhjlmnqsvwxyz]h$/.test( word ) ) {
-					word += "es";
-				}
-
-				// all the rest, just add "s"
-				else {
-					word += "s";
-				}
-
-				if ( isUpperCase ) {
-					word = word.toUpperCase();
-				}
-				return word;
-			}
+    
+			return word;
 		};
 
-		return function(value, arg1, arg2) {
+		return function(value, arg) {
+
 			if ( typeof value === "number" ) {
-				var usePlural = (value !== 1);
 
-				// if no extra args, just add "s" (if plural)
-				if ( arguments.length === 1 ) {
-					return usePlural ? "s" : "";
-				}
+                var mod = value % 10;
+                if ( value <= 0) {
+                    arg = KhanUtil.conjugate( arg, 2, 2 );                
+                } else if ( value == 1 ) {
+                    arg = KhanUtil.conjugate( arg, 1, 1 );
+                } else if (mod >= 2 && mod <= 4 && (value > 20 || value < 10)) {
+                    arg = KhanUtil.conjugate( arg, 1, 2 );
+                } else {
+                    arg = KhanUtil.conjugate( arg, 2, 2 );
+                }
 
-				if ( usePlural ) {
-					arg1 = arg2 || pluralizeWord(arg1);
-				}
-
-				return value + " " + arg1;
+				return value + " " + arg;
 			} else if ( typeof value === "string" ) {
 				return pluralizeWord(value);
 			}
@@ -118,46 +181,44 @@ jQuery.extend( KhanUtil, {
 
 jQuery.fn[ "word-problemsLoad" ] = function() {
 	var people = KhanUtil.shuffle([
-		["Ashley", "f"],
-		["Brandon", "m"],
-		["Christopher", "m"],
+		["Ania", "f"],
+		["Bartek", "m"],
+		["Czarek", "m"],
 		["Daniel", "m"],
-		["Emily", "f"],
+		["Emilia", "f"],
 		["Gabriela", "f"],
-		["Ishaan", "m"],
-		["Jessica", "f"],
-		["Kevin", "m"],
-		["Luis", "m"],
-		["Michael", "m"],
-		["Nadia", "f"],
-		["Omar", "m"],
-		["Stephanie", "f"],
-		["Tiffany", "f"],
-		["Umaima", "f"],
-		["Vanessa", "f"],
-		["William", "m"]
+		["Irek", "m"],
+		["Joasia", "f"],
+		["Kuba", "m"],
+		["Leszek", "m"],
+		["Michał", "m"],
+		["Natalia", "f"],
+		["Olek", "m"],
+		["Sylwia", "f"],
+		["Tamara", "f"],
+		["Urszula", "f"],
 	]);
 
 	var vehicles = KhanUtil.shuffle([
-		"bike",
-		"car",
-		"horse",
-		"motorcycle",
-		"scooter",
-		"train"
+		"rower",
+		"samochód",
+		"koń",
+		"motor",
+		"skuter",
+		"pociąg"
 	]);
 
 	var courses = KhanUtil.shuffle([
-		"algebra",
-		"chemistry",
-		"geometry",
-		"history",
-		"physics",
-		"Spanish"
+		"matematyka",
+		"chemia",
+		"geografia",
+		"historia",
+		"fizyka",
+		"język angielski"
 	]);
 
 	var exams = KhanUtil.shuffle([
-		"exam",
+		"egzamin",
 		"test",
 		"quiz"
 	]);
@@ -191,32 +252,33 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	var stores = KhanUtil.shuffle([
 		{
 			name: "office supply",
-			items: KhanUtil.shuffle( ["pen", "pencil", "notebook"] )
+			items: KhanUtil.shuffle( ["długopis", "ołówek", "zeszyt"] )
 		},
 		{
 			name: "hardware",
-			items: KhanUtil.shuffle( ["hammer", "nail", "saw"] )
+			items: KhanUtil.shuffle( ["młotek", "gwóźdź", "piła"] )
 		},
 		{
 			name: "grocery",
-			items: KhanUtil.shuffle( ["banana", "loaf of bread", "gallon of milk", "potato"] )
+			items: KhanUtil.shuffle( ["banan", "bochenek chleba", "litr mleka", "ziemniak"] )
 		},
 		{
 			name: "gift",
-			items: KhanUtil.shuffle( ["toy", "game", "souvenir"] )
+			items: KhanUtil.shuffle( ["zabawka", "gra", "pamiątka"] )
 		},
 		{
 			name: "toy",
-			items: KhanUtil.shuffle( ["stuffed animal", "video game", "race car", "doll"] )
+			items: KhanUtil.shuffle( ["pluszowy miś", "gra komputerowa", "resorak", "lalka"] )
 		}
 	]);
 
 	var pizzas = KhanUtil.shuffle([
 		"pizza",
-		"pie",
-		"cake"
+		"ciasto",
+		"tort"
 	]);
 
+<<<<<<< HEAD
 	var fruits = KhanUtil.shuffle([
 		"apple",
 		"banana",
@@ -244,6 +306,7 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	]);
 
 	jQuery.extend( KhanUtil, {
+
 		person: function( i ) {
 			return people[i - 1][0];
 		},
@@ -252,24 +315,28 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 			return people[i - 1][0].charAt(0).toLowerCase();
 		},
 
+        gender: function( i ) {
+            return people[i - 1][1];
+        },
+
 		he: function( i ) {
-			return people[i - 1][1] == "m" ? "he" : "she";
+			return people[i - 1][1] == "m" ? "on" : "ona";
 		},
 
 		He: function( i ) {
-			return people[i - 1][1] == "m" ? "He" : "She";
+			return people[i - 1][1] == "m" ? "On" : "Ona";
 		},
 
 		him: function( i ) {
-			return people[i - 1][1] == "m" ? "him" : "her";
+			return people[i - 1][1] == "m" ? "nim" : "nią";
 		},
 
 		his: function( i ) {
-			return people[i - 1][1] == "m" ? "his" : "her";
+			return people[i - 1][1] == "m" ? "jego" : "jej";
 		},
 
 		His: function( i ) {
-			return people[i - 1][1] == "m" ? "His" : "Her";
+			return people[i - 1][1] == "m" ? "Jego" : "Jej";
 		},
 
 		vehicle: function( i ) {
