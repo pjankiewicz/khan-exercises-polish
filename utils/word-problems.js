@@ -82,7 +82,9 @@ var WORD_CONJUGATION = {
     "Olek": [["Olka"]],
     "Sylwia": [["Sylwii"]],
     "Tamara": [["Tamary"]],
-    "Urszula": [["Urszuli"]]
+    "Urszula": [["Urszuli"]],
+    "jednoska" : [["jednostki","jednostce","jednotskę","jednostką","jednostce"],
+                  ["jednostki","jednostek","jednostkom","jednostki","jednostkami","jednostkach"]]
 };
 
 
@@ -464,6 +466,10 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 
         years: function ( n, addValue ) {
             return KhanUtil.plural( n, "rok", addValue );
+        },
+
+        units: function ( n ) {
+            return KhanUtil.plural( n, "jednostka", addValue );
         },
 
 		vehicle: function( i ) {
