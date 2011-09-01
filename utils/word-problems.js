@@ -383,7 +383,6 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		"tort"
 	]);
 
-<<<<<<< HEAD
 	var fruits = KhanUtil.shuffle([
 		"apple",
 		"banana",
