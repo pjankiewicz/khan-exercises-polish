@@ -835,7 +835,7 @@ function makeProblem( id, seed ) {
 	attempts = 0;
 	lastAction = (new Date).getTime();
 
-	jQuery("#hint").val( "I'd like a hint" );
+	jQuery("#hint").val( "Chcę podpowiedź" );
 
 	if ( once ) {
 		updateData();
@@ -1044,7 +1044,7 @@ function prepareSite() {
 
 		if ( hint ) {
 
-			jQuery( "#hint" ).val("I'd like another hint");
+			jQuery( "#hint" ).val("Chcę następną podpowiedź");
 
 			var problem = jQuery( hint ).parent();
 
@@ -1258,9 +1258,9 @@ function prepareSite() {
 			var show = exampleLink.data( "show" );
 
 			if ( exampleLink.data( "show" ) ){
-				exampleLink.text( "Hide acceptable answer formats" );
+				exampleLink.text( "Schowaj możliwe formaty odpowiedzi" );
 			} else {
-				exampleLink.text( "Show acceptable answer formats" );
+				exampleLink.text( "Pokaż możliwe formaty odpowiedzi" );
 			}
 
 			examples.slideToggle( 190 );

@@ -93,7 +93,7 @@ jQuery.extend( Khan.answerTypes, {
 				transformer: function( text ) {
 					return forms.decimal.transformer( text );
 				},
-				example: "an integer, like <code>6</code>"
+				example: "liczba całkowita np. <code>6</code>"
 			},
 
 			proper: {
@@ -108,9 +108,9 @@ jQuery.extend( Khan.answerTypes, {
 				},
 				example: (function() {
 					if ( options.simplify === "optional" ) {
-						return "a proper fraction, like <code>1/2</code> or <code>6/10</code>"
+						return "ułamek zwykły np. <code>1/2</code> albo <code>6/10</code>"
 					} else {
-						return "a simplified proper fraction, like <code>3/5</code>"
+						return "uproszzony ułamek np. <code>3/5</code>"
 					}
 				})()
 			},
@@ -127,9 +127,9 @@ jQuery.extend( Khan.answerTypes, {
 				},
 				example: (function() {
 					if ( options.simplify === "optional" ) {
-						return "an improper fraction, like <code>10/7</code> or <code>14/8</code>"
+						return "ułamek zwykły <code>10/7</code> albo <code>14/8</code>"
 					} else {
-						return "a simplified improper fraction, like <code>7/4</code>"
+						return "uproszczony ułamek zwykły <code>7/4</code>"
 					}
 				})()
 			},
@@ -171,7 +171,7 @@ jQuery.extend( Khan.answerTypes, {
 					} );
 					return possibilities;
 				},
-				example: "a multiple of pi, like <code>12\\ \\text{pi}</code> or <code>2/3\\ \\text{pi}</code>"
+				example: "wielokrotność pi np. <code>12\\ \\text{pi}</code> albo <code>2/3\\ \\text{pi}</code>"
 			},
 
 			// simple log( c ) form
@@ -189,7 +189,7 @@ jQuery.extend( Khan.answerTypes, {
 					}
 					return possibilities;
 				},
-				example: "an expression, like <code>\\log(100)</code>"
+				example: "wyrażenie algebraiczne np. <code>\\log(100)</code>"
 			},
 
 			percent: {
@@ -208,7 +208,7 @@ jQuery.extend( Khan.answerTypes, {
 					});
 					return transformed;
 				},
-				example: "a percent, like <code>12.34\\%</code>"
+				example: "procent np. <code>12.34\\%</code>"
 			},
 
 			mixed: {
@@ -238,7 +238,7 @@ jQuery.extend( Khan.answerTypes, {
 
 					return [];
 				},
-				example: "a mixed number, like <code>1\\ 3/4</code>"
+				example: "liczba z ułamkiem np. <code>1\\ 3/4</code>"
 			},
 
 			decimal: {
@@ -280,9 +280,9 @@ jQuery.extend( Khan.answerTypes, {
 				},
 				example: (function() {
 					if ( options.inexact === undefined ) {
-						return "an exact decimal, like <code>0.75</code>";
+						return "dokładny ułamek dziesiętny np. <code>0.75</code>";
 					} else {
-						return "a decimal, like <code>0.75</code>";
+						return "ułamek dziesiętny np. <code>0.75</code>";
 					}
 				})()
 			}
@@ -401,9 +401,9 @@ jQuery.extend( Khan.answerTypes, {
 			}
 		};
 		if ( options.simplify === "required" ) {
-			ret.examples = [ "a simplified radical, like <code>\\sqrt{2}</code> or <code>3\\sqrt{5}</code>" ];
+			ret.examples = [ "uproszczony pierwiastek np. <code>\\sqrt{2}</code> albo <code>3\\sqrt{5}</code>" ];
 		} else {
-			ret.examples = [ "a radical, like <code>\\sqrt{8}</code> or <code>2\\sqrt{2}</code>" ];
+			ret.examples = [ "pierwiastek np. <code>\\sqrt{8}</code> albo <code>2\\sqrt{2}</code>" ];
 		}
 		ret.solution = ans;
 		return ret;
@@ -529,7 +529,7 @@ jQuery.extend( Khan.answerTypes, {
 		}
 
 		if( showNone ) {
-			var none = jQuery( "<span>None of the above.</span>" );
+			var none = jQuery( "<span>Żadna z powyższych.</span>" );
 
 			if( noneIsCorrect ) {
 				none.data( "correct", true );
@@ -609,7 +609,7 @@ jQuery.extend( Khan.answerTypes, {
 			guess = KhanUtil.sortNumbers( guess.split( /x|\*/ ) ).join( "x" );
 			return guess === correct;
 		};
-		verifier.examples = [ "a product of prime factors, like <code>2 \\times 3</code>" ];
+		verifier.examples = [ "iloczyn liczb pierwszych np. <code>2 \\times 3</code>" ];
 
 		return Khan.answerTypes.text( solutionarea, solution, fallback, verifier );
 	}
