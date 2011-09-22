@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format">
 <head>
-	<title>Subtracting fractions</title>
+	<title>Odejmowanie ułamków</title>
 	<script src="../khan-exercise.js"></script>
 	<script type="text/javascript">
 		function multiplier( n ) {
@@ -54,7 +54,7 @@
 
 				</div>
 
-				<p class="question">Write the following as a fraction. Simplify your answer to lowest terms.</p>
+				<p class="question">Oblicz poniższe działanie. Uprość wynik (jeżeli będzie to możliwe).</p>
 
 				<p class="problem"><code><var>fraction( _N1, _D1 )</var> - <var>fraction( _N2, _D2 )</var> = {?}</code></p>
 
@@ -63,47 +63,49 @@
 				<div class="hints">
 
 					<div data-if="GCD1 > 1" data-unwrap>
-						<p>The first fraction simplifies.</p>
+						<p>Pierwszy ułamek można uprościć.</p>
 						<p><code>= <var>fraction( N1, D1 )</var> - <var>fraction( _N2, _D2 )</var></code></p>
 					</div>
 
 					<div data-if="GCD2 > 1" data-unwrap>
-						<p>The second fraction simplifies.</p>
+						<p>Drugi ułamek można uprościć.</p>
 						<p><code>= <var>fraction( N1, D1 )</var> - <var>fraction( N2, D2 )</var></code></p>
 					</div>
 
 					<div data-if="M1 === 1" data-unwrap>
 
-						<p>We need to find a common denominator. The first denominator is <code><var>M2</var></code> times the second denominator, so we can multiply the second fraction by <code><var>M2</var></code>.</p>
+						<p>Musimy znaleźć wspólny mianownik. Pierwsy mianowsnik to <code><var>M2</var></code> pomnożone przez drugi mianownik, więc możemy pomnożyć drugi mianownik przez <code><var>M2</var></code>.</p>
 
 					</div><div data-else-if="M2 === 1" data-unwrap>
 
-						<p>We need to find a common denominator. The second denominator is <code><var>M1</var></code> times the first denominator, so we can multiply the first fraction by <code><var>M1</var></code>.</p>
+						<p>Musimy znaleźć wspólny mianownik. Drugi mianownik <code><var>M1</var></code> razy większy od pierwszego, więc możemy pomnożyc pierwszy mianownik przez <code><var>M1</var></code>.</p>
 
 					</div><div data-else data-unwrap>
 
-						<p>We need to find a common denominator. The least common multiple of <code><var>D1</var></code> and <code><var>D2</var></code> is the smallest possible denominator.</p>
+						<p>Musimy znaleźć wspólny mianownik. Najmniejsza wspólna wielokrotność <code><var>D1</var></code> i <code><var>D2</var></code> najmniejszym możliwym mianownikiem.,None
+1733,Teraz mamy:,None
+1736,Teraz gdy mamy wspólny mianownik możemy odjąć:"</p>
 						<p><code>\mbox{LCM}( <var>D1</var>, <var>D2</var> ) = <var>LCM</var></code></p>
-						<p>To get both fractions to a denominator of <code><var>LCM</var></code>, we need to multiply the first fraction by <code><var>M1</var></code> and we need to multiply the second fraction by <code><var>M2</var></code>.</p>
+						<p>Żeby sprowadzić oba ułamki do wspólnego mianownika <code><var>LCM</var></code>, musimy pomnożyć pierwszy ułamek przez  <code><var>M1</var></code>, a drugi przez <code><var>M2</var></code>.</p>
 
 					</div>
 
 					<div>
-						<p>So now we have:</p>
+						<p>Teraz mamy:</p>
 						<p><code>= \left(<var>fraction( N1, D1 ) + multiplier( M1 )</var>\right) - \left(<var>fraction( N2, D2 ) + multiplier( M2 )</var>\right)</code></p>
 					</div>
 
 					<p><code>= <var>fraction( M1*N1, M1*D1 )</var> - <var>fraction( M2*N2, M2*D2 )</var></code></p>
 
 					<div>
-						<p>Now that we have a common denominator, we can subtract:</p>
+						<p>Teraz kiedy mamy wspólny mianownik, możemy odjąć</p>
 						<p><code>= \dfrac{ <var>M1*N1</var> - <var>M2*N2</var> }{ <var>M1*D1</var> }</code></p>
 					</div>
 
 					<p><code>= <var>fraction( M1*N1 - M2*N2, M1*D1 )</var></code></p>
 
 					<div data-if="GCD > 1">
-						<p>This simplifies, so we now have:</p>
+						<p>To można uprościć otrzymując:</p>
 						<p><code>= <var>fraction( N, D )</var></code></p>
 					</div>
 				</div>

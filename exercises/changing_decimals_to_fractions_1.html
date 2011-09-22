@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format">
 <head>
-	<title>Changing Decimals to Fractions 1</title>
+	<title>Zamiana ułamków dziesiętnych na zwykłe 1</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 
@@ -16,26 +16,26 @@
 
 		<div class="problems">
 			<div id="to-the-tenth">
-				<p class="question">Express <var>T</var> as a fraction.</p>
+				<p class="question">Zapisz <var>T</var> jako ułamek.</p>
 				<p class="solution" data-type="rational" data-simplify="optional"><var>T</var></p> 
-				<p class="extra-info"><i>(You can express this as any fraction - you don't have to simplify your answer)</i></p>
+				<p class="extra-info"><i>(możesz podać odpowiedź jako dowolny ułamek - nie musisz go upraszczać)</i></p>
 				<div class="hints">
-					<p>The number <var>T * 10</var> is in the the tenths place.</p>
-					<p>Since there is one decimal place, we simply put the number over 10.</p>
-					<p>The answer is <code><var>fraction( T * 10, 10 )</var></code>.</p>
+					<p>Liczba <var>T * 10</var> jest na miejscu dziesiętnym.</p>
+					<p>Ponieważ jest tylko cyfra po przecinku, po prostu zapisujemy te liczbę w liczniku, a mianowniku 10.</p>
+					<p>Odpowiedź to <code><var>fraction( T * 10, 10 )</var></code>.</p>
 				</div>
 			</div>
 
 			<div id="to-the-hundredth" data-type="to-the-tenth" data-weight="3">
-				<p class="question">Express <var>H</var> as a fraction.</p>
+				<p class="question">Zapisz <var>H</var> jako ułamek.</p>
 				<p class="solution" data-type="rational" data-simplify="optional"><var>H</var></p> 
 				<div class="hints">
-					<p>The number <var>( floor( H * 10 )).toFixed(0)</var> is in the the tenths place.</p>
-					<p>The number <var>( floor( H * 100 )).toFixed(0) - ( floor( H * 10 )).toFixed(0) * 10</var> is in the the hundredths place.</p>
-					<p>This then becomes <code><var>fraction(( floor( H * 10 )).toFixed(0), 10 )</var></code> + <code><var>fraction(( floor( H * 100 )).toFixed(0) - ( floor( H * 10 )).toFixed(0) * 10 , 100 )</var></code></p>
-					<p>Finding a common denominator: <code><var>fraction(( floor( H * 10 )).toFixed(0) * 10, 100 )</var></code> + <code><var>fraction(( floor( H * 100 )).toFixed(0) - ( floor( H * 10 )).toFixed(0) * 10 , 100 )</var></code></p>
-					<p>Or more simply: Since there are two decimal places, we simply put the number over 100.</p>
-					<p>The answer is <code><var>fraction( roundTo( 2, H * 100 ) , 100 )</var></code>.</p>
+					<p>Liczba <var>( floor( H * 10 )).toFixed(0)</var> jest na miejscu dziesiętnym.</p>
+					<p>Liczba <var>( floor( H * 100 )).toFixed(0) - ( floor( H * 10 )).toFixed(0) * 10</var> jest na miejscu setnym.</p>
+					<p>Z tego wychodzi <code><var>fraction(( floor( H * 10 )).toFixed(0), 10 )</var></code> + <code><var>fraction(( floor( H * 100 )).toFixed(0) - ( floor( H * 10 )).toFixed(0) * 10 , 100 )</var></code></p>
+					<p>Trzeba znaleźć wspólny mianownik: <code><var>fraction(( floor( H * 10 )).toFixed(0) * 10, 100 )</var></code> + <code><var>fraction(( floor( H * 100 )).toFixed(0) - ( floor( H * 10 )).toFixed(0) * 10 , 100 )</var></code></p>
+					<p>Albo jeszcze prościej: ponieważ są 2 miejsca dziesiętne, po prostu zapisujemy liczbę w liczniku, a mianowniku 100.</p>
+					<p>Odpowiedź to <code><var>fraction( roundTo( 2, H * 100 ) , 100 )</var></code>.</p>
 				</div>
 			</div>
 
