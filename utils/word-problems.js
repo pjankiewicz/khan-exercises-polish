@@ -314,12 +314,12 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	]);
 
 	var courses = KhanUtil.shuffle([
-		"matematyka",
-		"chemia",
-		"geografia",
-		"historia",
-		"fizyka",
-		"język angielski"
+		"I A",
+		"II B",
+		"III C",
+		"IV D",
+		"II C",
+		"V A"
 	]);
 
 	var exams = KhanUtil.shuffle([
