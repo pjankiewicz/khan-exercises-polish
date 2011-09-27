@@ -16,9 +16,9 @@
 // 6. (Ms.) miejscownik - O kim? O czym? - żółwiu, żółwiach
 
 var WORD_CONJUGATION = {
-    "Paweł": ["Pawła","Pawłowi","Pawła","Pawłem","Pawle"],
-    "on": ["jego","jemu","jego","nim","nim"],
-    "ona": ["jej","jej","ją","nią","niej"],
+    "Paweł": [["Pawła","Pawłowi","Pawła","Pawłem","Pawle"]],
+    "on": [["jego","jemu","jego","nim","nim"]],
+    "ona": [["jej","jej","ją","nią","niej"]],
     "długopis" : [["długopisu","długopisowi","długopis","długopisem","długopisie"],
                   ["długopisy","długopisów","długopisom","długopisy","długopisami","długopisach"]],
     "ołówek": [["ołówka","ołówkowi","ołówek","ołówkiem","ołówku"],
@@ -84,7 +84,13 @@ var WORD_CONJUGATION = {
     "Tamara": [["Tamary"]],
     "Urszula": [["Urszuli"]],
     "jednoska" : [["jednostki","jednostce","jednotskę","jednostką","jednostce"],
-                  ["jednostki","jednostek","jednostkom","jednostki","jednostkami","jednostkach"]]
+                  ["jednostki","jednostek","jednostkom","jednostki","jednostkami","jednostkach"]],
+    "punkt" :[["punktu","punktowi","punkt","punktem","punkcie"],
+	      ["punktów","punktom","punkty","punktami","punktach"]],
+    "zielony punkt" :[["zielonego punktu","zielonemu punktowi","zielony punkt","zielonym punktem","zielonym punkcie"],
+	      ["zielonych punktów","zielonym punktom","zielone punkty","zielonymi punktami","zielonych punktach"]],
+    "niebieski punkt" :[["niebieskiego punktu","niebieskiemu punktowi","niebieski punkt","niebieskim punktem","niebieskim punkcie"],
+	      ["niebieskich punktów","niebieskim punktom","niebieskie punkty","niebieskimi punktami","niebieskich punktach"]]
 };
 
 
@@ -115,6 +121,7 @@ jQuery.extend( KhanUtil, {
             caseNum = 1;
         }
 
+    
         // jeżeli liczba pojedyńcza i mianownik to zwróć to samo słowo
         if ( plural == 1 && caseNum == 1 ) {
             return word
@@ -301,7 +308,7 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		["Olek", "m"],
 		["Sylwia", "f"],
 		["Tamara", "f"],
-		["Urszula", "f"],
+		["Urszula", "f"]
 	]);
 
 	var vehicles = KhanUtil.shuffle([
