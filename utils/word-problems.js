@@ -53,6 +53,12 @@ var WORD_CONJUGATION = {
                ["resoraki","resoraków","resorakom","resoraki","resorakami","resorakach"]],
     "lalka":[["lalki","lalce","lalkę","lalką","lalce"],
              ["lalki","lalek","lalka","lalka","lalkami","lalkami"]],
+    "dziewczynka":[["dziewczynki","dziewczynce","dziewczynkę","dziewczynką","dziewczynce"],
+                   ["dziewczynki","dziewczynek","dziewczynkom","dziewczynki","dziewczynkom","dziewczynkach"]],
+    "chłopiec":[["chłopca","chłopcu","chłopca","chłopcem","chłopcu"],
+               ["chłopcy","chłopców","chłopcom","chłopców","chłopcami","chłopcach"]],
+    "uczeń":[["ucznia","uczniowi","ucznia","uczniem","uczniu"],                     
+             ["uczniowie","uczniów","uczniom","uczniów","uczniami","uczniach"]],
     "rower":[["rowera","rowerowi","rower","rowerem","rowerze"]],
     "samochód":[["samochodu","samochodowi","samochód","samochodem","samochodzie"]],
     "koń":[["konia","koniowi","konia","koniem","koniu"]],
@@ -64,6 +70,7 @@ var WORD_CONJUGATION = {
     "geografia":[["geografii","geografii","geografię","geografią","geografii"]],
     "język angielski":[["języka angielskiego","językowi angielskiemu","język angielski","językiem angielskim","języku angielskim"]],
     "egzamin":[["egzaminu","egzaminowi","egzamin","egzaminem","egzaminie"]],
+    "grupa"[["grupy","grupie","grupę","grupą","grupie"],["grupy","grup","grupom","grupy","grupom","grupach"]],
     "test":[["testu","testowi","test","testem","teście"]],
     "quiz":[["quizu","quizowi","quiz","quizem","quizie"]],
     "rok":[["roku","roku","rok","rokiem","roku"],["lata","lat","lata","latami","latach"]],
@@ -321,12 +328,12 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	]);
 
 	var courses = KhanUtil.shuffle([
-		"matematyka",
-		"chemia",
-		"geografia",
-		"historia",
-		"fizyka",
-		"język angielski"
+		"I A",
+		"II B",
+		"III C",
+		"IV D",
+		"II C",
+		"V A"
 	]);
 
 	var exams = KhanUtil.shuffle([
