@@ -2,7 +2,7 @@
 <html data-require="math math-format">
 <head>
 	<meta charset="UTF-8" />
-	<title>Solving for a variable</title>
+	<title>Obliczanie równań z jedną niewiadomą</title>
 	<script src="../khan-exercise.js"></script>
 	<script type="text/javascript">
 		function color( str, blue ) {
@@ -65,7 +65,7 @@
 
 				<p class="problem"><code><var>plus( X_TERM, A+Y, B+Z, C )</var> = <var>plus( D+Y, E+Z, F )</var></code></p>
 
-				<p class="question">Solve for <code><var>X</var></code>.</p>
+				<p class="question">Oblicz <code><var>X</var></code>.</p>
 
 				<p class="solution"><code><var>ANSWER( D-A, E-B, F-C, G )</var></code></p>
 				<ul class="choices" data-show="4" data-none="true">
@@ -81,34 +81,34 @@
 				<div class="hints">
 
 					<div>
-						<p>Combine constant terms on the right.</p>
+						<p>Dodaj liczby po prawej stronie.</p>
 						<p><code><var>plus( X_TERM, A+Y, B+Z, color( C, true ) )</var> = <var>plus( D+Y, E+Z, color( F, true ) )</var></code></p>
 					</div>
 					<p><code><var>plus( X_TERM, A+Y, B+Z )</var> = <var>plus( D+Y, E+Z, color( F-C, true ) )</var></code></p>
 
 					<div>
-						<p>Combine <code><var>Z</var></code> terms on the right.</p>
+						<p>Dodaj wyrażenia liczbowe z <code><var>Z</var></code> po prawej stronie.</p>
 						<p><code><var>plus( X_TERM, A+Y, color( B+Z, false ) )</var> = <var>plus( D+Y, color( E+Z, false ), F-C )</var></code></p>
 					</div>
 					<p><code><var>plus( X_TERM, A+Y )</var> = <var>plus( D+Y, color( (E-B)+Z, false ), F-C )</var></code></p>
 
 					<div>
-						<p>Combine <code><var>Y</var></code> terms on the right.</p>
+						<p>Dodaj wyrażenia liczbowe z <code><var>Y</var></code> po prawej stronie.</p>
 						<p><code><var>plus( X_TERM, color( A+Y, true ) )</var> = <var>plus( color( D+Y, true ), (E-B)+Z, F-C )</var></code></p>
 					</div>
 					<p><code><var>plus( X_TERM )</var> = <var>plus( color( (D-A)+Y, true ), (E-B)+Z, F-C )</var></code></p>
 
 					<div>
-						<p>Isolate <code><var>X</var></code>.</p>
-						<p><code><var>color( G, false ) + X + color( X_EXTRAS, false )</var> = <var>plus( (D-A)+Y, (E-B)+Z, F-C )</var></code></p>
+						<p>Wyizoluj <code><var>X</var></code>.</p>
+						<p><code><var>plus( color( G, false ) + X + color( X_EXTRAS, false ) )</var> = <var>plus( (D-A)+Y, (E-B)+Z, F-C )</var></code></p>
 					</div>
-					<p><code><var>X</var> = \dfrac{ <var>plus( (D-A)+Y, (E-B)+Z, F-C )</var> }{ <var>plus( color( G, false ) + color( X_EXTRAS, false ) )</var> }</code></p>
+					<p><code><var>X</var> = \dfrac{ <var>plus( (D-A)+Y, (E-B)+Z, F-C )</var> }{ <var>plus( color( G + X_EXTRAS, false ) )</var> }</code></p>
 
 					<div data-if="GCD > 1 || G < 0" data-unwrap>
-						<p data-if="GCD > 1">All of these terms are divisible by <code><var>GCD</var></code>.</p>
-						<p data-if="GCD > 1 && G < 0">Divide by the common factor and swap signs so the denominator isn't negative.</p>
-						<p data-else-if="GCD > 1">Divide by the common factor.</p>
-						<p data-else>Swap the signs so the denominator isn't negative.</p>
+						<p data-if="GCD > 1">Wszystkie te stałe przy niewiadomych sa podzielne przez <code><var>GCD</var></code>.</p>
+						<p data-if="GCD > 1 && G < 0">Podziel równanie przez wspólny dzielnik i zamień znaki, tak żeby mianownik nie był ujemny.</p>
+						<p data-else-if="GCD > 1">Podziel przez wspólny dzielnik.</p>
+						<p data-else>Zamień znaki, tak żeby mianownik nie był ujemny.</p>
 						<p><code><var>X</var> = \dfrac{ <var>plus( color( round( DIVISOR*(D-A) ), true )+Y, color( round( DIVISOR*(E-B) ), true )+Z, color( round( DIVISOR*(F-C) ), true ) )</var> }{ <var>plus( color( round( DIVISOR*G )+X_EXTRAS, true ) )</var> }</code></p>
 					</div>
 				</div>
@@ -154,7 +154,7 @@
 
 				<p class="problem"><code><var>plus( A+X+Y, B+X+Z, C+X, D )</var> = <var>plus( E+Y, F )</var></code></p>
 
-				<p class="question">Solve for <code><var>X</var></code>.</p>
+				<p class="question">Oblicz <code><var>X</var></code>.</p>
 
 				<p class="solution"><code><var>ANSWER( E, F-D, A, B, C )</var></code></p>
 				<ul class="choices" data-show="4" data-none="true">
@@ -178,28 +178,29 @@
 				<div class="hints">
 
 					<div>
-						<p>Combine constant terms on the right.</p>
+						<p>Dodaj liczby po prawej stronie.</p>
 						<p><code><var>plus( A+X+Y, B+X+Z, C+X, color( D, true ) )</var> = <var>plus( E+Y, color( F, true ) )</var></code></p>
 					</div>
 					<p><code><var>plus( A+X+Y, B+X+Z, C+X )</var> = <var>plus( E+Y, color( F-D, true ) )</var></code></p>
 
 					<div>
-						<p>Notice that all the terms on the left-hand side of the equation have <code><var>X</var></code> in them.</p>
+						<p>Zwróć uwagę, że wszystkie liczby po lewej stronie mają obok <code><var>X</var></code>.',None
+442,Oblicz <code><var>X</var></code>."</p>
 						<p><code><var>plus( A+color( X, false )+Y, B+color( X, false )+Z, C+color( X, false ) )</var> = <var>plus( E+Y, F-D )</var></code></p>
 					</div>
 
-					<p>Factor out the <code><var>X</var></code>.</p>
+					<p>Wyciągnij <code><var>X</var></code>.</p>
 
 					<p><code><var>color( X, false )</var> \cdot \left( <var>plus( A+Y, B+Z, C )</var> \right) = <var>plus( E+Y, F-D )</var></code></p>
 
 					<div>
-						<p>Isolate the <code><var>X</var></code>.</p>
+						<p>Wyizoluj <code><var>X</var></code>.</p>
 						<p><code><var>X</var> \cdot \left( <var>color( plus( A+Y, B+Z, C ), true )</var> \right)  = <var>plus( E+Y, F-D )</var></code></p>
 					</div>
 					<p><code><var>X</var> = \dfrac{ <var>plus( E+Y, F-D )</var> }{ <var>color( plus( A+Y, B+Z, C ), true )</var> }</code></p>
 
 					<div data-if="FLIP">
-						<p>We can simplify this by multiplying the top and bottom by <code>-1</code>.</p>
+						<p>Możemy uprościć to mnożąc górę i dół przez <code>-1</code>.</p>
 						<p><code><var>ANSWER( E, F-D, A, B, C )</var></code></p>
 					</div>
 
@@ -256,7 +257,7 @@
 					})()</var>
 
 					<var id="GCD">getGCD( getGCD( abs( E_TERM ), abs( B_TERM ) ), abs( A_TERM - D_TERM ) )</var>
-					<var id="DIVISOR">( A*F-D*C < 0 ? -1 : 1 ) / GCD</var>
+					<var id="DIVISOR">( A_TERM-D_TERM < 0 ? -1 : 1 ) / GCD</var>
 
 					<var id="ANSWER">function( z, y, c ) {
 						return X + " = \\dfrac{" + plus( round( z*DIVISOR )+Z, round( y*DIVISOR )+Y ) + "}{" + round( c*DIVISOR ) + "}";
@@ -266,7 +267,7 @@
 
 				<p class="problem"><code>\dfrac{ <var>plus( A+X, B+Y )</var> }{ <var>C</var> } = \dfrac{ <var>plus( D+X, E+Z )</var> }{ <var>F</var> }</code></p>
 
-				<p class="question">Solve for <code><var>X</var></code>.</p>
+				<p class="question">Oblicz <code><var>X</var></code>.</p>
 
 				<p class="solution"><code><var>ANSWER( E_TERM, -B_TERM, A_TERM-D_TERM )</var></code></p>
 				<ul class="choices" data-none="true" data-show="4">
@@ -292,12 +293,12 @@
 					<div data-if="C === F || C === -F" data-unwrap>
 
 						<div>
-							<p>Notice that the left- and right- denominators are <span data-if="C === F">the same</span><span data-else>opposite</span>.</p>
+							<p>Zwróć uwagę, że mianowniki po lewej i prawej stronie są <span data-if="C === F">takie same</span><span data-else>inne</span>.</p>
 							<p><code>\dfrac{ <var>plus( A+X, B+Y )</var> }{ <var>color( C, true )</var> } = \dfrac{ <var>plus( D+X, E+Z )</var> }{ <var>color( F, true )</var> }</code></p>
 						</div>
 
 						<div>
-							<p>So we can multiply both sides by <code><var>C</var></code>.</p>
+							<p>Możemy więc pomnożyć obie strony przez <code><var>C</var></code>.</p>
 							<p><code><var>color( C, true )</var> \cdot \dfrac{ <var>plus( A+X, B+Y )</var> }{ <var>color( C, true )</var> } = <var>color( C, true )</var> \cdot \dfrac{ <var>plus( D+X, E+Z )</var> }{ <var>color( F, true )</var> }</code></p>
 						</div>
 
@@ -308,7 +309,7 @@
 
 						<div data-if="C === -F" data-unwrap>
 							<div>
-								<p>Distribute the negative sign on the right side.</p>
+								<p>Przenieś znak ujemności na prawą stronę.</p>
 								<p><code><var>plus( A+X, B+Y )</var> = <var>plus( D_TERM+X, E_TERM+Z )</var></code></p>
 							</div>
 							<p><code><var>plus( color( A_TERM, true )+X, color( B_TERM, true )+Y )</var> = <var>plus( color( D_TERM, true )+X, color( E_TERM, true )+Z )</var></code></p>
@@ -318,7 +319,7 @@
 					<div data-else data-unwrap>
 
 						<div>
-							<p>Multiply both sides by the left denominator.</p>
+							<p>Pomnoż obie strony przez mianownik, który znajduje się po lewej stronie.</p>
 							<p><code>\dfrac{ <var>plus( A+X, B+Y )</var> }{ <var>color( C, true )</var> } = \dfrac{ <var>plus( D+X, E+Z )</var> }{ <var>F</var> }</code></p>
 						</div>
 						<p><code><var>color( C, true )</var> \cdot \dfrac{ <var>plus( A+X, B+Y )</var> }{ <var>color( C, true )</var> } = <var>color( C, true )</var> \cdot \dfrac{ <var>plus( D+X, E+Z )</var> }{ <var>F</var> }</code></p>
@@ -326,13 +327,13 @@
 
 						<div data-if="C % F === 0" data-unwrap>
 							<div>
-								<p>Reduce the right side.</p>
+								<p>Zredukuj prawą stronę.</p>
 								<p><code><var>plus( A+X, B+Y )</var> = <var>color( C, false )</var> \cdot \dfrac{ <var>plus( D+X, E+Z )</var> }{ <var>color( F, false )</var> }</code></p>
 							</div>
 							<p><code><var>plus( A+X, B+Y )</var> = <var>color( C / F, false )</var> \cdot \left( <var>plus( D+X, E+Z )</var> \right)</code></p>
 						</div><div data-else>
 							<div>
-								<p>Multiply both sides by the right denominator.</p>
+								<p>Pomnóż obie strony przez mianownik, który znajduje sie po prawej stronie.</p>
 								<p><code><var>plus( A+X, B+Y )</var> = <var>C</var> \cdot \dfrac{ <var>plus( D+X, E+Z )</var> }{ <var>color( F, false )</var> }</code></p>
 							</div>
 							<p><code><var>color( F, false )</var> \cdot \left( <var>plus( A+X, B+Y )</var> \right) = <var>color( F, false )</var> \cdot <var>C</var> \cdot \dfrac{ <var>plus( D+X, E+Z )</var> }{ <var>color( F, false )</var> }</code></p>
@@ -350,28 +351,28 @@
 					</div>
 
 					<div>
-						<p>Combine <code><var>X</var></code> terms on the left.</p>
+						<p>Dodaj liczby z <code><var>X</var></code> po lewej stronie.</p>
 						<p><code><var>plus( color( A_TERM+X, false ), B_TERM+Y )</var> = <var>plus( color( D_TERM+X, false ), E_TERM+Z )</var></code></p>
 					</div>
 					<p><code><var>plus( color( (A_TERM-D_TERM)+X, false ), (B_TERM)+Y )</var> = <var>(E_TERM)+Z</var></code></p>
 
 					<div>
-						<p>Move the <code><var>Y</var></code> term to the right.</p>
+						<p>Przenieś <code><var>Y</var></code> na prawą stronę.</p>
 						<p><code><var>plus( (A_TERM-D_TERM)+X, color( B_TERM+Y, true ) )</var> = <var>E_TERM+Z</var></code></p>
 					</div>
 					<p><code><var>(A_TERM-D_TERM)+X</var> = <var>plus( E_TERM+Z, color( (-B_TERM)+Y, true ) )</var></code></p>
 
 					<div>
-						<p>Isolate <code><var>X</var></code> by dividing both sides by its coefficient.</p>
+						<p>Wyizoluj <code><var>X</var></code> dzieląc obie strony przez stałą.</p>
 						<p><code><var>color( A_TERM-D_TERM, false )+X</var> = <var>plus( E_TERM+Z, (-B_TERM)+Y )</var></code></p>
 					</div>
 					<p><code><var>X</var> = \dfrac{ <var>plus( E_TERM+Z, (-B_TERM)+Y )</var> }{ <var>color( A_TERM-D_TERM, false )</var> }</code></p>
 
 					<div data-if="GCD > 1 || (A_TERM-D_TERM) < 0" data-unwrap>
-						<p data-if="GCD > 1">All of these terms are divisible by <code><var>GCD</var></code>.</p>
-						<p data-if="GCD > 1 && (A_TERM-D_TERM) < 0">Divide by the common factor and swap signs so the denominator isn't negative.</p>
-						<p data-else-if="GCD > 1">Divide by the common factor.</p>
-						<p data-else>Swap signs so the denominator isn't negative.</p>
+						<p data-if="GCD > 1">Wszystkie te stałe przy niewiadomych sa podzielne przez <code><var>GCD</var></code>.</p>
+						<p data-if="GCD > 1 && (A_TERM-D_TERM) < 0">Podziel przez wspólny dzielnik i zamień znaki, żeby mianownik nie był ujemny.</p>
+						<p data-else-if="GCD > 1">Podziel przez wspólny dzielnik.</p>
+						<p data-else>Zamień znaki, żeby mianownik nie był ujemny.</p>
 						<p><code><var>X</var> = \dfrac{ <var>plus( color( round( E_TERM*DIVISOR ), true )+Z, color( round( -B_TERM*DIVISOR ), true )+Y )</var> }{ <var>color( round( (A_TERM-D_TERM)*DIVISOR ), true )</var> }</code></p>
 					</div>
 

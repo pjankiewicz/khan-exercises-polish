@@ -2,7 +2,7 @@
 <html data-require="math math-format graphie">
 <head>
 	<meta charset="UTF-8" />
-	<title>Equation of a line</title>
+	<title>Równanie prostej</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -21,9 +21,10 @@
 	<div class="problems">
 		<div>
 			<div class="question">
-				<p>The equation of the line through the points <code>(<var>X1</var>, <var>Y1</var>)</code> and <code>(<var>X2</var>, <var>Y2</var>)</code> is written in the form <code>y = mx + b</code>.</p>
+				<p>Równanie prostej przechodzącej przez punkty <code>(<var>X1</var>, <var>Y1</var>)</code> and <code>(<var>X2</var>, <var>Y2</var>)</code> można zapisać w postaci <code>y = mx + b</code>.</p>
 
-				<p>What are the values of the slope <code>m</code> and the <code>y</code>-intercept <code>b</code>?</p>
+				<p>Jaka jest wartość współczynnika nachylenia <code>m</code> i wyrazu wolnego <code>b</code>?,None
+594,Równanie na współczynnik nachylenia to <code>m = \dfrac{y_2 - y_1}{x_2 - x_1}</code>.</p>
 
 				<div class="graphie">
 					graphInit({
@@ -57,12 +58,12 @@
 	</div>
 
 	<div class="hints">
-		<p>The equation for the slope is <code>m = \dfrac{y_2 - y_1}{x_2 - x_1}</code>.</p>
-		<p>Substituting in, we get <code>m = \displaystyle \frac{<var>Y2</var> - <var>negParens(Y1)</var>}{<var>X2</var> - <var>negParens(X1)</var>} = <var>fractionSimplification( Y2 - Y1, X2 - X1 )</var></code>.</p>
-		<p>Writing the equation of the line, we have <code>y = <var>fractionReduce( Y2 - Y1, X2 - X1 )</var> x + b</code>.</p>
-		<p>Substitute in <code>y = <var>Y1</var></code> and <code>x = <var>X1</var></code>, the coordinates of the first point: <code><var>Y1</var> = (<var>fractionReduce( Y2 - Y1, X2 - X1 )</var>)(<var>X1</var>) + b</code>.</p>
+		<p>Równanie prostej można zapisać jako <code>m = \dfrac{y_2 - y_1}{x_2 - x_1}</code>.</p>
+		<p>Podstawiając, orzymujemy <code>m = \displaystyle \frac{<var>Y2</var> - <var>negParens(Y1)</var>}{<var>X2</var> - <var>negParens(X1)</var>} = <var>fractionSimplification( Y2 - Y1, X2 - X1 )</var></code>.</p>
+		<p>Pisząc równanie prostej otrzymujemy <code>y = <var>fractionReduce( Y2 - Y1, X2 - X1 )</var> x + b</code>.</p>
+		<p>Podstaw <code>y = <var>Y1</var></code> i <code>x = <var>X1</var></code> czyli współrzędne pierwszego punktu: <code><var>Y1</var> = (<var>fractionReduce( Y2 - Y1, X2 - X1 )</var>)(<var>X1</var>) + b</code>.</p>
 		<p><code>b = <var>Y1</var> - <var>fractionReduce( X1 * ( Y2 - Y1 ), X2 - X1 )</var> = <var>fractionReduce( Y1 * (X2 - X1) - X1 * ( Y2 - Y1 ), X2 - X1 )</var></code>.</p>
-		<p>The equation of the line is <code>y = <var>fractionReduce( Y2 - Y1, X2 - X1 )</var> x + <var>fractionReduce( Y1 * (X2 - X1) - X1 * ( Y2 - Y1 ), X2 - X1 )</var></code>.</p>
+		<p>Równanie prostej to <code>y = <var>fractionReduce( Y2 - Y1, X2 - X1 )</var> x + <var>fractionReduce( Y1 * (X2 - X1) - X1 * ( Y2 - Y1 ), X2 - X1 )</var></code>.</p>
 	</div>
 	</div>
 </body>

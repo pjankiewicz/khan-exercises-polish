@@ -14,31 +14,32 @@
 
 		<div class="problems">
 			<div id="original">
-				<p class="question"><code>\dfrac{<var>NUMERATOR</var>}{<var>DENOMINATOR</var>}</code></p>
-				<p class="problem">Ile wynosi licznik tego ułamka?</p>
-				<p class="solution"><var>NUMERATOR</var></p>
+				<p class="question">Ile wynosi licznik ułamka <code>\dfrac{<var>NUMERATOR</var>}{<var>DENOMINATOR</var>}</code>?</p>
+				<p class="solution" data-forms="integer"><var>NUMERATOR</var></p>
 				<div class="hints">
 					<p>Ułamki reprezentują jakąś część całości.</p>
 					<div>
-						<p>Możesz wyobrazić sobie, że ułamek to <var>NUMERATOR</var> z <var>DENOMINATOR</var> kawałków pizzy. Innymi słowy, pizza została pokrojona na <var>DENOMINATOR</var> kawałków, a my dostajemy tylko <var>NUMERATOR</var> z tych kawałków.</p>
+						<p>Ułamek <code>\dfrac{<var>NUMERATOR</var>}{<var>DENOMINATOR</var>}</code> można zapisać jako <var>NUMERATOR</var> z <var>DENOMINATOR</var> kawałków ciasta. Innymi słowy: z ciasta podzielonego na <var>DENOMINATOR</var> kawałków, bierzemy tylko <var>NUMERATOR</var> kawałków.</p>
 						<div class="graphie">
 							init({
-								range: [ [-2, 2], [-2, 2] ],
+								range: [ [-2, 10], [-2, 2] ],
 								scale: 25
 							});
 
-							piechart( [NUMERATOR, DENOMINATOR - NUMERATOR], ["#e00", "#999"], 2 );
+							piechart( [NUMERATOR, DENOMINATOR - NUMERATOR], ["#6495ED", "#FFA500"], 2 );
+							label( [2, 0], "=\\dfrac{\\color{#6495ED}{" + NUMERATOR + "}}{" + DENOMINATOR + "}"
+								+ "=\\dfrac{\\color{#6495ED}{\\text{numerator}}}{\\text{denominator}}", "right");
 						</div>
 					</div>
-					<p>Licznik to liczba kawałków pizzy, które dostajemy i jest zapisywana powyżej kreski ułamkowej. Mianownik to liczba wszystkich kawałków. Jest on zapisywany poniżej kreski ułamkowej.</p>
-					<p id="answer_hint">A więc licznik to <var>NUMERATOR</var>.</p>
+					<p>Licznik to liczba kawałków ciasta, którą bierzemy. Jest zapisywyna ponad kreską ułamkową. Mianownik to całkowita liczba kawałków. Jest zapisywana poniżej kreski ułamkowej.</p>
+					<p id="answer_hint">A więc licznik wynosi <code><var>NUMERATOR</var></code>.</p>
 				</div>
 			</div>
 			<div data-type="original">
-				<p class="problem">Ile wynosi mianownik tego ułamka?</p>
-				<p class="solution"><var>DENOMINATOR</var></p>
+				<p class="question">Ile wynosi mianownik ułamka <code>\dfrac{<var>NUMERATOR</var>}{<var>DENOMINATOR</var>}</code>?</p>
+				<p class="solution" data-forms="integer"><var>DENOMINATOR</var></p>
 				<div class="hints" data-apply="appendContents">
-					<p id="answer_hint">A więc mianownik to <var>DENOMINATOR</var>.</p>
+					<p id="answer_hint">A więc mianownik wynosi <code><var>DENOMINATOR</var></code>.</p>
 				</div>
 			</div>
 		</div>

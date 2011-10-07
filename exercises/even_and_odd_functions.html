@@ -122,7 +122,7 @@
 			<div>
 
 				<div class="problem">
-					<p><code>f(x)</code> is graphed below.</p>
+					<p>Funkcja <code>f(x)</code> jest pokazana poniżej.</p>
 					<div id="graph" class="graphie">
 						graphInit({
 							range: 10,
@@ -180,31 +180,32 @@
 				</div>
 
 				<p>
-					<code>f(-a)\neq f(a)</code>, so <code>f(x)</code> is not even.
+					<code>f(-a)
+eq f(a)</code>, so <code>f(x)</code> is not even.
 				</p>
 
 				<p>
-					<code>f(-a)\neq -f(a)</code>, so <code>f(x)</code> is not odd.
+					<code>f(-a)
+eq -f(a)</code>, so <code>f(x)</code> is not odd.
 				</p>
 
 			</div>
 
 			<div data-unwrap data-else>
 
-				<!-- FIXME: all the <var> tags here should be removed when the data-each graphie scoping is fixed. -->
 				<div data-unwrap data-each="PTS as x">
 
 					<div class="graphie" data-update="graph">
 						style({ stroke: "#7edb00" }, function() {
-							path([ [ <var>x</var>, 0 ], [ <var>x</var>, valAt( WIDES, <var>x</var> ) ] ]);
-							path([ [ <var>-x</var>, 0 ], [ <var>-x</var>, valAt( WIDES, <var>-x</var> ) ] ]);
+							path([ [ x, 0 ], [ x, valAt( WIDES, x ) ] ]);
+							path([ [ -x, 0 ], [ -x, valAt( WIDES, -x ) ] ]);
 						});
 					</div>
 
 					<div class="graphie" data-update="graph">
 						style({ strokeDasharray: "." }, function() {
-							path([ [ 0, valAt( WIDES, <var>x</var> ) ], [ <var>x</var>, valAt( WIDES, <var>x</var> ) ] ]);
-							path([ [ 0, valAt( WIDES, <var>-x</var> ) ], [ <var>-x</var>, valAt( WIDES, <var>-x</var> ) ] ]);
+							path([ [ 0, valAt( WIDES, x ) ], [ x, valAt( WIDES, x ) ] ]);
+							path([ [ 0, valAt( WIDES, -x ) ], [ -x, valAt( WIDES, -x ) ] ]);
 						});
 					</div>
 

@@ -2,7 +2,7 @@
 <html data-require="math graphie graphie-helpers-arithmetic">
 <head>
 	<meta charset="UTF-8" />
-	<title>Division 0.5</title>
+	<title>Dzielenie 0.5</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -36,7 +36,7 @@
 							drawRow( B, A - 1 - i, "#6495ED", B * i + 1 );
 						}
 					</div>
-					<p>Draw <var>C</var> circles, with <var>B</var> to each row.</p>
+					<p>Narysuj <var>C</var> okręgów, <var>B</var> w każdym wierszu.</p>
 				</div>
 				<div>
 					<div class="graphie" data-update="numbers">
@@ -47,10 +47,12 @@
 							path ( [ [ - 0.5 , i - 0.5 ], [ B - 0.5 , i - 0.5 ] ]);
 						}
 					</div>
-					<p>How many rows are there?</p>
+					<p>Ile jest wierszy?</p>
 				</div>
 			</div>
-			<p data-else>Dividing any number by 1 equals itself.</p>
+			<p data-else>
+				Liczba podzielona przez 1 jest sobie równa.
+			</p>
 			<div class="graphie" data-update="numbers">
 				KhanUtil.currentGraph.labelHolder.remove();
 				label( [ 0, A ],

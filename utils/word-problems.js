@@ -92,6 +92,14 @@ var WORD_CONJUGATION = {
     "Urszula": [["Urszuli"]],
     "jednoska" : [["jednostki","jednostce","jednotskę","jednostką","jednostce"],
                   ["jednostki","jednostek","jednostkom","jednostki","jednostkami","jednostkach"]],
+    "flamaster":[["flamastra"],["flamastrów"]],
+    "gumka":[["gumki"],["gumek"]],
+    "kredka":[["kredki"],["kredek"]],
+    "nożyczki":[["nożyczek"],["nożyczek"]],
+    "ołówek":[["ołówka"],["ołówków"]],
+    "pieczątka":[["pieczątki"],["pieczątek"]],
+    "teczka":[["teczki"],["teczek"]],
+    "zszywacz":[["zszywacza"],["zszywaczy"],]
     "punkt" :[["punktu","punktowi","punkt","punktem","punkcie"],
 	      ["punktów","punktom","punkty","punktami","punktach"]],
     "zielony punkt" :[["zielonego punktu","zielonemu punktowi","zielony punkt","zielonym punktem","zielonym punkcie"],
@@ -398,29 +406,26 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	]);
 
 	var fruits = KhanUtil.shuffle([
-		"apple",
-		"banana",
-		"coconut",
-		"eggplant",
+		"ananas",
+		"banan",
+		"czereśnia",
 		"kiwi",
-		"lemon",
+		"limonka",
 		"mango",
-		"nectarine",
-		"orange",
-		"pomegranate",
-		"watermelon"
+		"nektarynka",
+		"ogórek",
+		"pomarańcza"
 	]);
 
 	var deskItems = KhanUtil.shuffle([
-		"binder",
-		"crayon",
-		"eraser",
-		"folder",
-		"glue stick",
-		"marker",
-		"notebook",
-		"pencil",
-		"rubber stamp"
+		"flamaster",
+		"gumka",
+		"kredka",
+		"nożyczki",
+		"ołówek",
+		"pieczątka",
+		"teczka",
+		"zszywacz"
 	]);
 
 	jQuery.extend( KhanUtil, {
@@ -539,7 +544,12 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 
 		deskItem: function( i ) {
 			return deskItems[i];
+		},          
+
+		ofDeskItem: function( i ) {
+            return KhanUtil.conjugate(deskItems[i], 2);
 		}
+
 
 	});
 };

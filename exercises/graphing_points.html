@@ -2,7 +2,7 @@
 <html data-require="math graphie">
 	<head>
 	<meta charset="UTF-8" />
-	<title>Graphing points</title>
+	<title>Współrzędne punktów</title>
 		<script src="../khan-exercise.js"></script>
 	</head>
 	<body>
@@ -13,7 +13,7 @@
 						var points = [];
 
 						while( points.length &lt; 5 ) {
-							var point = [ randRange( -9, 9 ), randRange( -9, 9 ) ];
+							var point = [ randRange( -9, 9 ), randRangeExclude( -9, 9, [-1] ) ];
 							var isUnique = true;
 							jQuery.each( points, function( index, pt ) {
 								if ( point[0] === pt[0] && point[1] === pt[1] ) {
@@ -39,12 +39,12 @@
 			<div class="problems">
 				<div>
 					<div class="problem">
-						<p>Consider the following coordinate pairs:</p>
+						<p>Mając poniższe współrzędne:</p>
 						<p><code><var>jQuery.map( POINTS, PAIR ).join( "\\qquad" )</var></code></p>
 					</div>
 
 					<div class="question">
-						<p>Which of those pairs is not graphed below?</p>
+						<p>Której z tych par nie ma na rysunku?</p>
 						<div class="graphie" id="grid">
 							graphInit({
 								range: 10,
@@ -69,7 +69,7 @@
 						</div>
 					</div>
 
-					<p class="solution"><code>(<var>POINTS[FORGOTTEN].join( ", " )</var>)</code></p>
+					<p class="solution"><code><var>PAIR( POINTS[FORGOTTEN] )</var></code></p>
 					<ul class="choices" data-category="true">
 						<li><code><var>PAIR( POINTS[0] )</var></code></li>
 						<li><code><var>PAIR( POINTS[1] )</var></code></li>

@@ -2,7 +2,7 @@
 <html data-require="math polynomials expressions math-format">
 <head>
 	<meta charset="UTF-8" />
-	<title>Quadratic equation</title>
+	<title>Równania kwadratowe</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -32,9 +32,9 @@
 						var good_gcd = getGCD( A, B, C );
 						var bad_gcd = getGCD( bad_a, bad_b, bad_c );
 
-						while ((	(A*bad_gcd)==(bad_a*good_gcd) &&
-									(B*bad_gcd)==(bad_b*good_gcd) &&
-									(C*bad_gcd)==(bad_c*good_gcd) ) ||
+						while ((	abs(A*bad_gcd) == abs(bad_a*good_gcd) &&
+									abs(B*bad_gcd)== abs(bad_b*good_gcd) &&
+									abs(C*bad_gcd)== abs(bad_c*good_gcd) ) ||
 
 									(( (bad_b * bad_b) - (4 * bad_a * bad_c) ) < 0))
 						{
@@ -46,7 +46,7 @@
 							bad_gcd = getGCD( bad_a, bad_b, bad_c );
 						}
 						wrongs.push(quadraticRoots(bad_a, bad_b, bad_c));
-					}
+}
 					return wrongs;
 				})()
 			</var>
@@ -54,8 +54,8 @@
 
 		<div class="problems">
 			<div>
-				<p class="problem">Let <code>f(x) = <var>F_TEXT</var></code>.</p>
-				<p class="question">Where does this function intersect the x-axis (i.e. what are the roots or zeroes of <code>f(x)</code>)?</p>
+				<p class="problem">Niech <code>f(x) = <var>F_TEXT</var></code>.</p>
+				<p class="question">Gdzie ta funkcja przecina oś x (tzn. gdzie sa jej miejsca zerowe)?</p>
 				<p class="solution"><code><var>quadraticRoots(A, B, C)</var></code></p>
 
 				<ul class="choices" data-none="true" data-show="5">
@@ -70,12 +70,12 @@
 
 		<div class="hints">
 			<div>
-				<p>The function intersects the x-axis when <code>f(x) = 0</code>, so you need to solve the equation:</p>
+				<p>Funkcja przecina oś x kiedy <code>f(x) = 0</code>, musisz więc rozwiązać równanie:</p>
 				<p><code><var>F_TEXT</var> = 0</code></p>
 			</div>
 
 			<div>
-				<p>Use the quadratic formula to solve <code>ax^2 + bx + c = 0</code>:</p>
+				<p>Sprowadź funkcję do standardowej postaci <code>ax^2 + bx + c = 0</code>:</p>
 				<p><code>x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</code></p>
 			</div>
 

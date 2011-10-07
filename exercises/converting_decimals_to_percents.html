@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+	<title>Zamiana ułamków dziesiętnych na procenty</title>
+	<script src="../khan-exercise.js"></script>
+</head>
+
+<body>
+	<div class="exercise">
+	<div class="problems">
+		<div>
+			<div class="vars">
+				<var id="PERCENT">roundTo( 1, randRange( 100, 1500 ) / 10 )</var>
+				<var id="DECIMAL">roundTo( 5, PERCENT / 100 )</var>
+			</div>
+			<p>Wyraź ułamek dziesiętny jako procent.</p>
+			<p class="question"><code><var>DECIMAL</var></code></p>
+			<p class="solution" data-forms="percent"><var>PERCENT</var></p>
+			<div class="hints">
+				<div>
+					<p>Przepisz ułamek dziesiętny jak ułamek zwykły z mianownikiem 100.</p>
+					<p><code><var>DECIMAL</var> = \dfrac{<var>PERCENT</var>}{100}</code></p>
+				</div>
+				<div>
+					<p><code>\hphantom{<var>DECIMAL</var>} = <var>PERCENT</var>\%</code></p>
+					<p><code><var>PERCENT</var></code> setnych = <code><var>PERCENT</var></code> %</p>
+				</div>
+				<p>Innym sposobem zamiany ułamka dziesiętnego na procent jest przemnożenie go przez <code>100</code> (albo przesunięcie znaku dziesiętnego o 2 miejsca w prawo) i dodanie znaku procenta.</p>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>
