@@ -2,7 +2,7 @@
 <html data-require="math math-format word-problems">
 <head>
 	<meta charset="UTF-8" />
-	<title>Ratio word problems</title>
+	<title>Zadania z proporcjami</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -18,25 +18,25 @@
 				<var id="NUM_BOYS">RATIO_BOYS * FACTOR</var>
 				<var id="TOTAL">NUM_GIRLS + NUM_BOYS</var>
 			</div>
-			<p class="problem">In <var>course( 1 )</var> class, the girl to boy ratio is <code><var>RATIO_GIRLS</var></code> to <code><var>RATIO_BOYS</var></code>.</p>
-			<p class="question">If there are <code><var>NUM_GIRLS</var></code> girls, how many boys are there?</p>
+			<p class="problem">W klasie <var>course( 1 )</var>, proporcja ilości dziewczynek do chłopców wynosi <code><var>RATIO_GIRLS</var></code> d <code><var>RATIO_BOYS</var></code>.</p>
+			<p class="question">Jeżeli jest <code><var>NUM_GIRLS</var></code> <var>plural(NUM_GIRLS,'dziewczynka',false)</var>, ilu jest chłopców?</p>
 			<p class="solution" data-forms="integer"><var>NUM_BOYS</var></p>
 			<div class="hints">
-				<p>A ratio of <code><var>RATIO_GIRLS</var></code> girls to <code><var>RATIO_BOYS</var></code> boys means that there is a group of <code><var>RATIO_GIRLS</var></code> girls for every group of <code><var>RATIO_BOYS</var></code> boys.</p>
-				<p>If there are <code><var>NUM_GIRLS</var></code> girls, then there are <code><var>FACTOR</var></code> groups of <code><var>RATIO_GIRLS</var></code> girls each.</p>
+				<p>Proporcja <code><var>RATIO_GIRLS</var></code> liczby dziewczynek do udziału <code><var>RATIO_BOYS</var></code> chłopców oznacza, że jest grupa <code><var>RATIO_GIRLS</var></code> dziewczynek dla każdej grupy chłopców <code><var>RATIO_BOYS</var></code> boys.</p>
+				<p>Jeżeli jest <code><var>NUM_GIRLS</var></code> <var>plural(NUM_GIRLS,'dziewczynka',false)</var> tzn. że istnieją <code><var>FACTOR</var></code> <var>plural(FACTOR,'grupa',false)</var> z <code><var>RATIO_GIRLS</var></code> <var>plural(RATIO_GIRLS,'dziewczynka',false)</var> w każdej.</p>
 				<p>Because we know the ratio is <code><var>RATIO_GIRLS</var>:<var>RATIO_BOYS</var></code>, there must be <code><var>FACTOR</var></code> groups of <code><var>RATIO_BOYS</var></code> boys each.</p>
-				<p>There is a total of <code><var>NUM_BOYS</var></code> boys in <var>course( 1 )</var> class.</p>
+				<p>There is a total of <code><var>NUM_BOYS</var></code> <var>plural(NUM_BOYS</p>
 			</div>
 		</div>
 
 		<div id="classroom-give-boys-ask-girls" data-type="classroom">
-			<p class="question">If there are <code><var>NUM_BOYS</var></code> boys, how many girls are there?</p>
+			<p class="question">If there are <code><var>NUM_BOYS</var></code> <var>plural(NUM_BOYS,'chłopiec',false)</var>, how many girls are there?</p>
 			<p class="solution" data-forms="integer"><var>NUM_GIRLS</var></p>
 			<div class="hints">
-				<p>A ratio of <code><var>RATIO_GIRLS</var></code> girls to <code><var>RATIO_BOYS</var></code> boys means that there is a group of <code><var>RATIO_GIRLS</var></code> girls for every group of <code><var>RATIO_BOYS</var></code> boys.</p>
-				<p>If there are <code><var>NUM_BOYS</var></code> boys, then there are <code><var>FACTOR</var></code> groups of <code><var>RATIO_BOYS</var></code> boys each.</p>
+				<p>Proporcja <code><var>RATIO_GIRLS</var></code> liczby dziewczynek do udziału <code><var>RATIO_BOYS</var></code> chłopców oznacza, że jest grupa <code><var>RATIO_GIRLS</var></code> dziewczynek dla każdej grupy chłopców <code><var>RATIO_BOYS</var></code> boys.</p>
+				<p>If there are <code><var>NUM_BOYS</var></code> <var>plural(NUM_BOYS,'chłopiec',false)</var>, then there are <code><var>FACTOR</var></code> groups of <code><var>RATIO_BOYS</var></code> boys each.</p>
 				<p>Because we know the ratio is <code><var>RATIO_GIRLS</var>:<var>RATIO_BOYS</var></code>, there must be <code><var>FACTOR</var></code> groups of <code><var>RATIO_GIRLS</var></code> girls each.</p>
-				<p>There is a total of <code><var>NUM_GIRLS</var></code> girls in <var>course( 1 )</var> class.</p>
+				<p>There is a total of <code><var>NUM_GIRLS</var></code> <var>plural(NUM_GIRLS</p>
 			</div>
 		</div>
 
@@ -47,7 +47,7 @@
 				<p>A ratio of <code><var>RATIO_GIRLS</var></code> girls to <code><var>RATIO_BOYS</var></code> boys means that a set of <code><var>RATIO_GIRLS + RATIO_BOYS</var></code> students will have <code><var>RATIO_GIRLS</var></code> girls and <code><var>RATIO_BOYS</var></code> boys.</p>
 				<p>A class of <code><var>TOTAL</var></code> students has <code><var>FACTOR</var></code> sets of <code><var>RATIO_GIRLS + RATIO_BOYS</var></code> students.</p>
 				<p>Because we know that there are <code><var>RATIO_GIRLS</var></code> girls in each set of <code><var>RATIO_GIRLS + RATIO_BOYS</var></code> students, the class must have <code><var>FACTOR</var></code> groups of <code><var>RATIO_GIRLS</var></code> girls each.</p>
-				<p>There is a total of <code><var>NUM_GIRLS</var></code> girls in <var>course( 1 )</var> class.</p>
+				<p>There is a total of <code><var>NUM_GIRLS</var></code> <var>plural(NUM_GIRLS</p>
 			</div>
 		</div>
 
@@ -58,7 +58,7 @@
 				<p>A ratio of <code><var>RATIO_GIRLS</var></code> girls to <code><var>RATIO_BOYS</var></code> boys means that a set of <code><var>RATIO_GIRLS + RATIO_BOYS</var></code> students will have <code><var>RATIO_GIRLS</var></code> girls and <code><var>RATIO_BOYS</var></code> boys.</p>
 				<p>A class of <code><var>TOTAL</var></code> students has <code><var>FACTOR</var></code> sets of <code><var>RATIO_GIRLS + RATIO_BOYS</var></code> students.</p>
 				<p>Because we know that there are <code><var>RATIO_BOYS</var></code> boys in each set of <code><var>RATIO_GIRLS + RATIO_BOYS</var></code> students, the class must have <code><var>FACTOR</var></code> groups of <code><var>RATIO_BOYS</var></code> boys each.</p>
-				<p>There is a total of <code><var>NUM_BOYS</var></code> boys in <var>course( 1 )</var> class.</p>
+				<p>There is a total of <code><var>NUM_BOYS</var></code> <var>plural(NUM_BOYS</p>
 			</div>
 		</div>
 
@@ -71,8 +71,10 @@
 				<var id="DISTANCE_REAL">FACTOR * SCALE_REAL</var>
 			</div>
 			<p class="problem">The scale on a map is <var>SCALE_MAP</var>cm : <var>SCALE_REAL</var>km.</p>
-			<p class="question">If two cities are <var>DISTANCE_MAP</var>cm apart on the map, what is the actual distance between the two cities?</p>
-			<p class="solution" data-forms="integer"><var>DISTANCE_REAL</var></p>
+			<p class="question">If two cities are <var>DISTANCE_MAP</var>cm apart on the map, what is the actual distance in km between the two cities?</p>
+			<div class="solution" data-type="multiple">
+				<p><span class="sol" data-forms="integer"><var>DISTANCE_REAL</var></span> km</p>
+			</div>
 			<div class="hints">
 				<p>The scale means that every <var>SCALE_MAP</var>cm on the map corresponds to an actual distance of <var>SCALE_REAL</var>km.</p>
 				<p>A distance of <var>DISTANCE_MAP</var>cm on the map is the same as <var>FACTOR</var> <code>\cdot</code> <var>SCALE_MAP</var>cm.</p>
@@ -81,12 +83,15 @@
 		</div>
 
 		<div id="map-give-real-ask-map" data-type="map">
-			<p class="question">If the distance between two cities is <var>DISTANCE_REAL</var>km, how far apart are the two cities on the map?</p>
-			<p class="solution" data-forms="integer"><var>DISTANCE_MAP</var></p>
+			<p class="question">If the distance between two cities is <var>DISTANCE_REAL</var>km, how far apart in cm are the two cities on the map?</p>
+			<div class="solution" data-type="multiple">
+				<p><span class="sol" data-forms="integer"><var>DISTANCE_MAP</var></span> cm</p>
+			</div>
 			<div class="hints">
 				<p>The scale means that every <var>SCALE_MAP</var>cm on the map corresponds to an actual distance of <var>SCALE_REAL</var>km.</p>
 				<p>An actual distance of <var>DISTANCE_REAL</var>km is the same as <var>FACTOR</var> <code>\cdot</code> <var>SCALE_REAL</var>km.</p>
 				<p>The distance between the two cities on the map is <var>FACTOR</var> <code>\cdot</code> <var>SCALE_MAP</var>cm, or <var>DISTANCE_MAP</var>cm.</p>
+			</div>
 		</div>
 	</div>
 

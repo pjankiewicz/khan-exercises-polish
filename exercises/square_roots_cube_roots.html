@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math graphie">
 <head>
-	<title>Square roots and cube roots</title>
+	<title>Pierwiastki kwadratowe i sześcienne</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -15,9 +15,9 @@
 		</div>
 
 		<div class="hints">
-			<p>The best thing is to do a prime factorization of this number and look for groups of numbers.</p>
+			<p>Najlepszą rzeczą jaką trzeba zrobić jest rozłożenie liczby na czynniki pierwsze i poszukanie grup liczb.</p>
 			<div>
-				<p>Let's draw a factor tree.</p>
+				<p>Rozrysujmy drzewo czynników pierwszych.</p>
 				<div class="graphie" id="factor-tree">
 					init({
 						range: [ [-1, FACTORIZATION.length + 2], [ -2 * FACTORIZATION.length - 1, 1] ],
@@ -34,9 +34,9 @@
 					y -= 2;
 					cx += 1;
 
-					curr = curr / <var>factor</var>;
+					curr = curr / factor;
 
-					label( [cx - 1, y], <var>factor</var> );
+					label( [cx - 1, y], factor );
 					circle( [cx - 1, y], 0.5);
 					label( [cx + 1, y], curr );
 			</div>
@@ -45,7 +45,7 @@
 				circle( [cx + 1, y], 0.5);
 			</div>
 
-			<p>So we found that the prime factorization of <code><var>Q</var></code> is <code><var>PRIMES.join( "\\times " )</var></code>.</p>
+			<p>Widzimy, że rozłożenie liczby <code><var>Q</var></code> na czynniki pierwsze daje <code><var>PRIMES.join( "\\times " )</var></code>.</p>
 		</div>
 
 		<div class="problems">
@@ -59,35 +59,35 @@
 					<var id="curr">Q</var>
 				</div>
 
-				<p class="question">What is the square root of <code><var>Q</var></code>?</p>
+				<p class="question">Jaki jest pierwiastek kwadratowy liczby <code><var>Q</var></code>?</p>
 
 				<p class="solution"><var>N</var></p>
 
 				<div class="hints" data-apply="appendContents">
 
-					<p>We're looking for the square root of <code><var>Q</var></code>, so we want to split the prime factors into two identical groups.</p>
+					<p>Szukamy pierwiastka kwadratowego liczby <code><var>Q</var></code>, więc chcemy rozłożyć liczbę na czynniki pierwsze, którą będą stanowić 2 grupy taich samych liczb.</p>
 
 					<div data-if="PRIMES.length === 2" data-unwrap>
 
-						<p>We only have two prime factors, and we want to split them into two groups, so this is easy.</p>
-						<p><code><var>Q</var> = <var>PRIMES.join( "\\times " )</var></code>, so <code><var>N</var>^2 = <var>Q</var></code>.</p>
+						<p>Mamy tylko 2 czynniki pierwsze, więc ten punkt jest łatwy.</p>
+						<p><code><var>Q</var> = <var>PRIMES.join( "\\times " )</var></code>, więc <code><var>N</var>^2 = <var>Q</var></code>.</p>
 
 					</div><div data-else data-unwrap>
 
 						<div>
-							<p>Notice that we can rearrange the factors like so:</p>
+							<p>Zauważ, że możemy zmienić kolejność czynników pierwszych w taki sposób:</p>
 							<p><code><var>Q</var> = <var>PRIMES.join(" &times; ")</var> = \left(<var>F_N.join( "\\times " )</var>\right) \times \left(<var>F_N.join(" &times; ")</var>\right)</code></p>
 						</div>
 
 						<p data-if="F_N.length > 1">
-							So <code>\left(<var>F_N.join( "\\times " )</var>\right)^2 = <var>N</var>^2 = <var>Q</var></code>.
+							Więc <code>\left(<var>F_N.join( "\\times " )</var>\right)^2 = <var>N</var>^2 = <var>Q</var></code>.
 						</p><p data-else>
-							So <code><var>N</var>^2 = <var>Q</var></code>.
+							Więc <code><var>N</var>^2 = <var>Q</var></code>.
 						</p>
 
 					</div>
 
-					<p>So the square root of <code><var>Q</var></code> is <code><var>N</var></code>.</p>
+					<p>Więc pierwiastek kwadratowy liczby <code><var>Q</var></code> wynosi <code><var>N</var></code>.</p>
 
 				</div>
 
@@ -102,35 +102,35 @@
 					<var id="curr">Q</var>
 				</div>
 
-				<p class="question">What is the cube root of <code><var>Q</var></code>?</p>
+				<p class="question">Ile wynosi pierwsiatek sześcienny liczby <code><var>Q</var></code>?</p>
 
 				<p class="solution"><var>N</var></p>
 
 				<div class="hints" data-apply="appendContents">
 
-					<p>We're looking for the cube root of <code><var>Q</var></code>, so we want to split the prime factors into three identical groups.</p>
+					<p>Szukamy pierwsiatka sześciennego liczby <code><var>Q</var></code>, więc chcemy podzielić czynniki pierwsze na 3 identyczne grupy.</p>
 
 					<div data-if="PRIMES.length === 3" data-unwrap>
 
-						<p>We only have three prime factors, and we want to split them into three groups, so this is easy.</p>
-						<p><code><var>Q</var> = <var>PRIMES.join( "\\times " )</var></code>, so <code><var>N</var>^3 = <var>Q</var></code>.</p>
+						<p>Mamy tylko trzy czynniki pierwsze, więc podzielenie na 3 grupy będzie proste.</p>
+						<p><code><var>Q</var> = <var>PRIMES.join( "\\times " )</var></code>, więc <code><var>N</var>^3 = <var>Q</var></code>.</p>
 
 					</div><div data-else data-unwrap>
 
 						<div>
-							<p>Notice that we can rearrange the factors like so:</p>
+							<p>Zauważ, że możemy zmienić kolejność czynników pierwszych w taki sposób:</p>
 							<p><code><var>Q</var> = <var>PRIMES.join( "\\times " )</var> = \left(<var>[ F_N.join( "\\times " ), F_N.join( "\\times " ), F_N.join( "\\times ") ].join( "\\right)\\times\\left(" )</var>\right)</code><p>
 						</div>
 
 						<p data-if="F_N.length > 1">
-							So <code>\left(<var>F_N.join( "\\times " )</var>\right)^3 = <var>N</var>^3 = <var>Q</var></code>.
+							Więc <code>\left(<var>F_N.join( "\\times " )</var>\right)^3 = <var>N</var>^3 = <var>Q</var></code>.
 						</p><p data-else>
-							So <code><var>N</var>^3 = <var>Q</var></code>.
+							Więc <code><var>N</var>^3 = <var>Q</var></code>.
 						</p>
 
 					</div>
 
-					<p>So the cube root of <code><var>Q</var></code> is <code><var>N</var></code>.</p>
+					<p>Więc pierwiastek sześcienny liczby <code><var>Q</var></code> wynosi <code><var>N</var></code>.</p>
 
 				</div>
 

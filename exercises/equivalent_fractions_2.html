@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="math word-problems">
 <head>
 	<meta charset="UTF-8" />
 	<title>Równoważne ułamki 2</title>
@@ -14,14 +14,14 @@
 		<var id="M">randRange(3, 9)</var>
 		<var id="C">A * M</var>
 		<var id="D">B * M</var>
+		<var id="SYMBOL">binop( 1 )</var>
 	</div>
 
 	<div class="problems">
 		<div>
-			<div class="question">
-				<p><code>\dfrac{<var>A</var>}{<var>B</var>} = \dfrac{<var>C</var>}{?}</code></p>
-			</div>
-			<div class="solution"><var>D</var></div>
+			<p class="question">Jaka liczba może zastąpić <code><var>SYMBOL</var></code> poniżej?</p>
+			<p><code>\dfrac{<var>A</var>}{<var>B</var>} = \dfrac{<var>C</var>}{<var>SYMBOL</var>}</code></p>
+			<div class="solution" data-forms="integer"><var>D</var></div>
 			<div class="hints">
 				<p>Żeby uzyskać prawy licznik <code><var>C</var></code>, lewy licznik <code><var>A</var></code> pomnóż przez <code><var>M</var></code>.</p>
 				<p>Żeby policzyć prawy mianownik, również pomnóż lewy mianownik przez <code><var>M</var></code>.</p>
@@ -30,10 +30,9 @@
 		</div>
 
 		<div>
-			<div class="question">
-				<p><code>\dfrac{<var>A</var>}{<var>B</var>} = \dfrac{?}{<var>D</var>}</code></p>
-			</div>
-			<div class="solution"><var>C</var></div>
+			<p class="question">Jaka liczba może zastąpić <code><var>SYMBOL</var></code> poniżej?</p>
+			<p><code>\dfrac{<var>A</var>}{<var>B</var>} = \dfrac{<var>SYMBOL</var>}{<var>D</var>}</code></p>
+			<div class="solution" data-forms="integer"><var>C</var></div>
 			<div class="hints">
 				<p>Żeby uzyskać prawy mianownik <code><var>D</var></code>, lewy mianownik <code><var>B</var></code> pomnóż przez <code><var>M</var></code>.</p>
 				<p>Żeby policzyć prawy licznik, również pomnóż lewy licznik przez <code><var>M</var></code>.</p>
@@ -42,10 +41,9 @@
 		</div>
 
 		<div>
-			<div class="question">
-				<p><code>\dfrac{<var>C</var>}{<var>D</var>} = \dfrac{<var>A</var>}{?}</code></p>
-			</div>
-			<div class="solution"><var>B</var></div>
+			<p class="question">Jaka liczba może zastąpić <code><var>SYMBOL</var></code> poniżej?</p>
+			<p><code>\dfrac{<var>C</var>}{<var>D</var>} = \dfrac{<var>A</var>}{<var>SYMBOL</var>}</code></p>
+			<div class="solution" data-forms="integer"><var>B</var></div>
 			<div class="hints">
 				<p>Żeby uzyskać prawy licznik <code><var>A</var></code>, lewy licznik <code><var>C</var></code> podziel przez <code><var>M</var></code>.</p>
 				<p>Żeby policzyć prawy mianownik, równiewż podziel lewy mianownik przez <code><var>M</var></code>.</p>
@@ -54,10 +52,9 @@
 		</div>
 
 		<div>
-			<div class="question">
-				<p><code>\dfrac{<var>C</var>}{<var>D</var>} = \dfrac{?}{<var>B</var>}</code></p>
-			</div>
-			<div class="solution"><var>A</var></div>
+			<p class="question">Jaka liczba może zastąpić <code><var>SYMBOL</var></code> poniżej?</p>
+			<p><code>\dfrac{<var>C</var>}{<var>D</var>} = \dfrac{<var>SYMBOL</var>}{<var>B</var>}</code></p>
+			<div class="solution" data-forms="integer"><var>A</var></div>
 			<div class="hints">
 				<p>Żeby uzyskać prawy mianownik <code><var>B</var></code>, lewy mianownik <code><var>D</var></code> podziel przez <code><var>M</var></code>.</p>
 				<p>Żeby policzyć prawy licznik, podziel lewy licznik przez <code><var>M</var></code>.</p>

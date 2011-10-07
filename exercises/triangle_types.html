@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html data-require="math graphie graphie-helpers graphie-geometry math-format">
+<head>
+	<meta charset="UTF-8" />
+	<title>Typy trójkątów</title>
+	<script src="../khan-exercise.js"></script>
+	<script>
+		function scTriangle(){
+			while( ! a || a === b || a === c || b === c ){
+				var a = KhanUtil.randRange( 25, 150 );
+				var b = KhanUtil.randRange( 25, 180 - a );
+				if ( a + b > 170 ){
+					a = Math.max( 30, a - 15  );
+					b = Math.max( 30, b - 15  );
+				}
+				var c = 180 - a - b;
+			}
+			var sa = KhanUtil.randRange( 4, 8 );
+			var sb = sa * Math.sin( b * Math.PI / 180 )  / Math.sin( a * Math.PI / 180 );
+			var sc = sa * Math.sin( c * Math.PI / 180 )  / Math.sin( a * Math.PI / 180 );
+			if ( Math.abs( a - b ) < 5 || Math.abs( a - c ) < 5  || Math.abs( b - c ) < 5 ){
+				return scTriangle();
+			}
+			return [ [ a, b, c ] , [ sa.toFixed( 1 ), sb.toFixed( 1 ), sc.toFixed( 1 ) ] ];
+		}
+
+		function eqTriangle(){
+			var a = KhanUtil.randRange( 4, 8 );
+			return [ [ 60, 60, 60 ], [ a, a, a ] ];
+		}
+		
+		function isoTriangle(){
+			var a = KhanUtil.randRange( 25, 75 );
+			var c = 180 - 2 * a;
+			var sa = KhanUtil.randRange( 4, 8 );
+			var sc = sa * Math.sin( c * Math.PI / 180 )  / Math.sin( a * Math.PI / 180 );
+			var ang =  KhanUtil.shuffle( [ a, a, c ] );
+			var sides = [ sa, sa, sa ];
+			sides[ ang.indexOf( c ) ] = sc.toFixed( 1 );
+			if( a == 60 ){
+				return isoTriangle();
+			} 
+			return [ ang , sides ];
+			
+		}
+	
+	</script>
+</head>
+<body>
+	<div class="exercise">
+		<div class="vars">
+			<var id="TYPES">[ "Equilateral", "Isosceles", "Scalene" ]</var>
+			<var id="TYPE">randFromArray( TYPES )</var>
+			<var id="TRIANGLE">function(){
+								if ( TYPE === "Equilateral" ){
+									return eqTriangle();
+								}
+								if ( TYPE === "Isosceles" ){
+									return isoTriangle();
+								}
+								if ( TYPE === "Scalene" ){
+									return scTriangle();
+								}
+							}()
+			</var>
+		</div>
+
+		<div class="problems">
+			<div id="knownAngles">
+				<div class="problem">
+					Is this triangle equilateral, isosceles, or scalene?
+				</div>
+				<div class="question">
+					<div class="graphie" id="typeTr" >
+						init({
+							range: [ [ -1, 10 ], [ -8, 1 ] ]
+						})
+						var tr = new Triangle( [ 3, -4],  TRIANGLE[ 0 ], 5, {} );
+						tr.labels = { "angles" : clearArray( tr.niceAngles, [ 0, 1 ] ) };
+						tr.rotate( randRange( 0, 90 ) );
+						tr.draw();
+						tr.drawLabels();
+						graph.TR = tr;
+					</div>
+				</div>
+				<div class="solution"><var>TYPE</var></div>
+				<ul class="choices" data-category="true">
+					<li data-each="TYPES as t"><var>t</var></li>
+				</ul>
+				<div class="hints">
+					<p>Znamy 2 katy tego trójkąta, więc możemy policzyć trzeci kąt odejmując sumę 2 kątów od <code>180</code></p>
+					<div>		
+						<p><code>180 -<var>TRIANGLE[ 0 ][ 0 ]</var> - <var>TRIANGLE[ 0 ][ 1 ]</var> = <var>TRIANGLE[ 0 ][ 2 ]</var></code></p>
+						<div class="graphie" data-update="typeTr" >
+							graph.TR.labels = { "angles" : graph.TR.niceAngles };
+							graph.TR.drawLabels();
+						</div>
+					</div>
+				<p data-if="TYPE === 'Scalene'">Ponieważ wszystkie trze kąty są różne, trókąt jest różnoramienny.</p>
+					<p data-else-if="TYPE === 'Isosceles'">2 kąty są takie same, więc przylegające im boki są sobie równe. Jest to trójkąt równoramienny.</p>
+					<p data-else>Wszystkie kąty są równe 60 stopni. To oznacza, że wszystkie boki są sobie równe. Jest to trójkąt równoboczny.</p>
+				</div>
+			</div>
+			<div id="knownSides" data-type="knownAngles">
+				<div class="question">
+					<div class="graphie">
+						init({
+							range: [ [ -1, 10 ], [ -8, 1 ] ]
+						})
+						var tr = new Triangle( [ 3, -4 ],  TRIANGLE[ 0 ], 5, {} );
+						tr.labels = {  "sides" : tr.niceSideLengths };
+						tr.rotate( randRange( 0, 90 ) );
+						tr.draw();
+						tr.drawLabels();
+					</div>
+				</div>
+				<div class="hints">
+					<p data-if="TYPE === 'Scalene'">Ponieważ wszystkie boki są różne, trójkąt jest różnoramienny.</p>
+					<p data-else-if="TYPE === 'Isosceles'">2 boki są sobie równe, więc trójkąt jest równoramienny.</p>
+					<p data-else>Wszystkie boki są takie same. Oznacza to, że wszystkie kąty są równe 60 stopniom. Jest to trójkąt równoboczny.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

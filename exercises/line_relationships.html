@@ -2,7 +2,7 @@
 <html data-require="math math-format expressions graphie">
 <head>
 	<meta charset="UTF-8" />
-	<title>Line relationships</title>
+	<title>Linie</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -10,7 +10,7 @@
 		<div class="vars" data-ensure="abs( A1 ) !== abs( B1 ) && abs( A2 ) !== abs( B2 )"></div>
 		<div class="problems">
 			<div id="different-lines">
-				<div class="vars" data-ensure="A1 / B1 !== A2 / B2 && A1 / B1 !== -A2 / B2">
+				<div class="vars" data-ensure="A1 / B1 !== A2 / B2 && A1 / B1 !== -B2 / A2">
 					<var id="A1">randRangeNonZero( -5, 5 )</var>
 					<var id="A2">randRangeNonZero( -5, 5 )</var>
 					<var id="B1">randRangeNonZero( -5, 5 )</var>
@@ -21,7 +21,7 @@
 					<var id="EQ2">expr(["+", ["*", A2, "x"], ["*", B2, "y"]]) + " = " + C2</var>
 				</div>
 				<div class="question">
-					<p>What do the following two equations represent?</p>
+					<p>Co reprezentują poniższe dwa równania?</p>
 					<p><code><var>EQ1</var></code></p>
 					<p><code><var>EQ2</var></code></p>
 				</div>
@@ -34,7 +34,7 @@
 					<li>None of the above</li>
 				</ul>
 				<div class="hints" data-apply="appendContents">
-					<p>The slopes are not the same, so the lines are not equivalent or parallel. The slopes are not negative inverses of each other, so the lines are not perpendicular. The correct answer is none of the above.</p>
+					<p>Nachylenia funkcji nie sa takie same, więc proste się nie nakładają ani nie są równoległe. Nachylenia równiez nie są odwrotne w stosunku do siebie, więc linie nie są prostopadłe. Prawidłowa odpowiedź to "Żadna z powyższych".</p>
 				</div>
 			</div>
 
@@ -51,7 +51,7 @@
 					<var id="EQ2">expr(["+", ["*", A2, "x"], ["*", B2, "y"]]) + " = " + C2</var>
 				</div>
 				<div class="question">
-					<p>What do the following two equations represent?</p>
+					<p>Co reprezentują poniższe dwa równania?</p>
 					<p><code><var>EQ1</var></code></p>
 					<p><code><var>EQ2</var></code></p>
 				</div>
@@ -65,7 +65,7 @@
 				</ul>
 
 				<div class="hints" data-apply="appendContents">
-					<p>The above equations turn into the same equation, so they represent the same line.</p>
+					<p>Powyższe równania można przekształcić w jedno równanie, więc reprezentują tą samą prostą.</p>
 				</div>
 			</div>
 
@@ -82,7 +82,7 @@
 					<var id="EQ2">expr(["+", ["*", A2, "x"], ["*", B2, "y"]]) + " = " + C2</var>
 				</div>
 				<div class="question">
-					<p>What do the following two equations represent?</p>
+					<p>Co reprezentują poniższe dwa równania?</p>
 					<p><code><var>EQ1</var></code></p>
 					<p><code><var>EQ2</var></code></p>
 				</div>
@@ -94,7 +94,7 @@
 					<li>None of the above</li>
 				</ul>
 				<div class="hints" data-apply="appendContents">
-					<p>The slopes are equal, and the y-intercepts are different, so the lines are parallel.</p>
+					<p>The nachylenia are takie same i wyrazy wolne b są różne więc proste są równoległe.</p>
 				</div>
 			</div>
 
@@ -111,7 +111,7 @@
 					<var id="EQ2">expr(["+", ["*", A2, "x"], ["*", B2, "y"]]) + " = " + C2</var>
 				</div>
 				<div class="question">
-					<p>What do the following two equations represent?</p>
+					<p>Co reprezentują poniższe dwa równania?</p>
 					<p><code><var>EQ1</var></code></p>
 					<p><code><var>EQ2</var></code></p>
 				</div>
@@ -124,7 +124,7 @@
 					<li>None of the above</li>
 				</ul>
 				<div class="hints" data-apply="appendContents">
-					<p>The slopes are negative inverses of each other, so the lines are perpendicular.</p>
+					<p>The nachylenia are negative inverses of each other, so the lines are perpendicular.</p>
 				</div>
 			</div>
 		</div>
@@ -157,7 +157,7 @@
 						return ( C1 / B1 ) - ( A1 / B1 ) * x;
 					}, [-10, 10]);
 				</div>
-				<p>Putting the first equation in <code>y = mx + b</code> form gives:</p>
+				<p>Przedstawienie pierwszego równania w postaci <code>y = mx + b</code> daje:</p>
 				<p><code><var>expr(["+", ["*", A1, "x"], ["*", B1, "y"]]) + " = " + C1</var></code></p>
 				<p><code><var>expr(["*", B1, "y"]) + " = " + expr(["+", ["*", (-1 * A1), "x"], C1])</var></code></p>
 				<p data-if="B1 !== 1"><code><var>"y = " + fractionReduce( -A1, B1 ) + "x + " + fractionReduce( C1, B1 )</var></code></p>
@@ -168,7 +168,7 @@
 						return ( C2 / B2 ) - ( A2 / B2 ) * x;
 					}, [-10, 10]);
 				</div>
-				<p>Putting the second equation in <code>y = mx + b</code> form gives:</p>
+				<p>Przedstawienie drugiego równania w postaci <code>y = mx + b</code> daje:</p>
 				<p><code><var>expr(["+", ["*", A2, "x"], ["*", B2, "y"]]) + " = " + C2</var></code></p>
 				<p><code><var>expr(["*", B2, "y"]) + " = " + expr(["+", ["*", (-1 * A2), "x"], C2])</var></code></p>
 				<p data-if="B2 !== 1"><code><var>"y = " + fractionReduce( -A2, B2 ) + "x + " + fractionReduce( C2, B2 )</var></code></p>

@@ -20,32 +20,27 @@
 	<div class="exercise">
 		<div class="vars" data-ensure="LCD &lt; 200">
 			<var id="COLORS">KhanUtil.shuffle([ "blue", "green", "red", "purple", "orange", "brown" ])</var>
-
 			<var id="NUMS">(function() {
 				var array = [];
 				var ds = [];
-				
+
 				var used = {};
 
 				var arrLength = randRange( 4, 6 );
-				for ( var i = 0; i &lt; arrLength; i++ ) {
+				while ( array.length &lt; arrLength ) {
 					var d = randRange( 1, 3 ) * randRange( 2, 9 );
-					
 					var n = randRange( 1, d - 1 );
-
 					var ns = ( n / d ).toFixed( 3 );
 
 					if ( !used[ ns ] ) {
 						var gcd = getGCD( n, d );
-						array[i] = [ n/d,
-									 
-									 (n/gcd), (d/gcd),
-									 
-									 fractionReduce( n, d, true ),
-									 (n/gcd) + "/" + (d/gcd),
-
-									 COLORS[i]
-								   ];
+						array.push([ n/d,
+									(n/gcd),
+									(d/gcd),
+									fractionReduce( n, d, true ),
+									(n/gcd) + "/" + (d/gcd),
+									COLORS[array.length]
+								   ]);
 
 						ds.push( d/gcd );
 						used[ ns ] = true;
@@ -105,8 +100,11 @@
 				</div>
 
 				<div class="hints">
-					<p class="number-list"><code><var>NUMS_TEX_COLOR</var></code></p>
-					<p>Po pierwsze sprwadźmy jaki jest najniższy wspólny dzielnik dla wszystkich ułamków, tak byśmy mogli je porównać.</p>
+					<div>
+						<p>Pokolorujmy każdy ułamek innym kolorem.</p>
+						<p class="number-list"><code><var>NUMS_TEX_COLOR</var></code></p>
+					</div>
+					<p>Znajdź najmnieszy wspólny dzielnik dla wszystkich ułamków, żeby można je było łatwiej porównać.</p>
 					<div>
 						<p>Najmniejszy wspólny mianownik jest najmniejszą wspólną wielokrotnością wszystkich mianowników.</p>
 						<p>Najmniejsza wspólna wielokrotność <code><var>DENOMS_TEX_COLOR</var></code> to <code><var>LCD</var></code>.</p>

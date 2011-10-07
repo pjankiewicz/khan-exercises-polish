@@ -2,7 +2,7 @@
 <html data-require="math math-format stat graphie graphie-helpers">
 <head>
 	<meta charset="UTF-8" />
-	<title>Mean median and mode</title>
+	<title>Średnia</title>
 	<script src="../khan-exercise.js"></script>
 
 	<style type="text/css">
@@ -65,25 +65,25 @@
 		<div class="problems">
 			<div id="mean">
 				<div class="question">
-					<p>What is the arithmetic mean of the following numbers?</p>
+					<p>Ile wynosi średnia arytmetyczna następujących licb?</p>
 					<div class="number-list"><code><var>INTEGER_LIST</var></code></div>
 				</div>
 
 				<p class="solution"><var>MEAN</var></p>
 
 				<div class="hints">
-					<p>To find the mean, add all the numbers and then divide by the number of numbers.</p>
+					<p>Żeby policzyc średnią, dodaj do siebie wszystkie liczby i podziel je przez ich ilość.</p>
 					<div>
 						<div class="number-list"><code><var>INTEGER_LIST</var></code></div>
-						<p>There are <code><var>INTEGERS_COUNT</var></code> numbers.</p>
+						<p>Jest <code><var>INTEGERS_COUNT</var></code> liczb.</p>
 					</div>
-					<p>The mean is <code>\displaystyle <var>fractionSimplification( sum(INTEGERS), INTEGERS_COUNT )</var></code>.</p>
+					<p>Średnia wynosi <code>\displaystyle <var>fractionSimplification( sum(INTEGERS), INTEGERS_COUNT )</var></code>.</p>
 				</div>
 			</div>
 
 			<div id="median">
 				<div class="question">
-					<p>What is the median of the following numbers?</p>
+					<p>Ile wynosi mediana następujących liczb?</p>
 					<div class="number-list"><code><var>INTEGER_LIST</var></code></div>
 				</div>
 
@@ -91,18 +91,18 @@
 
 				<div class="hints">
 					<div>
-						<p>First, order the numbers, giving:</p>
+						<p>Po pierwsze trzeba uporządkowac liczby od najmniejszej do największej:</p>
 						<div class="number-list"><code><var>SORTED_LIST</var></code></div>
 					</div>
 					<div>
-						<p data-if="INTEGERS.length % 2 === 0">Since we have <code>2</code> middle numbers, the median is the mean of <strong>those</strong> two numbers!</p>
-						<p data-else>The median is the 'middle' number:</p>
+						<p data-if="INTEGERS.length % 2 === 0">Ponieważ w środku są <code>2</code> liczby, mediana to <strong>średnia</strong> tych dwóch liczb!</p>
+						<p data-else>Mediana to 'środkowa' liczba:</p>
 						<div class="number-list"><code><var>MEDIAN_LIST</var></code></div>
-						<p data-if="SORTED_INTS.length % 2 === 0">The median is <code>\dfrac{<var>SORTED_INTS[ SORTED_INTS.length / 2 - 1 ]</var> + <var>SORTED_INTS[ SORTED_INTS.length / 2 ]</var>}{2}</code>.</p>
+						<p data-if="SORTED_INTS.length % 2 === 0">Mediana wynosi <code>\dfrac{<var>SORTED_INTS[ SORTED_INTS.length / 2 - 1 ]</var> + <var>SORTED_INTS[ SORTED_INTS.length / 2 ]</var>}{2}</code>.</p>
 					</div>
 					<div>
-						<p>So the median is <code><var>fractionReduce(2 * MEDIAN, 2)</var></code>.</p>
-						<p>Another way to find the middle number is to draw the numbers on a number line. If a number appears multiple times, count its corresponding dot multiple times.</p>
+						<p>Mediana wynosi <code><var>fractionReduce(2 * MEDIAN, 2)</var></code>.</p>
+						<p>Innym sposobem znalezienia mediany jest narysowanie ich na osi. Jeżeli liczba pojawia się kilka razy policz punkt, który jej odpowiada kilka razy.</p>
 						<div class="graphie">
 							init({
 								range: [ [-0.5, 10.5], [-1, 1] ]
@@ -136,16 +136,16 @@
 
 			<div id="mode">
 				<div class="question">
-					<p>What is the mode of the following numbers?</p>
+					<p>Ile wynosi dominanta następujących liczb?</p>
 					<div class="number-list"><code><var>INTEGER_LIST</var></code></div>
 				</div>
 
 				<p class="solution" data-forms="integer"><var>MODE</var></p>
 
 				<div class="hints">
-					<p>The mode is the most frequent number.</p>
+					<p>Dominanta to liczba</p>
 					<div>
-						<p>We can draw a histogram to see how many times each number appears.</p>
+						<p>Moemy narysować wykres częstości z jaką występuje każda liczba.</p>
 
 						<div class="graphie">
 							var freq = {};
@@ -173,7 +173,7 @@
 						</div>
 					</div>
 
-					<p>There are more <code><var>MODE</var></code>s than any other number, so <code><var>MODE</var></code> is the mode.</p>
+					<p>Liczby <code><var>MODE</var></code> jest więcej niż każdej innej, więc <code><var>MODE</var></code> jest dominantą.</p>
 				</div>
 			</div>
 		</div>

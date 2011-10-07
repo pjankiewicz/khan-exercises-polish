@@ -90,8 +90,8 @@
 							arc( [0, 0], 1.2, 0, 70, { stroke: "blue" } );
 						}
 					</div>
-					<p style="font-size:70%; color:grey"><strong>NOTE:</strong> 
-					Angles not necessarily drawn to scale.</p>
+					<p style="font-size:70%; color:grey"><strong>UWAGA:</strong> 
+					Kąty są niekoniecznie narysowane w odpowiedniej skali.</p>
 				</div>
 				
 				<div class="question">
@@ -113,7 +113,7 @@
 							</span>
 						</li>
 					</ul>
-					What is 
+					Ile to jest 
 					<span data-if="RAND3 === 0"><code>\color{blue}{\angle{AGF}} = {?}</code></span>
 					<span data-else-if="RAND3 === 1"><code>\color{blue}{\angle{CGE}} = {?}</code></span>
 					<span data-else><code>\color{blue}{\angle{BGE}} = {?}</code></span>
@@ -127,7 +127,7 @@
 
 				<div class="hints">
 					<p data-if="RAND3 === 0">
-						Because we know <code>\overline{AB} \perp \overline{CD}</code>, we know 
+						Ponieważ wiemy, że <code>\overline{AB} \perp \overline{CD}</code>, wiemy, że 
 						<code>\color{purple}{\angle{CGB}} = 90&deg;</code>
 						<span class="graphie" data-update="complementary-and-opposite">
 							label( [2.2, 1.7], "\\color{purple}{90&deg;}", 
@@ -138,8 +138,7 @@
 					<p data-else-if="RAND3 === 1">
 						<code>\color{orange}{\angle{EGB}} = \color{green}{\angle{AGF}}
 							= <var>90 - ACCUTEANGLE</var>&deg;</code>,
-						because they are opposite angles from each other.  Opposite angles 
-						are congruent (equal).
+						ponieważ są to kąty przeciwne do siebie.  Przeciwne kąty są przystające (równe).
 						<span class="graphie" data-update="complementary-and-opposite">
 							label( [1.2, 0], "\\color{orange}{<var>90 - ACCUTEANGLE</var>&deg;}", 
 								"above right" );
@@ -147,7 +146,7 @@
 						</span>
 					</p>
 					<p data-else>
-						Because we know <code>\overline{AB} \perp \overline{CD}</code>, we know 
+						Ponieważ wiemy, że <code>\overline{AB} \perp \overline{CD}</code>, wiemy że 
 						<code>\color{purple}{\angle{AGD}} = 90&deg;</code>
 						<span class="graphie" data-update="complementary-and-opposite">
 							label( [-2.2, -1.7], "\\color{purple}{90&deg;}", 
@@ -166,7 +165,7 @@
 						</span>
 					</p>
 					<p data-else-if="RAND3===1">
-						Because we know <code>\overline{AB} \perp \overline{CD}</code>, we know 
+						Ponieważ wiemy, że <code>\overline{AB} \perp \overline{CD}</code>, wiemy, że 
 						<code>\color{purple}{\angle{CGB}} = 90&deg;</code>
 						<span class="graphie" data-update="complementary-and-opposite">
 							label( [2.2, 1.7], "\\color{purple}{90&deg;}", 
@@ -188,8 +187,7 @@
 					<p data-if="RAND3===0">
 						<code>\color{blue}{\angle{AGF}} = \color{orange}{\angle{EGB}} =
 						<var>90 - ACCUTEANGLE</var>&deg;</code>, 
-						because they are opposite from each other.  Opposite angles are 
-						congruent (equal).
+						ponieważ są to kąty przeciwne do siebie. Przeciwne kąty są przystające (równe).
 						<span class="graphie" data-update="complementary-and-opposite">
 							ORIGINAL_LABEL.remove();
 							label( [-1.2, -0.75], 
@@ -212,8 +210,7 @@
 					<p data-else>
 						<code>\color{blue}{\angle{BGE}} = \color{orange}{\angle{AGF}} = 
 						<var>90 - ACCUTEANGLE</var>&deg;</code>, 
-						because they are opposite from each other.  Opposite angles are 
-						congruent (equal).
+						ponieważ są to kąty przeciwne do siebie. Przeciwne kąty są przystające (równe).
 						<span class="graphie" data-update="complementary-and-opposite">
 							ORIGINAL_LABEL.remove();
 							label( [1.5, 0], 
@@ -284,25 +281,25 @@
 						}
 
 					</div>
-					<p style="font-size:70%; color:grey"><strong>NOTE:</strong> 
-					Angles not necessarily drawn to scale.</p>
+					<p style="font-size:70%; color:grey"><strong>UWAGA:</strong> 
+					Kąty są niekoniecznie narysowane w odpowiedniej skali.</p>
 				</div>
 
 				<div class="question">
-					<p>Given the following:</p>
+					<p>Znając:</p>
 					<div data-if="RAND2===0">
 						<ul>
 							<li><code>\color{purple}{\angle{ABC}} = <var>Tri_Z</var>&deg;</code></li>
 							<li><code>\color{green}{\angle{ACB}} = <var>Tri_Y</var>&deg;</code></li>
 						</ul>
-						<p>What is <code>\color{blue}{\angle{DAB}}</code>?</p>
+						<p>Ile wynosi <code>\color{blue}{\angle{DAB}}</code>?</p>
 					</div>
 					<div data-else>
 						<ul>
 							<li><code>\color{purple}{\angle{ABC}} = <var>Tri_Z</var>&deg;</code></li>
 							<li><code>\color{green}{\angle{DAB}} = <var>180 - Tri_X</var>&deg;</code></li>
 						</ul>
-						<p>What is <code>\color{blue}{\angle{ACB}}</code>?</p>
+						<p>Ile wynosi <code>\color{blue}{\angle{ACB}}</code>?</p>
 					</div>
 				</div>
 
@@ -318,7 +315,7 @@
 								180&deg; - \color{purple}{\angle{ABC}} - \color{green}{\angle{ACB}} = 
 								<var>180 - Tri_Y - Tri_Z</var>&deg;
 						</code>,
-							This is because angles inside a triangle add up to 180 degrees.
+							Tak się dzieje ponieważ kąty w trójkącie sumują się do 180&deg;.
 						<span class="graphie" data-update="supplementary-and-triangle">
 							label( [-3.3, -2], "\\color{orange}{<var>Tri_X</var>&deg;}",
 								"above right" );
@@ -331,8 +328,7 @@
 								180&deg; - \color{green}{\angle{DAB}} = 
 								<var>180 - Tri_Y - Tri_X</var>&deg;
 						</code>,
-							because supplementary angles along a line add up to 
-							180 degrees.
+							ponieważ kąty przystające sumują się do 180&deg;.
 						<span class="graphie" data-update="supplementary-and-triangle">
 							label( [-3.3, -2], "\\color{orange}{<var>Tri_X</var>&deg;}",
 								"above right" );
@@ -346,7 +342,7 @@
 								180&deg; - \color{orange}{\angle{BAC}} = 
 								<var>Tri_Y + Tri_Z</var>&deg;
 						</code>, 
-						because supplementary angles along a line add up to 180&deg;
+						ponieważ kąty przystające sumują się do 180&deg;
 						<span class="graphie" data-update="supplementary-and-triangle">
 							ORIGINAL_LABEL.remove();
 							label( [-4.7, -2], 
@@ -361,7 +357,7 @@
 								180&deg; - \color{orange}{\angle{BAC}} - \color{purple}{\angle{ABC}} = 
 								<var>Tri_Y</var>&deg;
 						</code>,
-						because angles inside a triangle add up to 180&deg;.
+						ponieważ kąty w trójkącie sumują się do 180&deg;.
 						<span class="graphie" data-update="supplementary-and-triangle">
 							ORIGINAL_LABEL.remove();
 							label( [2.80, -2], 
@@ -451,12 +447,12 @@
 						}
 
 					</div>
-					<p style="font-size:70%; color:grey"><strong>NOTE:</strong> 
-					Angles not necessarily drawn to scale.</p>
+					<p style="font-size:70%; color:grey"><strong>UWAGA:</strong> 
+					Kąty są niekoniecznie narysowane w odpowiedniej skali.</p>
 				</div>
 
 				<div class="question">
-					Given the following:
+					Znając:
 						<ul>
 							<li><code>\overline{HI} \parallel \overline{JK}</code>,
 							lines HI and JK are parallel.</li>
@@ -476,7 +472,7 @@
 
 						</ul>
 
-						What is 
+						Ile to jest 
 						<code data-if="RAND3 === 0">\color{blue}{\angle{AIH}} = {?}</code>
 						<code data-else-if="RAND3 === 1">\color{blue}{\angle{AKJ}} = {?}</code>
 						<code data-else>\color{blue}{\angle{BAC}} = {?}</code>
@@ -491,7 +487,7 @@
 					<p data-if="RAND3 === 0">
 						<code>\color{orange}{\angle{AHI}} = \color{green}{\angle{AJK}}</code>, 
 						because they are corresponding angles formed by 2 parallel lines and 
-						a transversal line. Corresponding angles are congruent (equal).
+						a transversal line. Kąty odpowiadające are congruent (equal).
 						<span class="graphie" data-update="parallel-and-triangle">
 							label( [-4.60, 0.75], "\\color{orange}{<var>Tri_Z</var>&deg;}", 
 								"below" );
@@ -501,7 +497,7 @@
 					<p data-else>
 						<code>\color{orange}{\angle{AJK}} = \color{green}{\angle{AHI}}</code>, 
 						because they are corresponding angles formed by 2 parallel lines and 
-						a transversal line. Corresponding angles are congruent (equal).
+						a transversal line. Kąty odpowiadające are congruent (equal).
 						<span class="graphie" data-update="parallel-and-triangle">
 							label( [-4.00, 4.25], "\\color{orange}{<var>Tri_Z</var>&deg;}", 
 								"below" );
@@ -611,12 +607,12 @@
 							arc( [4, -2], .75, 315, 360, {stroke: "blue"} )
 						}
 					</div>
-					<p style="font-size:70%; color:grey"><strong>NOTE:</strong> 
-					Angles not necessarily drawn to scale.</p>
+					<p style="font-size:70%; color:grey"><strong>UWAGA:</strong> 
+					Kąty są niekoniecznie narysowane w odpowiedniej skali.</p>
 				</div>
 
 				<div class="question">
-					Given the following:
+					Znając:
 					<ul>
 						<li><code>\overline{DE} \parallel \overline{FG}</code>, 
 						lines DE and FG are parallel.</li>
@@ -629,7 +625,7 @@
 							<code>\color{green}{\angle{IAK}} = <var>Tri_Y</var>&deg;</code>
 						</li>
 					</ul>
-					What is 
+					Ile to jest 
 					<span data-if="RAND2 === 0"><code>\color{blue}{\angle{IAK}} = {?}</code></span>
 					<span data-else><code>\color{blue}{\angle{GCJ}} = {?}</code></span>
 				</div>
