@@ -70,7 +70,7 @@ var WORD_CONJUGATION = {
     "geografia":[["geografii","geografii","geografię","geografią","geografii"]],
     "język angielski":[["języka angielskiego","językowi angielskiemu","język angielski","językiem angielskim","języku angielskim"]],
     "egzamin":[["egzaminu","egzaminowi","egzamin","egzaminem","egzaminie"]],
-    "grupa"[["grupy","grupie","grupę","grupą","grupie"],["grupy","grup","grupom","grupy","grupom","grupach"]],
+    "grupa":[["grupy","grupie","grupę","grupą","grupie"],["grupy","grup","grupom","grupy","grupom","grupach"]],
     "test":[["testu","testowi","test","testem","teście"]],
     "quiz":[["quizu","quizowi","quiz","quizem","quizie"]],
     "rok":[["roku","roku","rok","rokiem","roku"],["lata","lat","lata","latami","latach"]],
