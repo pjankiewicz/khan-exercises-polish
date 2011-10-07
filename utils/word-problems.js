@@ -99,7 +99,7 @@ var WORD_CONJUGATION = {
     "ołówek":[["ołówka"],["ołówków"]],
     "pieczątka":[["pieczątki"],["pieczątek"]],
     "teczka":[["teczki"],["teczek"]],
-    "zszywacz":[["zszywacza"],["zszywaczy"],]
+    "zszywacz":[["zszywacza"],["zszywaczy"],],
     "punkt" :[["punktu","punktowi","punkt","punktem","punkcie"],
 	      ["punktów","punktom","punkty","punktami","punktach"]],
     "zielony punkt" :[["zielonego punktu","zielonemu punktowi","zielony punkt","zielonym punktem","zielonym punkcie"],
