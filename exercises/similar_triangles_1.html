@@ -2,7 +2,11 @@
 <html data-require="math graphie graphie-helpers graphie-geometry math-format">
 <head>
 	<meta charset="UTF-8" />
+<<<<<<< HEAD
+	<title>Trójkąty podobne 1</title>
+=======
 	<title>Similar Triangles 1</title>
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 	<script src="../khan-exercise.js"></script>
 	<script>
 		function randomTriangle( current ){
@@ -48,7 +52,10 @@
 					var trA = new Triangle( [ 2, -8 ],  B, randRange( 400, 600 )/100, { } );
 					trA.labels = { "name" : "B", "angles" : clearArray( trA.niceAngles,  [  0, 1 ] ) };
 					trA.rotate( randRange( 0, 360 ) );
+<<<<<<< HEAD
+=======
 					trA.color = "blue";
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 					trA.boxOut( [ [ [ -1, -10  ], [ -1, 20 ] ] ], [ 0.5, 0 ] );
 					trA.boxOut( TR.sides, [ 0, -1 ] );
 					return trA;
@@ -59,7 +66,10 @@
 					var trB = new Triangle( [ 7, -6 ],  C, randRange( 400, 600 )/100, {} );
 					trB.labels = { "name" : "C", "angles" : clearArray( trB.niceAngles,  [ 0, 2 ] ) };
 					trB.rotate( randRange( 0, 360 ) );
+<<<<<<< HEAD
+=======
 					trB.color = "red";
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 					trB.boxOut( [ [ [ 13, -10  ], [ 13, 20 ] ] ], [ -0.5, 0 ] );
 					trB.boxOut( TR.sides, [ 0, -1 ] );
 					trB.boxOut( TR_A.sides, [ 0, -1 ] );
@@ -76,11 +86,21 @@
 			<div class="question">
 				<div class="graphie" id="triangles" >
 					init({
+<<<<<<< HEAD
+						range: [ [-1, 13 ], [ -11, 2.5 ] ]
+=======
 						range: [ [-1, 13 ], [ -14, 2.5 ] ]
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 					})
 					
 					TR.draw();
 					TR.drawLabels();
+<<<<<<< HEAD
+					
+					TR_A.draw();
+					TR_A.drawLabels();
+					
+=======
 
 					style({
 					    stroke: "blue",
@@ -91,6 +111,7 @@
 					style({
 					    stroke: "red",
 					});
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 					TR_B.draw();
 					TR_B.drawLabels();
 				</div>
@@ -103,9 +124,15 @@
 				<li>None</li>
 			</ul>
 			<div class="hints">
+<<<<<<< HEAD
+				<p>Trójkąty są podobne jeżeli wszystkie ich kąty są sobie równe.</p>
+				<div>
+					<p>Widzimy, że trójkąt <code>A</code> ma kąty <code><var>MAIN[ 0 ]</var></code> i <code><var>MAIN[ 2 ]</var></code>. Trzeci kąt wynosi zatem <code>180 - <var>MAIN[ 0 ]</var> - <var>MAIN[ 2 ]</var> = <var>MAIN[ 1 ]</var></code></p>
+=======
 				<p>Two triangles are similar if their angles are congruent (equal).</p>
 				<div>
 					<p>We see that triangle <code>A</code> has angles of <code><var>MAIN[ 0 ]</var></code> and <code><var>MAIN[ 2 ]</var></code>. The third angle is therefore <code>180 - <var>MAIN[ 0 ]</var> - <var>MAIN[ 2 ]</var> = <var>MAIN[ 1 ]</var></code></p>
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 	
 					<div class="graphie" data-update="triangles">
 						TR.labels.angles = TR.niceAngles;
@@ -114,21 +141,31 @@
 				</div>
 
 				<div>	
+<<<<<<< HEAD
+					<p>Trojkąt <code>B</code> ma kąty <code><var>B[ 0 ]</var></code> i <code><var>B[ 1 ]</var></code>. Trzeci kąt jest równy <code>180 - <var>B[ 0 ]</var> -  <var>B[ 1 ]</var> = <var>B[ 2 ]</var></code>. Więc trójkąt <code>B</code> <span data-if="ANSWER === 'None' || ANSWER === 'C'" >nie</span> jest podobny do trójkąta <code>A</code>.</p>
+					<div class="graphie" data-update="triangles">
+=======
 					<p>Triangle <code>B</code> has angles of <code><var>B[ 0 ]</var></code> and <code><var>B[ 1 ]</var></code>. The third angle is <code>180 - <var>B[ 0 ]</var> -  <var>B[ 1 ]</var> = <var>B[ 2 ]</var></code>. Therefore triangle <code>B</code> is <span data-if="ANSWER === 'None' || ANSWER === 'C'" >not</span> similar to triangle <code>A</code>.</p>
 					<div class="graphie" data-update="triangles">
 						style({
 						    stroke: "blue",
 						});
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 						TR_A.labels.angles = TR_A.niceAngles;
 						TR_A.drawLabels();
 					</div>
 				</div>
 				<div>	
+<<<<<<< HEAD
+					<p>Trójkąt <code>C</code> ma kąty <code><var>C[ 0 ]</var></code> i <code><var>C[ 2 ]</var></code>. Trzeci kąt wynosi <code>180 - <var>C[ 0 ]</var> -  <var>B[ 2 ]</var> = <var>C[ 1 ]</var></code>. Dlatego trójkąt <code>C</code> <span data-if="ANSWER === 'None' || ANSWER === 'B'" >nie</span> jest trójkątem podobnym do <code>A</code>.</p>
+					<div class="graphie" data-update="triangles">
+=======
 					<p>Triangle <code>C</code> has angles of <code><var>C[ 0 ]</var></code> and <code><var>C[ 2 ]</var></code>. The third angle is <code>180 - <var>C[ 0 ]</var> -  <var>B[ 2 ]</var> = <var>C[ 1 ]</var></code>. Therefore triangle <code>C</code> is <span data-if="ANSWER === 'None' || ANSWER === 'B'" >not</span>  similar to triangle <code>A</code>.</p>
 					<div class="graphie" data-update="triangles">
 						style({
 							 stroke: "red",
 						});
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 						TR_B.labels.angles = TR_B.niceAngles;
 						TR_B.drawLabels();
 					</div>

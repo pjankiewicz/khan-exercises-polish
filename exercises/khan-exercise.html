@@ -1,9 +1,4 @@
 <div class="exercise-badge single-exercise" data-id="addition_1">
-	<div id="exercise-icon-container">
-		<div class="proficient-badge">
-			<img src="http://khanacademy.org/images/node-not-started.png" height="80" width="76"/>
-		</div>
-	</div>
 	<!-- TODO: Update with real point value -->
 	<div id="exercise-points" class="energy-points-badge"></div>
 	<!-- TODO: Update with real title -->
@@ -25,7 +20,8 @@
 		</div>
 	</div>
     <div class="summative-help" style="display:none;">
-        Fill up <span class="summative-required-streaks"></span> bars to complete this challenge. Once you complete a bar, it will not be set back.
+        Zdobądź jeszcze <span class="summative-required-streaks"></span> pkt z 10, żeby ukończyć to ćwiczenie
+
     </div>
 </div>
 <div id="exercise-message-container" style="display: none;">
@@ -36,11 +32,9 @@
 	<span id="warning-bar-close">(<a href="">close</a>)</span>
 </div>
 <div id="extras" class="single-exercise">
-	<div id="back-to-dashboard-link" class="single-exercise">
-		<a href="/exercisedashboard?k" title="Back to Dashboard">&laquo; Back to Dashboard</a>
-	</div>
 	<!-- TODO: Toggle scratchpad display -->
-		<a id="scratchpad-show" href="">Show scratchpad</a><span id="scratchpad-not-available">Scratchpad not available</span> | <a id="print-ten" href="">Show next 10 problems</a>
+		<a id="scratchpad-show" href="">Pokaż brudnopis</a> | <a id="print-ten" href="">Pokaż 10 zadań</a>
+
 </div>
 <div>
 	<div id='problemarea'>
@@ -51,7 +45,7 @@
 	<div id="answer_area">
 		<form id="answerform" action="/exercisedashboard?k" method="get" name="answerform">
 			<div id="answercontent" class="info-box fancy-scrollbar">
-				<span class="info-box-header">Answer</span>
+				<span class="info-box-header">Odpowiedź</span>
 				<div id="solutionarea"></div>
 				<input type="button" class="simple-button action-gradient green" id="check-answer-button" tabindex="10" value="Check Answer"/>
 				<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px">
@@ -63,69 +57,25 @@
 					<img id="happy" style="display: none;"/>
 					<p class="check-answer-message info-box-sub-description"></p>
 				</div>
-				<a id="examples-show" href="">Show acceptable answer formats</a>
+				<a id="examples-show" href="">Pokaż możliwe odpowiedzi</a>
 				<ul id="examples" style="display: none">
 				</ul>
 			</div>
 			<div id="readonly" class="info-box">
 				<span id="readonly-problem" class="info-box-header"></span>
-				<span id="readonly-title" class="info-box-subheader">You are viewing a problem.</span>
-				<span class="info-box-sub-description">To work on problems like this, <a id="readonly-start" href="">start this exercise</a>.</span>
+<<<<<<< HEAD
+				<span id="readonly-title" class="info-box-subheader">Tryb przeglądania.</span>
+				<span class="info-box-sub-description">Nie stracisz serii jeżeli skorzystasz z podpowiedzi. Zacznij <a id="readonly-start" href="">rozwiązywać to zadanie</a>.</span>
 			</div>
-			<div class="info-box hint-box">
-				<span class="info-box-header">Need help? Get a hint.</span>
-				<span class="info-box-sub-description">This <strong>will</strong> set back your progress!</span>
+			<div class="info-box">
+				<span class="info-box-subheader">Pokaż podpowiedź</span>
+				<span class="info-box-sub-description">Podpowiedź <strong>zresetuje</strong> Twoją serię!</span>
 				<div id="get-hint-button-container">
-					<input id="hint" type="button" class="simple-button action-gradient orange" value="I'd like a hint" name="hint"/>
+					<input id="hint" type="button" class="simple-button action-gradient orange" value="Chcę podpowiedź" name="hint"/>
 				</div>
 				<span id="hint-remainder"></span>
 			</div>
-			<div class="info-box related-video-box" style="display:none;">
-				<div id="related-video-content">
-					<span class="info-box-header">Stuck? Watch a video.</span>
-					<span class="info-box-sub-description">This <strong>does not</strong> set back your progress.</span>
-
-					<div id="related-video-list">
-						<span class="related-content-title">Related videos:</span>
-						<ul class="related-video-list"></ul>
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div>
 		</form>
-		<div id="issue" class="info-box" style="display:none;">
-			<span class="info-box-header">Report a Problem</span>
-			<span id="issue-status" class="info-box-sub-description"></span>
-			<form>
-				<fieldset>
-					<legend>Issue Type</legend>
-					<ul>
-						<li>
-							<input type="radio" name="issue-type" id="issue-wrong-or-unclear">
-							<label for="issue-wrong-or-unclear">Answer is wrong or question is unclear</label>
-						</li>
-						<li>
-							<input type="radio" name="issue-type" id="issue-hard">
-							<label for="issue-hard">I'm frustrated (tell us why) or this is too hard</label>
-						</li>
-						<li>
-							<input type="radio" name="issue-type" id="issue-not-showing">
-							<label for="issue-not-showing">I can't see the problem or website is stuck</label>
-						</li>
-						<li>
-							<input type="radio" name="issue-type" id="issue-other">
-							<label for="issue-other">Other (please describe below)</label>
-						</li>
-					</ul>
-				</fieldset>
-				<label for="issue-title">Issue Title:<input type="text" name="issue-title" id="issue-title" /></label>
-				<label for="issue-email">Your Email (optional):<input type="text" name="issue-email" id="issue-email" /></label>
-				<label for="issue-body">Description of Issue:<textarea name="issue-body" id="issue-body"></textarea></label>
-				<input type="submit" class="simple-button action-gradient orange" value="Submit Issue">
-				<a href="/#" id="issue-cancel">Cancel</a>
-				<img id="issue-throbber" style="display:none;" name="issue-throbber">
-			</form>
-		</div>
 	</div>
 </div>
 <div style="clear: both;"></div>

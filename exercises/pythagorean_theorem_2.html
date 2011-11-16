@@ -2,7 +2,7 @@
 <html data-require="math graphie math-format">
 <head>
 	<meta charset="UTF-8" />
-	<title>Pythagorean theorem 2</title>
+	<title>Twierdzenie Pitagorasa 2</title>
 	<script src="../khan-exercise.js"></script>
 	<script>
 		function betterTriangle(width, height, A, B, C, a, b, c) {
@@ -38,7 +38,7 @@
 			</div>
 
 			<div class="question">
-				<p>In the right triangle shown, <code>AC = BC = <var>AC</var></code>. What is <code>AB</code>?</p>
+				<p>W trójkącie prostopadłym poniżej <code>AC = BC = <var>AC</var></code>. Ile wynosi długość boku <code>AB</code>?</p>
 
 				<div class="graphie">
 					betterTriangle( 1, 1, "A", "B", "C", AC, AC, "?" );
@@ -48,8 +48,8 @@
 			<div class="solution" data-type="radical"><var>AC * AC * 2</var></div>
 
 			<div class="hints">
-				<p>This is a 45-45-90 triangle because the two legs are congruent.</p>
-				<p>Thus, the hypotenuse is <code>\sqrt{2}</code> times as long as each of the legs.</p>
+				<p>Jest to trójkąt o kątach 45-45-90, ponieważ jego obie przyprostokątne są sobie równe.</p>
+				<p>Dlatego przeciwprostokątna jest <code>\sqrt{2}</code> raza dłuższa od przyprostokątnych.</p>
 				<p><code>AB = <var>AC</var>\sqrt{2}</code></p>
 			</div>
 		</div>
@@ -60,7 +60,7 @@
 			</div>
 
 			<div class="question">
-				<p>In the right triangle shown, <code>AC = BC</code> and <code>AB = <var>AB</var></code>. How long are each of the legs?</p>
+				<p>W trójkącie prostopadłym poniżej <code>AC = BC</code> i <code>AB = <var>AB</var></code>. Jak długie jest każdy z boków tego trójkąta?</p>
 
 				<div class="graphie">
 					betterTriangle( 1, 1, "A", "B", "C", "?", "?", AB );
@@ -70,8 +70,9 @@
 			<div class="solution" data-type="radical"><var>AB * AB / 2</var></div>
 
 			<div class="hints">
-				<p>This is a 45-45-90 triangle because the two legs are congruent.</p>
-				<p>Thus, each leg is <code>\frac{1}{\sqrt{2}}</code> times as long as the hypotenuse.</p>
+				<p>Jest to trójkąt o kątach 45-45-90, ponieważ jego obie przyprostokątne są sobie równe.</p>
+				<p>Każdy bok stanowi <code>\frac{1}{\sqrt{2}}</code> przeciwprostokątnej.</p>
+
 				<p><code>AC = BC = \frac{1}{\sqrt{2}} <var>AB</var> = <var>AB / 2</var> \sqrt{2}</code></p>
 			</div>
 		</div>
@@ -82,7 +83,7 @@
 			</div>
 
 			<div class="question">
-				<p>In the right triangle shown, <code>AC = BC</code> and <code>AB = <var>AB</var>\sqrt{2}</code>. How long are each of the legs?</p>
+				<p>W trójkącie prostopadłym poniżej <code>AC = BC</code> i <code>AB = <var>AB</var>\sqrt{2}</code>. Ile wynosi długość każdego boku?</p>
 
 				<div class="graphie">
 					betterTriangle( 1, 1, "A", "B", "C", "?", "?", AB + "\\sqrt{2}" );
@@ -92,8 +93,9 @@
 			<div class="solution" data-type="radical"><var>AB * AB</var></div>
 
 			<div class="hints">
-				<p>This is a 45-45-90 triangle because the two legs are congruent.</p>
-				<p>Thus, each leg is <code>\frac{1}{\sqrt{2}}</code> times as long as the hypotenuse.</p>
+				<p>Jest to trójkąt o kątach 45-45-90, ponieważ jego obie przyprostokątne są sobie równe.</p>
+				<p>Każdy bok stanowi <code>\frac{1}{\sqrt{2}}</code> przeciwprostokątnej.</p>
+
 				<p><code>AC = BC = \frac{1}{\sqrt{2}} <var>AB</var> \sqrt{2} = <var>AB</var></code></p>
 			</div>
 		</div>
@@ -107,7 +109,7 @@
 			</div>
 
 			<div class="question">
-				<p>In the right triangle shown, <code><var>mAB</var></code> and <code>BC = <var>BC + BCrs</var></code>. How long is <code>AB</code>?</p>
+				<p>W trójkącie prostopadłym poniżej <code><var>mAB</var></code> i <code>BC = <var>BC + BCrs</var></code>. Ile wynosi długość boku <code>AB</code>?</p>
 
 				<div class="graphie">
 					betterTriangle( 1, sqrt(3), "A", "B", "C", BC + BCrs, "", "?" );
@@ -117,8 +119,9 @@
 			<div class="solution" data-type="radical"><var>4 * BC * BC * BCr</var></div>
 
 			<div class="hints">
-				<p>This is a 30-60-90 triangle.</p>
-				<p>Thus, the hypotenuse is twice as long as the shorter leg.</p>
+				<p>Jest to trójkąt o kątach 30-60-90.</p>
+				<p>A więc: przeciwprostokątna jest 2 razy dłuższa od krótszej z przyprostokątnych.</p>
+
 				<p><code>AB = 2 \cdot BC = 2 \cdot (<var>BC + BCrs</var>) = <var>( 2 * BC ) + BCrs</var></code></p>
 			</div>
 		</div>
@@ -135,7 +138,7 @@
 			</div>
 
 			<div class="question">
-				<p>In the right triangle shown, <code><var>mAB</var></code> and <code>AC = <var>AC + ACrs</var></code>. How long is <code>AB</code>?</p>
+				<p>W trójkącie prostopadłym poniżej <code><var>mAB</var></code> i <code>AC = <var>AC + ACrs</var></code>. Ile wynosi długość boku <code>AB</code>?</p>
 
 				<div class="graphie">
 					betterTriangle( 1, sqrt(3), "A", "B", "C", "", AC + ACrs, "?" );
@@ -145,8 +148,9 @@
 			<div class="solution" data-type="radical"><var>AB</var></div>
 
 			<div class="hints">
-				<p>This is a 30-60-90 triangle.</p>
-				<p>Thus, the hypotenuse is <code>\frac{2}{\sqrt{3}}</code> times as long as the longer leg.</p>
+				<p>Jest to trójkąt o kątach 30-60-90.</p>
+				<p>A więc: przeciwprostokątna stanowi <code>\frac{2}{\sqrt{3}}</code> dłuższej przyprostokątnej.</p>
+
 				<p><code>AB = \frac{2}{\sqrt{3}} \cdot AC = \frac{2}{\sqrt{3}} \cdot (<var>AC + ACrs</var>) = <var>ABs</var></code></p>
 			</div>
 		</div>
@@ -160,7 +164,7 @@
 			</div>
 
 			<div class="question">
-				<p>In the right triangle shown, <code><var>mAB</var></code> and <code>AB = <var>( 2 * BC ) + BCrs</var></code>. How long is <code>BC</code>?</p>
+				<p>W trójkącie prostopadłym poniżej <code><var>mAB</var></code> i <code>AB = <var>( 2 * BC ) + BCrs</var></code>. Ile wnosi długość boku <code>BC</code>?</p>
 
 				<div class="graphie">
 					betterTriangle( 1, sqrt(3), "A", "B", "C", "?", "", ( 2 * BC ) + BCrs );
@@ -170,8 +174,9 @@
 			<div class="solution" data-type="radical"><var>BC * BC * BCr</var></div>
 
 			<div class="hints">
-				<p>This is a 30-60-90 triangle.</p>
-				<p>Thus, the shorter leg is half as long as the hypotenuse.</p>
+				<p>Jest to trójkąt o kątach 30-60-90.</p>
+				<p>A więc, krótsza przyprostokątna jest o połowę krótsza od przeciwprostokątnej.</p>
+
 				<p><code>BC = \frac12 \cdot AB = \frac12 \cdot (<var>( 2 * BC ) + BCrs</var>) = <var>( BC ) + BCrs</var></code></p>
 			</div>
 		</div>
@@ -188,7 +193,7 @@
 			</div>
 
 			<div class="question">
-				<p>In the right triangle shown, <code><var>mAB</var></code> and <code>AB = <var>ABs</var></code>. How long is <code>AC</code>?</p>
+				<p>W trójkącie prostopadłym poniżej <code><var>mAB</var></code> i <code>AB = <var>ABs</var></code>. Ile wynosi długość boku <code>AC</code>?</p>
 
 				<div class="graphie">
 					betterTriangle( 1, sqrt(3), "A", "B", "C", "", "?", ABs );
@@ -198,8 +203,9 @@
 			<div class="solution" data-type="radical"><var>AC * AC * ACr</var></div>
 
 			<div class="hints">
-				<p>This is a 30-60-90 triangle.</p>
-				<p>Thus, the longer leg is <code>\frac{\sqrt{3}}{2}</code> times as long as the hypotenuse.</p>
+				<p>Jest to trójkąt o kątach 30-60-90.</p>
+				<p>A więc dłuższa przyprostokątna stanowi <code>\frac{\sqrt{3}}{2}</code> długości przeciwprostokątnej.</p>
+
 				<p><code>AC = \frac{\sqrt{3}}{2} \cdot AB = \frac{\sqrt{3}}{2} \cdot (<var>ABs</var>) = <var>AC + ACrs</var></code></p>
 			</div>
 		</div>

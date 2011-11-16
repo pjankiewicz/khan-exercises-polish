@@ -2,7 +2,7 @@
 <html data-require="math graphie graphie-helpers word-problems">
 <head>
 	<meta charset="UTF-8" />
-	<title>Equivalent fractions</title>
+	<title>Równoważne ułamki</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -18,32 +18,33 @@
 
 	<div class="problems">
 		<div>
-			<p class="question">What number could replace <code><var>SYMBOL</var></code> below?</p>
+			<p class="question">Jaka liczba może zastąpić <code><var>SYMBOL</var></code> poniżej?</p>
+
 			<p><code>\dfrac{<var>A</var>}{<var>B</var>} = \dfrac{<var>SYMBOL</var>}{<var>D</var>}</code></p>
 			<div class="solution" data-forms="integer"><var>C</var></div>
 			<div class="hints">
 				<div>
-					<p>The fraction on the left represents <var>A</var> out of <var>B</var> slices of a rectangular <var>pizza( 1 )</var>.</p>
+					<p>Ułamek po lewej stronie reprezentuje <var>A</var> spośród <var>B</var> kawałków prostokątnej pizzy <var>pizza( 1 )</var>.</p>
 					<div class="graphie">
 						init({ range: [ [0, 1], [0, 1] ], scale: [180, 25] });
 						rectchart( [A, B - A], ["#e00", "#999"] );
 					</div>
 				</div>
 				<div>
-					<p>What if we cut the <var>pizza( 1 )</var> into <var>D</var> slices instead? How many slices would result in the same amount of <var>pizza( 1 )</var>?</p>
+					<p>Co się stanie jeżeli przetniemy <var>pizza( 1 )</var> na <var>D</var> kawałków? Ile kawałków pozostanie w tej samej ilości co <var>pizza( 1 )</var>?</p>
 					<div class="graphie">
 						init({ range: [ [0, 1], [0, 1] ], scale: [180, 25] });
 						rectchart( [0, D], ["#e00", "#999"] );
 					</div>
 				</div>
 				<div>
-					<p>We would need <var>C</var> slices.</p>
+					<p>Potrzebowalibyśmy <var>C</var> kawałków.</p>
 					<div class="graphie">
 						init({ range: [ [0, 1], [0, 1] ], scale: [180, 25] });
 						rectchart( [C, D - C], ["#e00", "#999"] );
 					</div>
 				</div>
-				<p><code>\dfrac{<var>A</var>}{<var>B</var>} = \dfrac{<var>C</var>}{<var>D</var>}</code> and so the answer is <code><var>C</var></code>.</p>
+				<p><code>\dfrac{<var>A</var>}{<var>B</var>} = \dfrac{<var>C</var>}{<var>D</var>}</code> więc odpowiedzią jest <code><var>C</var></code>.</p>
 
 				<div>
 					<p>Another way to get the answer is to multiply by <code>\dfrac{<var>M</var>}{<var>M</var>}</code>.</p>
@@ -55,12 +56,12 @@
 		</div>
 
 		<div>
-			<p class="question">What number could replace <code><var>SYMBOL</var></code> below?</p>
+			<p class="question">Jaka liczba może zastąpić <code><var>SYMBOL</var></code> poniżej?</p>
 			<p><code>\dfrac{<var>A</var>}{<var>B</var>} = \dfrac{<var>C</var>}{<var>SYMBOL</var>}</code></p>
 			<div class="solution" data-forms="integer"><var>D</var></div>
 			<div class="hints">
 				<div>
-					<p>The fraction on the left represents <var>A</var> out of <var>B</var> slices of a rectangular <var>pizza( 1 )</var>.</p>
+					<p>Ułamek po lewej stronie reprezentuje <var>A</var> spośród <var>B</var> kawałków prostokątnej pizzy <var>pizza( 1 )</var>.</p>
 					<div class="graphie">
 						init({ range: [ [0, 1], [0, 1] ], scale: [180, 25] });
 						rectchart( [A, B - A], ["#e00", "#999"] );
@@ -68,7 +69,7 @@
 				</div>
 
 				<div>
-					<p>How many total slices would we need if we want the same amount of <var>pizza( 1 )</var> in <var>C</var> slices? </p>
+					<p>Ile w sumie kawałków musimy mieć, żeby uzyskać tę samą ilość <var>pizza( 1 )</var> w <var>C</var> kawałkach?</p>
 					<div class="graphie">
 						init({ range: [ [0, 1], [0, 1] ], scale: [180, 25] });
 						rectchart( [C, D - C], ["#e00", "#fff"] );
@@ -76,7 +77,7 @@
 				</div>
 
 				<div>
-					<p>We would need to cut the <var>pizza( 1 )</var> into <var>D</var> slices.</p>
+					<p>Musielibyśmy pociąć <var>pizza( 1 )</var> na <var>D</var> kawałków.</p>
 					<div class="graphie">
 						init({ range: [ [0, 1], [0, 1] ], scale: [180, 25] });
 						rectchart( [C, D - C], ["#e00", "#999"] );

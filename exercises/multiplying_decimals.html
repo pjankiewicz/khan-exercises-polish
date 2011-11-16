@@ -2,7 +2,7 @@
 <html data-require="math math-format graphie graphie-helpers-arithmetic word-problems">
 <head>
 	<meta charset="UTF-8" />
-	<title>Multiplying decimals</title>
+	<title>Mnożenie ułamków dziesiętnych</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -30,8 +30,45 @@
 			</div>
 		</div>
 		<div class="hints">
+<<<<<<< HEAD
+			<div data-each="SMALL_FACTOR_DIGITS as smallIndex, smallDigit" data-unwrap>
+				<div data-each="BIG_FACTOR_DIGITS as bigIndex, bigDigit" class="graphie" data-update="numbers">
+					doMultiplicationStep( bigIndex, BIG_FACTOR_DIGITS, smallIndex, SMALL_FACTOR_DIGITS );
+				</div>
+			</div>
+
+			<div data-if="SMALL_FACTOR_DIGITS.length > 1" data-unwrap>
+				<div class="graphie" data-update="numbers">
+					while( graph.highlights.length ) {
+						graph.highlights.pop().remove();
+					}
+					path( [ [ -1 - MAX_NUM_DIGITS, 0.5 - SMALL_FACTOR_DIGITS.length ], [ 1, 0.5 - SMALL_FACTOR_DIGITS.length ] ] );
+					label( [ -1 - MAX_NUM_DIGITS, 1 - SMALL_FACTOR_DIGITS.length ] ,"\\huge{+\\vphantom{0}}" );
+				</div>
+				<div class="graphie" data-update="numbers">
+					while( PRODUCT_DIGITS.length &lt; SMALL_FACTOR_DECIMAL + BIG_FACTOR_DECIMAL + 1 ) {
+						PRODUCT_DIGITS.unshift( 0 );
+					}
+					drawDigits( PRODUCT_DIGITS, 1 - PRODUCT_DIGITS.length, -SMALL_FACTOR_DIGITS.length );
+				</div>
+				<div class="graphie" data-update="numbers">
+					label( [ - MAX_NUM_DIGITS, -SMALL_FACTOR_DIGITS.length * BIG_FACTOR_DIGITS.length + 2 ],
+						"\\text{The top number has " + plural( BIG_FACTOR_DECIMAL, "digit" ) + " to the right of the decimal.}", "right" );
+					label( [ - MAX_NUM_DIGITS, -SMALL_FACTOR_DIGITS.length * BIG_FACTOR_DIGITS.length + 1 ],
+						"\\text{The bottom number has " + plural( SMALL_FACTOR_DECIMAL, "digit" ) + " to the right of the decimal.}", "right" );
+					label( [ - MAX_NUM_DIGITS, -SMALL_FACTOR_DIGITS.length * BIG_FACTOR_DIGITS.length ],
+						"\\text{The product has " + BIG_FACTOR_DECIMAL + " + " + SMALL_FACTOR_DECIMAL + " = " + ( SMALL_FACTOR_DECIMAL + BIG_FACTOR_DECIMAL )
+						 + " digits to the right of the decimal.}", "right" );
+					style({
+						fill: "black"
+					}, function() {
+						ellipse( [ -SMALL_FACTOR_DECIMAL - BIG_FACTOR_DECIMAL + 0.5,  -0.2 - SMALL_FACTOR_DIGITS.length ], [ 0.09, 0.06 ] );
+					});
+				</div>
+=======
 			<div class="graphie" data-update="numbers" data-each="DUMMY as dummy">
 				graph.multiplier.showHint();
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 			</div>
 			<div class="graphie" data-update="numbers">
 				graph.multiplier.showDecimalsInProduct();

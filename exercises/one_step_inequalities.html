@@ -7,7 +7,11 @@
 </head>
 <body>
 	<!--
+<<<<<<< HEAD
+		Solving one-step inequalities with positive and negative coefficients.		
+=======
 		Solving one-step inequalities with positive and negative coefficients.
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 	-->
 	<div class="exercise">
 		<div class="problems">
@@ -39,7 +43,8 @@
 					<var id="SOLUTION_REAL">RIGHT_INT * DEN / NUM</var>
 				</div>
 
-				<p class="question">Solve for <code>x</code>:</p>
+				<p class="question">Policz <code>x</code>:</p>
+
 				<div><code><var>COEF</var>x <var>COMP</var> <var>RIGHT_INT</var></code></div>
 
 				<p class="solution" data-type="multiple">
@@ -62,7 +67,8 @@
 						<p><code>(<var>ONE_OVER_COEF</var>) \cdot (<var>COEF</var>x) <var>COMP_SOLUTION</var> (<var>ONE_OVER_COEF</var>) \cdot (<var>RIGHT_INT</var>)</code></p>
 					</div>
 					<div>
-						<p>Simplify.</p>
+						<p>Uprość.</p>
+
 						<p><code>x <var>COMP_SOLUTION</var> <var>SOLUTION_NOT_REDUCED</var></code></p>
 					</div>
 					<div data-if="SOLUTION_NOT_REDUCED !== SOLUTION">
@@ -107,6 +113,7 @@
 							var x = SOLUTION_REAL - start;
 
 							style({ stroke: "#FFA500", fill: "#FFA500", strokeWidth: 3.5, arrows: "-&gt;" });
+							
 							path([ [ x + startOffset, 0 ], [ x + offset, 0 ]]);
 							style({ stroke: "#6495ED", strokeWidth: 2.0, fill: fill });
 							circle([ x, 0 ], 0.15 );

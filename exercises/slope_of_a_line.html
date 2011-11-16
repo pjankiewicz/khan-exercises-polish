@@ -2,7 +2,7 @@
 <html data-require="math math-format graphie">
 <head>
 	<meta charset="UTF-8" />
-	<title>Slope of a line</title>
+	<title>Nachylenie prostej</title>
 	<script src="../khan-exercise.js"></script>
 	<style type="text/css">
 		.quarter-graph {
@@ -27,8 +27,10 @@
 				<var id="GRAPH_IN_QUESTION">randRange( 0, 1 )</var>
 			</div>
 			<div class="question">
-				<p>What is the slope of the line through the points <code>(<var>X1</var>, <var>Y1</var>)</code> and <code>(<var>X2</var>, <var>Y2</var>)</code>?</p>
+				<p>Jakie jest nachylenie prostej, która przechodzi przez punkty <code>(<var>X1</var>, <var>Y1</var>)</code> i <code>(<var>X2</var>, <var>Y2</var>)</code>?</p>
+
 				<div data-if="GRAPH_IN_QUESTION" class="graphie" id="slope">
+
 					graphInit({
 						range: 10,
 						scale: 20,

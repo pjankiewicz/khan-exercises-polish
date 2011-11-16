@@ -2,7 +2,8 @@
 <html data-require="math graphie graphie-helpers-arithmetic word-problems">
 <head>
 	<meta charset="UTF-8" />
-	<title>Recognizing percents</title>
+	<title>Rozpoznawanie procentów</title>
+
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -33,8 +34,9 @@
 				</p>
 				<div class="solution"><var>BIG_PERCENT</var></div>
 				<div class="hints">
-					<p>The entire grid is 100%.</p>
-					<p>There are 10 lines total, so each line is 10%.</p>
+					<p>Cała siatka to 100%.</p>
+					<p>Jest 10 linii, więc każda linia stanowi 10%.</p>
+
 					<p>There are <var>( BIG_PERCENT / 10).toFixed( 0 )</var> blue lines, so blue lines represent <var>BIG_PERCENT</var>% of the grid.</p>
 				</div>
 			</div>
@@ -51,9 +53,11 @@
 				</p>
 				<div class="solution"><var>PERCENT</var></div>
 				<div class="hints">
-					<p>The entire grid is 100%.</p>
-					<p>There are 10 columns and 10 rows, so there are 100 squares total.</p>
-					<p>Therefore, each square is equal to 1%.</p>
+
+					<p>Cała siatka to 100%.</p>
+					<p>Jest 10 kolumn i 10 wierszy, więc jest w sumie 100 kwadratów.</p>
+					<p>Każdy kwadrat to 1% całości.</p>
+
 					<p>There are <var>PERCENT</var> blue squares, so blue squares represent <var>PERCENT</var>% of the grid.</p>
 				</div>
 
@@ -64,14 +68,15 @@
 					In the statement: <p><code><var>PERCENT</var>\%</code> of <code><var>NUMBER</var></code> is <code><var>RESULT</var></code></p>
 				</div>
 				<div class="question">
-					What is <code><var>ANSWER_VALUE</var></code>?
+					Ile to jest <code><var>ANSWER_VALUE</var></code>?
+
 				</div>
 				<div class="solution"><var>ANSWER_NAME</var></div>
 				<ul class="choices" data-category="true">
 					<li data-each="ANSWER_TYPES as ans"><var>ans</var></li>
 				</ul>
 				<div class="hints">
-i					<p>Percent <code>\cdot</code> Base = Amount</p>
+					<p>Percent <code>\cdot</code> Base = Amount</p>
 					<p><code><var>PERCENT</var>\% \cdot <var>NUMBER</var> = <var>RESULT</var></code></p>
 					<p>Therefore, <code><var>ANSWER_VALUE</var></code> is the <var>ANSWER_NAME.toLowerCase()</var>.</p>
 				</div>
@@ -81,16 +86,18 @@ i					<p>Percent <code>\cdot</code> Base = Amount</p>
 					In the statement: <p><code><var>RESULT</var></code> is <code><var>PERCENT</var>\%</code> of <code><var>NUMBER</var></code></p>
 				</div>
 				<div class="question">
-					What is <code><var>ANSWER_VALUE</var></code>?
+					Ile to jest <code><var>ANSWER_VALUE</var></code>?
+
 				</div>
 				<div class="solution"><var>ANSWER_NAME</var></div>
 				<ul class="choices" data-category="true">
 					<li data-each="ANSWER_TYPES as ans"><var>ans</var></li>
 				</ul>
 				<div class="hints">
-i					<p>Percent <code>\cdot</code> Base = Amount</p>
+					<p>Percent <code>\cdot</code> Base = Amount</p>
 					<p><code><var>RESULT</var>= <var>PERCENT</var>\% \cdot <var>NUMBER</var></code></p>
-					<p>We can rewrite that as <code><var>PERCENT</var>\% \cdot <var>NUMBER</var> = <var>RESULT</var></code></p>
+					<p>Możemy to przepisać jako <code><var>PERCENT</var>\% \cdot <var>NUMBER</var> = <var>RESULT</var></code></p>
+
 					<p>Therefore, <code><var>ANSWER_VALUE</var></code> is the <var>ANSWER_NAME.toLowerCase()</var>.</p>
 				</div>
 			</div>

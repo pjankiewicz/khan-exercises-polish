@@ -2,7 +2,7 @@
 <html data-require="math math-format">
 <head>
 	<meta charset="UTF-8" />
-	<title>Ordering fractions</title>
+	<title>Porządkowanie ułamków zwykłych</title>
 	<script src="../khan-exercise.js"></script>
 
 	<style type="text/css">
@@ -91,7 +91,7 @@
 		<div class="problems">
 			<div>
 				<div class="question">
-					<p>Order the following fractions from least to greatest:</p>
+					<p>Uporządkuj poniższe ułamki od najmniejszego do największego:</p>
 					<p class="number-list"><code><var>NUMS_TEX</var></code></p>
 				</div>
 
@@ -100,17 +100,23 @@
 				</div>
 
 				<div class="hints">
+
 					<div>
 						<p>Let's use different colors for each fraction.</p>
 						<p class="number-list"><code><var>NUMS_TEX_COLOR</var></code></p>
 					</div>
 					<p>Find the least common denominator of all the fractions, so that we can compare them more easily.</p>
 					<div>
-						<p>The least common denominator is the least common multiple of all the denominators.</p>
-						<p>The least common multiple of <code><var>DENOMS_TEX_COLOR</var></code> is <code><var>LCD</var></code>.</p>
+						<p>Pokolorujmy każdy ułamek innym kolorem.</p>
+						<p class="number-list"><code><var>NUMS_TEX_COLOR</var></code></p>
+					</div>
+					<p>Znajdź najmnieszy wspólny dzielnik dla wszystkich ułamków, żeby można je było łatwiej porównać.</p>
+					<div>
+						<p>Najmniejszy wspólny mianownik jest najmniejszą wspólną wielokrotnością wszystkich mianowników.</p>
+						<p>Najmniejsza wspólna wielokrotność <code><var>DENOMS_TEX_COLOR</var></code> to <code><var>LCD</var></code>.</p>
 					</div>
 					<div>
-						<p>Multiply all the fractions <code>\dfrac{a}{b}</code> by <code>\dfrac{\frac{<var>LCD</var>}{b}}{\frac{<var>LCD</var>}{b}}</code>. Then each fraction will have <code><var>LCD</var></code> as its denominator:</p>
+						<p>Przemnóż wszystkie ułamki <code>\dfrac{a}{b}</code> przez <code>\dfrac{\frac{<var>LCD</var>}{b}}{\frac{<var>LCD</var>}{b}}</code>. Wtedy każdy ułamek będzie miał <code><var>LCD</var></code> w mianowniku:</p>
 						<div>
 							<p data-each="NUMS as I, NUM"><code>
 								\color{<var>NUM[5]</var>}{<var>NUM[3]</var>} \times \dfrac{\frac{<var>LCD</var>}{<var>NUM[2]</var>}}{\frac{<var>LCD</var>}{<var>NUM[2]</var>}}
@@ -120,15 +126,15 @@
 						</div>
 					</div>
 					<div>
-						<p>Now all the fractions are in a form where we can compare them by numerator:</p>
+						<p>Teraz wszystkie ułamki mają taką formę, że możemy je uporządkować porównując ich liczniki:</p>
 						<p class="number-list"><code><var>NUMS_LCD_TEX_COLOR</var></code></p>
 					</div>
 					<div>
-						<p>Sort the fractions from least to greatest by their numerators:</p>
+						<p>Uporządkuj ułamki od najmniejszego do największego względem ich liczników:</p>
 						<p class="number-list"><code><var>NUMS_LCD_SORT_COLOR_TEX</var></code></p>
 					</div>
 					<div>
-						<p>Finally, reduce each fraction again.</p>
+						<p>Na końcu zredukuj ułamki do pierwotnej postaci.</p>
 						<p class="number-list"><code><var>NUMS_SORT_TEX_COLOR</var></code></p>
 					</div>
 				</div>

@@ -14,7 +14,8 @@
 				<var id="B_SIMPLE">randRange( 2, 100 )</var>
 			</div>
 			<p class="question">
-				What is <var>A_SIMPLE</var>% of <var>B_SIMPLE</var>? (Round to nearest whole number.)
+				Ile to jest <var>A_SIMPLE</var>% of <var>B_SIMPLE</var>? (Round to nearest whole number.)
+
 			</p>
 			<p class="solution" data-forms="integer"><var>round((A_SIMPLE * B_SIMPLE) / 100)</var></p>
 			<div class="hints">
@@ -65,9 +66,11 @@
 			</div>
 			<p class="question">
 				<var>person(1)</var> has <var>YEAR_PERCENT_MORE</var>% more money today than <var>he(1)</var> did this time last year. If <var>person(1)</var> has <var>YEAR_THIS</var> dollars today, how many dollars did <var>he(1)</var> have this time last year? (Round to the nearest penny.)</p>
+
 			<p class="solution" data-forms="dollar"><var>YEAR_LAST</var></p>
+
 			<div class="hints">
-				<p>Let <code>x</code> be the amount of money that <var>he(1)</var> had last year.</p>
+				<p>Niech <code>x</code> będzie kwotą</p>
 				<p><code>x + <var>YEAR_PERCENT_MORE / 100</var>x = <var>YEAR_THIS</var></code></p>
 				<p><code><var>(100 + YEAR_PERCENT_MORE) / 100</var>x = <var>YEAR_THIS</var></code></p>
 				<p><code>x = \frac{<var>YEAR_THIS</var>}{<var>(100 + YEAR_PERCENT_MORE) / 100</var>}</code></p>

@@ -2,7 +2,7 @@
 <html data-require="math word-problems">
 <head>
 	<meta charset="UTF-8" />
-	<title>Prime numbers</title>
+	<title>Liczby pierwsze</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -19,7 +19,9 @@
 
 		<div class="problems">
 			<div>
-				<p class="question">Which of these numbers is prime?</p>
+
+				<p class="question">Które z tych liczb są pierwsze?</p>
+
 				<p><code>\large{<var>CHOICES.join( "," )</var>}</code></p>
 				<p class="solution"><code><var>PRIME</var></code></p>
 				<ul class="choices" data-category="true">
@@ -29,9 +31,10 @@
 		</div>
 
 		<div class="hints">
-			<p>A prime number has exactly two factors: 1 and itself.</p>
-			<p data-each="CHOICES as CHOICE">The factors of <var>CHOICE</var> are <var>toSentence( getFactors( CHOICE ) )</var>.</p>
-			<p>Thus, <var>PRIME</var> is a prime number.</p>
+			<p>Liczba pierwsza dzieli się przez 2 liczby naturalne: 1 i samą siebie.</p>
+			<p data-each="CHOICES as CHOICE">Czynniki piersze <var>CHOICE</var> to <var>toSentence( getFactors( CHOICE ) )</var>.</p>
+			<p>Dlatego <var>PRIME</var> jest liczbą pierwszą.</p>
+
 		</div>
 	</div>
 </body>

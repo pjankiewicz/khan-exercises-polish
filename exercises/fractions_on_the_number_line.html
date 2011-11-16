@@ -2,7 +2,8 @@
 <html data-require="math math-format graphie graphie-helpers">
 <head>
 	<meta charset="UTF-8" />
-	<title>Fractions on the number line</title>
+
+	<title>Ułamki na osi liczbowej</title>
 	<script src="../khan-exercise.js"></script>
 
 	<img src="/images/circ.png" class="follow" style="position: absolute;"/>
@@ -74,7 +75,7 @@
 	<div class="problems">
 		<div>
 			<div class="question">
-				<p>Place the black box on the position of <code><var>NICE_NUMBER</var></code> on the number line!</p>
+				<p>Który punkt zaznacza pozycję <code><var>NICE_NUMBER</var></code> na osi liczbowej?</p>
 
 			<div class="graphie">
 				init({
@@ -97,10 +98,10 @@
 		</div>
 
 	<div class="hints">
-		<p data-if="reduces( NOMINATOR, DENOMINATOR )"><code><var>NICE_NUMBER</var></code> is equal to <code><var>REDUCED_NUMBER</var></code> </p>
-		<p> Because <code><var>REDUCED_NUMBER</var></code> is <span data-if="NUMBER > 0">positive</span><span data-else>negative</span> we go <span data-if="NUMBER > 0">right</span><span data-else>left</span> from 0</p>
-		 <p><code><var>REDUCED_NUMBER</var></code> is <code><var>fraction( parseInt( SIGN + ( NOMINATOR - ( DENOMINATOR * floor( abs( NUMBER) ) )  ) ) , DENOMINATOR, true, true )</var></code> away from <var>floor( abs( NUMBER ) ) * NUMBER/abs( NUMBER )</var></p>
-		<p>Therefore <code><var>REDUCED_NUMBER</var></code> is between <var>floor( NUMBER )</var> and <var>ceil( NUMBER )</var></p>
+		<p data-if="reduces( NOMINATOR, DENOMINATOR )"><code><var>NICE_NUMBER</var></code> jest równa <code><var>REDUCED_NUMBER</var></code> </p>
+		<p> Ponieważ liczba <code><var>REDUCED_NUMBER</var></code> jest <span data-if="NUMBER > 0">dodatnia</span><span data-else>ujemna</span> kierujemy się na <span data-if="NUMBER > 0">prawo</span><span data-else>lewo</span> od 0</p>
+		 <p><code><var>REDUCED_NUMBER</var></code> jest oddalona o <code><var>fraction( parseInt( SIGN + ( NOMINATOR - ( DENOMINATOR * floor( abs( NUMBER) ) )  ) ) , DENOMINATOR, true, true )</var></code> od <var>floor( abs( NUMBER ) ) * NUMBER/abs( NUMBER )</var></p>
+		<p>A więc <code><var>REDUCED_NUMBER</var></code> jest pomiędzy <var>floor( NUMBER )</var>, a <var>ceil( NUMBER )</var></p>
 		<div>
 		If we zoom in to that portion of the number line:
 			<div class="graphie">

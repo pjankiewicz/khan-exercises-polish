@@ -24,7 +24,6 @@
 		<var id="X_MINUS"> WHICH_NEG === 1 ? "+" : "+"</var>
 		<var id="Y_MINUS"> WHICH_NEG === 1 ? "" : "-"</var>
 
-
 		<var id="ASYMPT">plus( "\\dfrac{" + expr( ["*", reduce( A, B )[1] , plus( "x", -H ) ] ) +  "}{" + reduce( A, B )[0] + "}",  K) </var>
 		<var id="ANSWER">B+"*(-" + H + "+x)/" + A + "+" +  K</var>
 		<var id="X">H === 0 ? "x^2" :  expr(["^", ["+", "x", -H], 2])</var>

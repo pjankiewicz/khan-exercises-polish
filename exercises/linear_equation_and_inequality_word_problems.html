@@ -8,6 +8,7 @@
 <body>
 	<div class="exercise">
 		<div class="problems">
+
 			<div id="skateboarding_camp_tricks">
 				<div class="vars">
 					<var id="Q">randRange( 2, 25 )</var><!-- # of skateboarding tricks -->
@@ -169,6 +170,7 @@
 				</div>
 
 				<p class="problem spin">For every level <var>person( 1 )</var> completes in <var>his( 1 )</var> favorite game, <var>he( 1 )</var> earns <var>P</var> points. At the end of each hour spent playing the game, <var>person( 1 )</var> earns a bonus of <var>Q</var>. Name already has <var>10 * randRange( 500 / 10, 5000 / 10 )</var> in the game and wants to earn more than <var>R</var> additional points in the next hour.</p>
+
 				<p class="question">What is the minimum number of levels that <var>person( 1 )</var> needs to complete in the next hour to meet <var>his( 1 )</var> goal?</p>
 
 				<div class="solution" data-forms="integer"><var>X</var></div>
@@ -236,7 +238,6 @@
 					<p><code><var>P</var>x + <var>Q</var> > <var>R</var></code></p>
 					<p><code><var>P</var>x > <var>R</var> - <var>Q</var></code></p>
 					<p><code>x > \dfrac{<var>R - Q</var>}{<var>P</var>}</code></p>
-					<p><code>x > <var>X</var></code></p>
 					<p><strong>It will take <var>person( 1 )</var> at least <var>X</var> months to move to the maestro level.</strong></p>
 				</div>
 			</div>

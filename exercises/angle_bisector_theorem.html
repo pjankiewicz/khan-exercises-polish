@@ -2,7 +2,7 @@
 <html data-require="math graphie graphie-helpers graphie-geometry math-format">
 <head>
 	<meta charset="UTF-8" />
-	<title>Angle Bisector Theorem</title>
+	<title>Symetralna kątów (dwusieczna)</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -49,7 +49,7 @@
 				<var id="AC">TR_C.niceSideLengths[ 2 ]</var>
 		</div>
 		<div class="problem">
-			What is the length of the side AC? 
+			Ile wynosi długość boku AC? 
 		</div>
 		<div class="question">
 			<div class="graphie">
@@ -63,9 +63,9 @@
 			</div>
 		</div>
 		<div class="hints">
-			<p>Angles <code>DAB</code> and <code>DAC</code> are equal.</p>
-			<p>Therefore <code>AD</code> is the bisector of <code>CAB</code></p>
-			<p>Angle Bisector Theorem states that <code>\dfrac{ AB }{ BD }	= \dfrac{ AC }{ CD }</code></p>
+			<p>Kąty <code>DAB</code> i <code>DAC</code> są sobie równe.</p>
+			<p><code>AD</code> jest dwusieczną kąta <code>CAB</code></p>
+			<p>Twierdzenie o dwusiecznej kątów stwierdza, że <code>\dfrac{ AB }{ BD }	= \dfrac{ AC }{ CD }</code></p>
 		</div>
 
 
@@ -76,7 +76,7 @@
 					<var id="AC">( TEMP_AB * TEMP_CD / TEMP_BD ).toFixed( 1 )</var>
 				</div>	
 			<div class="problem">
-					What is the length of the side AC? (Round to 1 decimal place). 
+				Ile wynosi długość AC? (zaokrąglij do 1 miejsca po przecinku). 
 				</div>
 				<div class="solution"><var>AC</var></div>
 				<div class="hints"  data-apply="appendContents">
@@ -92,7 +92,7 @@
 						<var id="SIDES_C">[ [ 1,2 ], [ ]  ]</var>
 				</div>
 				<div class="problem">
-					What is the length of the side AB? (Round to 1 decimal place). 
+					Ile wynosi długość AB? (zaokrąglij do 1 miejsca po przecinku). 
 				</div>
 				<div class="solution"><var>AB</var></div>
 				<div class="hints"  data-apply="appendContents">
@@ -108,7 +108,7 @@
 						<var id="SIDES_C">[ [ 2 ], [1 ]  ]</var>
 				</div>
 				<div class="problem">
-					What is the length of the side CD?  (Round to 1 decimal place).
+					Ile wynosi długość CD? (zaokrąglij do 1 miejsca po przecinku).
 				</div>
 				<div class="solution"><var>CD</var></div>
 				<div class="hints"  data-apply="appendContents">
@@ -124,7 +124,8 @@
 						<var id="SIDES_C">[ [ 1, 2 ], [ ]  ]</var>
 				</div>
 				<div class="problem">
-					What is the length of the side BD?  (Round to 1 decimal place).
+					Ile wynosi długość BD? (zaokrąglij do 1 miejsca po przecinku).
+
 				</div>
 				<div class="solution"><var>BD</var></div>
 				<div class="hints"  data-apply="appendContents">
