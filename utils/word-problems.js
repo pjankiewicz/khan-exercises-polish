@@ -101,11 +101,11 @@ var WORD_CONJUGATION = {
     "teczka":[["teczki"],["teczek"]],
     "zszywacz":[["zszywacza"],["zszywaczy"],],
     "punkt" :[["punktu","punktowi","punkt","punktem","punkcie"],
-	      ["punktów","punktom","punkty","punktami","punktach"]],
+	      ["punkty","punktów","punktom","punkty","punktami","punktach"]],
     "zielony punkt" :[["zielonego punktu","zielonemu punktowi","zielony punkt","zielonym punktem","zielonym punkcie"],
-	      ["zielonych punktów","zielonym punktom","zielone punkty","zielonymi punktami","zielonych punktach"]],
+	      ["zielone punkty","zielonych punktów","zielonym punktom","zielone punkty","zielonymi punktami","zielonych punktach"]],
     "niebieski punkt" :[["niebieskiego punktu","niebieskiemu punktowi","niebieski punkt","niebieskim punktem","niebieskim punkcie"],
-	      ["niebieskich punktów","niebieskim punktom","niebieskie punkty","niebieskimi punktami","niebieskich punktach"]]
+	      ["niebieskie punkty","niebieskich punktów","niebieskim punktom","niebieskie punkty","niebieskimi punktami","niebieskich punktach"]]
 };
 
 
@@ -234,6 +234,66 @@ jQuery.extend( KhanUtil, {
 });
 
 jQuery.extend( KhanUtil, {
+    // Funkcja conjword - tworzy prawidłową odmianę przez przypadki
+    // Atrybuty
+    // - word - słowo
+    // - caseNum - przypadek (1 - mian, 2 - dop... itp) - domyślnie = mianownik
+    // - number - liczba sztuk danej rzeczy (domyślnie 1)
+    // - addNumber - dodaje liczbę (0 - nie dodaje, 1 - na początku, 2 na końcu) - domyślnie = na początku
+    // - (not implemented) formatNumber - przekształca format liczby na (1 - liczbę, 2 - tekst) - domyślnie = liczba
+    conjword: function(word, caseNum, number, addNumber, formatNumber) {
+        if ( caseNum == null ) {
+            caseNum = 1;
+        }
+         
+        if ( number == null ) {
+            number = 1;
+        } 
+
+        if ( addNumber == null ) {
+            if ( number >= 2 ) { 
+            	addNumber = 1;
+	    } else {
+		addNumber = 0;
+	    }
+        }
+
+        if ( formatNumber == null ) {
+            formatNumber = 1;
+        }
+
+        if ( caseNum == 1 && number == 1) {
+            properWord = word;
+        } else if ( caseNum > 1 && number == 1 ) {
+            // odejmuje jeszcze jedynkę ponieważ dla liczby pojedyńczej nie wpisywałem mianowników
+            // ponieważ są one jako klucz w tej tabeli
+            properWord = WORD_CONJUGATION[ word ][0][ caseNum - 1 - 1 ];
+        } else if ( number >= 2 ) {
+            // już w przypadku liczby mnogiej wszystko wraca do normy
+            properWord = WORD_CONJUGATION[ word ][1][ caseNum - 1 ]
+        } else {
+            // nie powinno się zdarzyć
+            properWord =  word;
+        }
+
+        if ( formatNumber == 1 ) {
+            properNumber = number;
+        } else {
+	    // TODO: liczby słownie - trzeba będzie dodać odmiany wszystkich liczb :(
+            properNumber = number;
+        }	
+
+	if ( addNumber == 1 ) {
+	    properWord = properNumber + ' ' + properWord;
+	} else if ( addNumber == 2) {
+	    properWord = properWord + ' ' + properNumber;
+        }
+
+	return properWord;
+    }
+});
+
+jQuery.extend( KhanUtil, {
 	toSentence: function( array, conjunction ) {
 		if ( conjunction == null ) {
 			conjunction = "i";
@@ -263,85 +323,20 @@ jQuery.extend( KhanUtil, {
 	// - plural(singular, plural, NUMBER):
 	//		- return "word"
 	plural: (function() {
-<<<<<<< HEAD
-=======
-		var oneOffs = {
-			'quiz': 'quizzes',
-			'shelf': 'shelves',
-			'loaf': 'loaves',
-			'potato': 'potatoes',
-			'person': 'people',
-			'is': 'are',
-			'was': 'were',
-			'square foot': 'square feet',
-			'tomato': 'tomatoes'
-		};
-
->>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 		var pluralizeWord = function(word) {
 			// noone really needs extra spaces at the edges, do they?
 			word = jQuery.trim( word );
 
 			// determine if our word is all caps.  If so, we'll need to
 			// re-capitalize at the end
-<<<<<<< HEAD
+
 			var isUpperCase = (word.toUpperCase() == word);
 
-            // tworze liczbę  mnogą
-            KhanUtil.conjugate(word,1,2);
+	               // tworze liczbę  mnogą
+            		KhanUtil.conjugate(word,1,2);
 
 			if ( isUpperCase ) {
 				word = word.toUpperCase();
-=======
-			var isUpperCase = (word.toUpperCase() === word);
-			var oneOff = oneOffs[word.toLowerCase()];
-			var words = word.split(/\s+/);
-
-			// first handle simple one-offs
-			// ({}).watch is a function in Firefox, blargh
-			if ( typeof oneOff === "string" ) {
-				return oneOff;
-			}
-
-			// multiple words
-			else if ( words.length > 1 ) {
-				// for 3-word phrases where the middle word is 'in' or 'of',
-				// pluralize the first word
-				if ( words.length === 3 && /\b(in|of)\b/i.test(words[1]) ) {
-					words[0] = KhanUtil.plural( words[0] );
-				}
-
-				// otherwise, just pluraize the last word
-				else {
-					words[ words.length-1 ] =
-						KhanUtil.plural( words[ words.length-1 ] );
-				}
-
-				return words.join(" ");
-			}
-
-			// single words
-			else {
-				// "-y" => "-ies"
-				if ( /[^aeiou]y$/i.test( word ) ) {
-					word = word.replace(/y$/i, "ies");
-				}
-
-				// add "es"; things like "fish" => "fishes"
-				else if ( /[sxz]$/i.test( word ) || /[bcfhjlmnqsvwxyz]h$/.test( word ) ) {
-					word += "es";
-				}
-
-				// all the rest, just add "s"
-				else {
-					word += "s";
-				}
-
-				if ( isUpperCase ) {
-					word = word.toUpperCase();
-				}
-				return word;
->>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 			}
     
 			return word;
@@ -616,7 +611,6 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
         },
 
 		he: function( i ) {
-<<<<<<< HEAD
 			return people[i - 1][1] == "m" ? "on" : "ona";
 		},
 
@@ -634,58 +628,31 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 
 		His: function( i ) {
 			return people[i - 1][1] == "m" ? "Jego" : "Jej";
-=======
-			return people[i - 1][1] === "m" ? "he" : "she";
 		},
 
-		He: function( i ) {
-			return people[i - 1][1] === "m" ? "He" : "She";
+		was: function ( i ) {
+		    return people[i - 1][1] == "m" ? "był" : "była";
 		},
 
-		him: function( i ) {
-			return people[i - 1][1] === "m" ? "him" : "her";
+		had: function ( i ) {
+		    return people[i - 1][1] == "m" ? "miał" : "miała";  
 		},
 
-		his: function( i ) {
-			return people[i - 1][1] === "m" ? "his" : "her";
+		older: function( i ) {
+		    return KhanUtil.wordGender("starszy",people[i - 1][1]);
 		},
 
-		His: function( i ) {
-			return people[i - 1][1] === "m" ? "His" : "Her";
+		younger: function( i ) {
+		    return KhanUtil.wordGender("młodszy",people[i - 1][1]);
 		},
 
-		An: function(word) {
-			return indefiniteArticle(word);
+		years: function ( n, addValue ) {
+		    return KhanUtil.plural( n, "rok", addValue );
 		},
 
-		an: function(word) {
-			return indefiniteArticle(word).toLowerCase();
->>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
+		units: function ( n ) {
+		    return KhanUtil.plural( n, "jednostka", addValue );
 		},
-
-        was: function ( i ) {
-            return people[i - 1][1] == "m" ? "był" : "była";
-        },
-
-        had: function ( i ) {
-            return people[i - 1][1] == "m" ? "miał" : "miała";  
-        },
-
-        older: function( i ) {
-            return KhanUtil.wordGender("starszy",people[i - 1][1]);
-        },
-
-        younger: function( i ) {
-            return KhanUtil.wordGender("młodszy",people[i - 1][1]);
-        },
-
-        years: function ( n, addValue ) {
-            return KhanUtil.plural( n, "rok", addValue );
-        },
-
-        units: function ( n ) {
-            return KhanUtil.plural( n, "jednostka", addValue );
-        },
 
 		vehicle: function( i ) {
 			return vehicles[i - 1];
@@ -761,15 +728,10 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 
 		deskItem: function( i ) {
 			return deskItems[i];
-<<<<<<< HEAD
 		},          
 
 		ofDeskItem: function( i ) {
-            return KhanUtil.conjugate(deskItems[i], 2);
-		}
-
-
-=======
+		        return KhanUtil.conjugate(deskItems[i], 2);
 		},
 
 		distance: function( i ) {
@@ -815,6 +777,5 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		shirtStyle: function( i ) {
 			return shirtStyles[i - 1];
 		},
->>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 	});
 };
