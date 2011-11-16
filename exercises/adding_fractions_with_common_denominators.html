@@ -2,7 +2,7 @@
 <html data-require="math math-format graphie graphie-helpers">
 <head>
 	<meta charset="UTF-8" />
-	<title>Dodawanie ułamków ze wspólnymi mianownikami</title>
+	<title>Adding fractions with common denominators</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -33,7 +33,7 @@
 				piechart( [ N2, D - N2 ], ["#e00", "#999"], 2 );
 			</div>
 		</div>
-		<p>Dodaj liczniki.</p>
+		<p>Add the numerators.</p>
 		<div class="graphie">
 			init({ range: [ [-3, 3], [-3, 3] ], scale: 25 });
 			piechart( [ N1+N2, D - N2 - N1], ["#e00", "#999"], 2 );
@@ -42,7 +42,7 @@
 			<p><code><var>fraction( N1, D )</var> + <var>fraction( N2, D )</var> = <var>fraction( N1 + N2, D )</var></code></p>
 		</div>
 		<div data-if="getGCD( N1 + N2, D ) !== 1">
-			<p>Uprość.</p>
+			<p>Simplify.</p>
 			<div class="graphie">
 				init({ range: [ [-3, 3], [-3, 3] ], scale: 25 });
 				piechart( [ reduce( N1 + N2, D)[0], reduce( N1 + N2, D)[1] -  reduce( N1 + N2, D)[0]], ["#e00", "#999"], 2 );

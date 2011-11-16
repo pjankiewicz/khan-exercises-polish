@@ -33,15 +33,6 @@
 		};
 
 		var svgPath = function( points ) {
-			return jQuery.map(points, function( point, i ) {
-				if ( point === true ) {
-					return "z";
-				} else {
-					var scaled = scalePoint( point );
-					return ( i === 0 ? "M" : "L") + boundNumber(scaled[0]) + " " + boundNumber(scaled[1]);
-				}
-			}).join("");
-
 			// Bound a number by 1e-6 and 1e20 to avoid exponents after toString
 			function boundNumber( num ) {
 				if ( num === 0 ) {
@@ -52,6 +43,15 @@
 					return Math.max( 1e-6, Math.min( num, 1e20 ) );
 				}
 			}
+
+			return jQuery.map(points, function( point, i ) {
+				if ( point === true ) {
+					return "z";
+				} else {
+					var scaled = scalePoint( point );
+					return ( i === 0 ? "M" : "L") + boundNumber(scaled[0]) + " " + boundNumber(scaled[1]);
+				}
+			}).join("");
 		};
 
 		var processAttributes = function( attrs ) {
@@ -195,7 +195,9 @@
 			},
 
 			path: function( points ) {
-				return raphael.path( svgPath( points) );
+				var p = raphael.path( svgPath( points) );
+				p.graphiePath = points;
+				return p;
 			},
 
 			line: function( start, end ) {
@@ -264,18 +266,30 @@
 								});
 							};
 
-							// Wait for the browser to render it
-							var tries = 0;
-							var inter = setInterval(function() {
-								var size = [ span.outerWidth(), span.outerHeight() ];
+							var callback = MathJax.Callback( function() {} );
 
-								// Heuristic to guess if the font has kicked in so we have box metrics
-								// (Magic number ick, but this seems to work mostly-consistently)
-								if ( size[1] > 18 || ++tries >= 10 ) {
-									setMargins( size );
-									clearInterval(inter);
-								}
-							}, 100);
+							// Wait for the browser to render it
+							var tries = 0,
+							    size = [ span.outerWidth(), span.outerHeight() ];
+
+							if ( size[1] > 18 ) {
+								setMargins( size );
+								callback();
+							} else {
+								var inter = setInterval(function() {
+									size = [ span.outerWidth(), span.outerHeight() ];
+
+									// Heuristic to guess if the font has kicked in so we have box metrics
+									// (Magic number ick, but this seems to work mostly-consistently)
+									if ( size[1] > 18 || ++tries >= 10 ) {
+										setMargins( size );
+										clearInterval(inter);
+										callback();
+									}
+								}, 100);
+							}
+
+							return callback;
 						});
 					}
 
@@ -426,7 +440,7 @@
 
 				// allow options to be specified by a single number for shorthand if 
 				// the horizontal and vertical components are the same
-				if ( prop !== "gridOpacity" && prop !== "range" 
+				if ( !prop.match( /.*Opacity$/ ) && prop !== "range"
 						&& typeof val === "number" ) {
 					options[ prop ] = [ val, val ];
 				}
@@ -434,7 +448,9 @@
 				// allow symmetric ranges to be specified by the absolute values 
 				if ( prop === "range" ) {
 					if ( val.constructor === Array ) {
-						options[ prop ] = [ [ -val[0], val[0] ], [ -val[1], val[1] ] ];
+						if ( val[0].constructor !== Array ) {  // but don't mandate symmetric ranges
+							options[ prop ] = [ [ -val[0], val[0] ], [ -val[1], val[1] ] ];
+						}
 					} else if ( typeof val === "number" ) {
 						options[ prop ] = [ [ -val, val ], [ -val, val ] ];
 					}
@@ -449,11 +465,14 @@
 				gridStep = options.gridStep || [ 1, 1 ],
 				axes = options.axes || true,
 				axisArrows = options.axisArrows || "",
+				axisOpacity = options.axisOpacity || 1.0,
 				ticks = options.ticks || true,
 				tickStep = options.tickStep || [ 2, 2 ],
 				tickLen = options.tickLen || [ 5, 5 ],
+				tickOpacity = options.tickOpacity || 1.0,
 				labels = options.labels || options.labelStep || false,
 				labelStep = options.labelStep || [ 1, 1 ],
+				labelOpacity = options.labelOpacity || 1.0,
 				unityLabels = options.unityLabels || false,
 				labelFormat = options.labelFormat || function(a) { return a; },
 				xLabelFormat = options.xLabelFormat || labelFormat,
@@ -491,6 +510,7 @@
 				if ( axisArrows === "<->" || true ) {
 					this.style({
 						stroke: "#000000",
+						opacity: axisOpacity,
 						strokeWidth: 2,
 						arrows: "->"
 					}, function() {
@@ -505,6 +525,7 @@
 				} else if ( axisArrows === "->" || axisArrows === "" ) {
 					this.style({
 						stroke: "#000000",
+						opacity: axisOpacity,
 						strokeWidth: 2,
 						arrows: axisArrows
 					}, function() {
@@ -520,6 +541,7 @@
 			if ( ticks ) {
 				this.style({
 					stroke: "#000000",
+					opacity: tickOpacity,
 					strokeWidth: 1
 				}, function() {
 
@@ -565,7 +587,8 @@
 			// draw axis labels
 			if ( labels ) {
 				this.style({
-					stroke: "#000000"
+					stroke: "#000000",
+					opacity: labelOpacity
 				}, function() {
 
 					// horizontal axis
@@ -614,9 +637,14 @@
 	};
 
 	jQuery.fn.graphie = function( problem ) {
-		return this.find(".graphie").add(this.filter(".graphie")).each(function() {
+		return this.find( ".graphie" ).andSelf().filter( ".graphie" ).each(function() {
 			// Grab code for later execution
 			var code = jQuery( this ).text(), graphie;
+
+			// Ignore code that isn't really code ;)
+			if (code.match(/Created with Rapha\xebl/)) {
+				return;
+			}
 
 			// Remove any of the code that's in there
 			jQuery( this ).empty();

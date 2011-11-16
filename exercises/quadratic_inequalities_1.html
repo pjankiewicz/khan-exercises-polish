@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format expressions graphie graphie-helpers">
 <head>
-	<title>Nierówności kwadratowe 1</title>
+	<title>Quadratic inequalities 1</title>
 	<script src="../khan-exercise.js"></script>
 	<script type="text/javascript">
 		function mult() {
@@ -35,7 +35,7 @@
 			<div id="bounded-quadratic-inquality">
 
 				<div class="question">
-					<p>Dla jakich wartości <code>x</code>
+					<p>For what values of <code>x</code> does
 					<p style="text-align:center"><code><var>plus(XX, (A+B)+X)</var> < <var>-C</var></code></p>
 				</div>
 
@@ -49,14 +49,14 @@
 		</div>
 		
 		<div class="hints">
-			<p>Po pierwsze: przesuń x na jedną stronę nierówności, a resztę liczb na drugą stronę <br><code><var>plus(XX, (A+B)+X, C)</var> < 0</code></p>
-			<p>Następnie policz kiedy <br><code><var>mult(LEFT, RIGHT)</var> < 0</code></p>
-			<p>albo <code> <var>LEFT</var> < 0</code> i <code><var>RIGHT</var> > 0</code> albo <br>
-				<code><var>LEFT</var> > 0</code> i <code><var>RIGHT</var> < 0</code> </p>
-			<p>albo <code> <var>X</var> < <var>-A</var></code> i <code><var>X</var> > <var>-B</var></code> albo <br>
-				<code><var>X</var> > <var>-A</var></code> i <code><var>X</var> < <var>-B</var></code> </p>
+			<p>First, move the term over to the other side of the inequality<br><code><var>plus(XX, (A+B)+X, C)</var> < 0</code></p>
+			<p>Now, let's factor the quadratic equation<br><code><var>mult(LEFT, RIGHT)</var> < 0</code></p>
+			<p>either <code> <var>LEFT</var> < 0</code> and <code><var>RIGHT</var> > 0</code> or <br>
+				<code><var>LEFT</var> > 0</code> and <code><var>RIGHT</var> < 0</code> </p>
+			<p>either <code> <var>X</var> < <var>-A</var></code> and <code><var>X</var> > <var>-B</var></code> or <br>
+				<code><var>X</var> > <var>-A</var></code> and <code><var>X</var> < <var>-B</var></code> </p>
 			<div>
-				<p>co możemy narysować w ten sposób:</p>
+				<p>which we can graph, like so:</p>
 				<div class="graphie">
 					init({
 						range: [ [0, 24], [-2, 1.25] ],

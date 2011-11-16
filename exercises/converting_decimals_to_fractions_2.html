@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format">
 <head>
-	<title>Zamiana ułamków dziesiętnych na zwykłe 2</title>
+	<title>Changing decimals to fractions 2</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 
@@ -18,16 +18,16 @@ Convert fraction such as 0.3763 to a fraction,  convert fraction such as 12.16 i
 				<var id="NUMERATOR">randRange( 0, 1 ) ? randRange( 100, 999 ) : randRange( 1000, 9999 )</var>
 				<var id="D">( NUMERATOR / 10000 ).toFixed( 4 )</var>
 			</div>
-			<p class="question">Wyraź <code><var>D</var></code> jako ułamek zwykły.</p>
+			<p class="question">Express <code><var>D</var></code> as a fraction.</p>
 			<p class="solution" data-type="rational" data-simplify="optional"><var>D</var></p>
 			<div class="hints">
 				<div>
-					<p><code><var>D</var></code> może być zapisany jak poniżej.</p>
+					<p><code><var>D</var></code> can be represented as follows.</p>
 					<p><code>= 0 + <var>fraction( D.substr( 2, 1 ) , 10 )</var> + <var>fraction( D.substr( 3, 1 ) , 100 )</var> + <var>fraction( D.substr( 4, 1 ), 1000 )</var> + <var>fraction( D.substr( 5, 1 ), 10000 )</var></code></p>
 					<p><code>= <var>fraction( NUMERATOR, 10000 )</var></code></p>
 				</div>
 				<div>
-					<p>Możesz też pominąć kilka kroków przy tworzeniu ułamków traktując <code><var>NUMERATOR</var></code> jako licznik, <code>10000</code> (ponieważ ułamek dziesiętny ma 5 miejsc po przecinku) jako mianownik.</p>
+					<p>You can also skip a few steps by making a fraction with <code><var>NUMERATOR</var></code> as the numerator and <code>10000</code> (because the decimal extends to the ten thousandths place) as the denominator.</p>
 					<p><code><var>fraction( NUMERATOR, 10000 )</var></code></p>
 				</div>
 			</div>
@@ -40,14 +40,13 @@ Convert fraction such as 0.3763 to a fraction,  convert fraction such as 12.16 i
 				<var id="GCD">getGCD( round( D * 100 ) , 100 )</var>
 				<var id="FIXED">( W + D ).toFixed( 2 )</var>
 			</div>
-			<p class="question">Wyraź <code><var>FIXED</var></code> jako ułamek zwykły. Uprość wynik jeżeli będzie to możliwe.</p>
+			<p class="question">Express <code><var>FIXED</var></code> as a mixed number. Reduce to lowest terms.</p>
 
 			<p class="solution" data-type="mixed"><var>W + D</var></p>
 
 			<div class="hints">
 				<div>
-					<p><code><var>FIXED</var></code> can be represented as follows:,None
-2282,Uprość część ułamkową dzieląc licznik i mianownik przez <code><var>GCD</var></code>.</p>
+					<p><code><var>FIXED</var></code> can be represented as follows:</p>
 					<p><code>= <var>W</var> + <var>fraction( floor( D * 10 ), 10 )</var> + <var>fraction( floor( ( D * 100 ) % 10 ), 100 )</var></code></p>
 				</div>
 				<p><code>= <var>W  + fraction( roundTo( 0, D * 100 ), 100 )</var></code></p>

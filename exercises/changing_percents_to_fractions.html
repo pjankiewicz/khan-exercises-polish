@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format">
 <head>
-	<title>Zamiana procentów na ułamki</title>
+	<title>Changing percents to fractions</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 
@@ -13,10 +13,10 @@
 				<div class="vars">
 					<var id="A">randRangeExclude( 1 , 299 ,  [ 100 ] )</var>
 				</div>
-				<p class="question">Wyraź <code><var>A</var>\%</code> jako ułamek zwykły. Sprowadź go najprostszej postaci.</p>
+				<p class="question">Express <code><var>A</var>\%</code> as a fraction. Reduce to lowest terms.</p>
 				<p class="solution" data-type="rational"><var>A / 100</var></p> 
 				<div class="hints">
-					<p><code><var>A</var>\%</code> dosłownie oznacza <code><var>A</var></code> setnych</p>
+					<p><code><var>A</var>\%</code> literally means <code><var>A</var></code> per 100</p>
 					<p>Putting this in fraction form: <code><var>fraction( A , 100 )</var></code></p>
 					<p data-if="getGCD( A , 100 ) > 1">Both numerator and denominator are divisible by <code><var>getGCD( A , 100 )</var></code>.</p>
 					<p data-if="getGCD( A , 100 ) > 1">Reducing to lowest terms, <code><var>fractionReduce( A , 100 )</var></code>.</p>
@@ -29,7 +29,7 @@
 					<var id="A">randRange( 101, 1999 ) / 10</var>
 				</div>
 				<div class="hints">
-					<p><code><var>A</var>\%</code> dosłownie oznacza <code><var>A</var></code> setnych</p>
+					<p><code><var>A</var>\%</code> literally means <code><var>A</var></code> per 100</p>
 					<p>Putting this in fraction form: <code><var>fraction( A , 100 )</var></code></p>
 					<p data-if="( A * 10 ) % 10 != 0">Multiplying top and bottom by 10 to get rid of the decimal: <code><var>fraction( A * 10 , 1000 )</var></code></p>
 					<p data-if="getGCD( A * 10 , 1000 ) > 1">Both numerator and denominator are divisible by <code><var>getGCD( A * 10 , 1000 )</var></code>.</p>

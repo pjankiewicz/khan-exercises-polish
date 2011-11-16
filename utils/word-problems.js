@@ -239,31 +239,52 @@ jQuery.extend( KhanUtil, {
 			conjunction = "i";
 		}
 
-		if ( array.length == 0 ) {
+		if ( array.length === 0 ) {
 			return "";
-		} else if ( array.length == 1 ) {
+		} else if ( array.length === 1 ) {
 			return array[0];
-		} else if ( array.length == 2 ) {
+		} else if ( array.length === 2 ) {
 			return array[0] + " " + conjunction + " " + array[1];
 		} else {
 			return array.slice(0, -1).join(", ") + ", " + conjunction + " " + array[ array.length - 1 ];
 		}
 	},
 
-	// pluralization helper.  There are three signatures
+	// pluralization helper.  There are five signatures
 	// - plural(NUMBER): return "s" if NUMBER is not 1
 	// - plural(NUMBER, singular):
 	//		- if necessary, magically pluralize <singular>
 	//		- return "NUMBER word"
 	// - plural(NUMBER, singular, plural):
 	//		- return "NUMBER word"
+	// - plural(singular, NUMBER):
+	//		- if necessary, magically pluralize <singular>
+	//		- return "word"
+	// - plural(singular, plural, NUMBER):
+	//		- return "word"
 	plural: (function() {
+<<<<<<< HEAD
+=======
+		var oneOffs = {
+			'quiz': 'quizzes',
+			'shelf': 'shelves',
+			'loaf': 'loaves',
+			'potato': 'potatoes',
+			'person': 'people',
+			'is': 'are',
+			'was': 'were',
+			'square foot': 'square feet',
+			'tomato': 'tomatoes'
+		};
+
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 		var pluralizeWord = function(word) {
 			// noone really needs extra spaces at the edges, do they?
 			word = jQuery.trim( word );
 
 			// determine if our word is all caps.  If so, we'll need to
 			// re-capitalize at the end
+<<<<<<< HEAD
 			var isUpperCase = (word.toUpperCase() == word);
 
             // tworze liczbę  mnogą
@@ -271,6 +292,56 @@ jQuery.extend( KhanUtil, {
 
 			if ( isUpperCase ) {
 				word = word.toUpperCase();
+=======
+			var isUpperCase = (word.toUpperCase() === word);
+			var oneOff = oneOffs[word.toLowerCase()];
+			var words = word.split(/\s+/);
+
+			// first handle simple one-offs
+			// ({}).watch is a function in Firefox, blargh
+			if ( typeof oneOff === "string" ) {
+				return oneOff;
+			}
+
+			// multiple words
+			else if ( words.length > 1 ) {
+				// for 3-word phrases where the middle word is 'in' or 'of',
+				// pluralize the first word
+				if ( words.length === 3 && /\b(in|of)\b/i.test(words[1]) ) {
+					words[0] = KhanUtil.plural( words[0] );
+				}
+
+				// otherwise, just pluraize the last word
+				else {
+					words[ words.length-1 ] =
+						KhanUtil.plural( words[ words.length-1 ] );
+				}
+
+				return words.join(" ");
+			}
+
+			// single words
+			else {
+				// "-y" => "-ies"
+				if ( /[^aeiou]y$/i.test( word ) ) {
+					word = word.replace(/y$/i, "ies");
+				}
+
+				// add "es"; things like "fish" => "fishes"
+				else if ( /[sxz]$/i.test( word ) || /[bcfhjlmnqsvwxyz]h$/.test( word ) ) {
+					word += "es";
+				}
+
+				// all the rest, just add "s"
+				else {
+					word += "s";
+				}
+
+				if ( isUpperCase ) {
+					word = word.toUpperCase();
+				}
+				return word;
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 			}
     
 			return word;
@@ -300,7 +371,13 @@ jQuery.extend( KhanUtil, {
                     return arg;                
                 }
 			} else if ( typeof value === "string" ) {
-				return pluralizeWord(value);
+				var plural = pluralizeWord(value);
+				if ( typeof arg1 === "string" && arguments.length === 3 ) {
+					plural = arg1;
+					arg1 = arg2;
+				}
+				var usePlural = (arguments.length < 2 || (typeof arg1 === "number" && arg1 !== 1));
+				return usePlural ? plural : value;
 			}
 		};
 	})()
@@ -405,6 +482,20 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		"tort"
 	]);
 
+	var timesofday = KhanUtil.shuffle([
+		"in the morning",
+		"around noon",
+		"in the evening",
+		"at night"
+	]);
+
+	var exercises = KhanUtil.shuffle([
+		"push-up",
+		"sit-up",
+		"squat",
+		"jumping jack"
+	]);
+
 	var fruits = KhanUtil.shuffle([
 		"ananas",
 		"banan",
@@ -428,6 +519,84 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		"zszywacz"
 	]);
 
+	var colors = KhanUtil.shuffle([
+		"red",
+		"orange",
+		"yellow",
+		"green",
+		"blue",
+		"purple",
+		"white",
+		"black",
+		"brown",
+		"silver",
+		"gold",
+		"pink"
+	]);
+
+	var schools = KhanUtil.shuffle([
+		"Loyola",
+		"Gardner Bullis",
+		"Almond",
+		"Covington",
+		"Springer",
+		"Santa Rita",
+		"Oak"
+	]);
+
+	var clothes = KhanUtil.shuffle([
+		"hat",
+		"pair of pants",
+		"belt",
+		"necklace",
+		"purse",
+		"pair of shoes",
+		"blouse",
+		"skirt",
+		"watch",
+		"pair of socks",
+		"sweatshirt",
+		"sweater",
+		"tie",
+		"scarf",
+		"dress"
+	]);
+
+	var sides = KhanUtil.shuffle([
+		"left",
+		"right"
+	]);
+
+	var shirtStyles = KhanUtil.shuffle([
+		"long-sleeved",
+		"short-sleeved"
+	]);
+
+	var farmers = KhanUtil.shuffle([
+		{farmer:"farmer", crops:KhanUtil.shuffle(["tomato", "potato", "carrot", "bean", "corn stalk"]), field:"field"},
+		{farmer:"gardener", crops:KhanUtil.shuffle(["rose", "tulip", "daisy", "iris", "lily"]), field:"garden"}
+	]);
+
+	var distances = KhanUtil.shuffle([
+		"mile",
+		"kilometer"
+	]);
+
+	var distanceActivities = KhanUtil.shuffle([
+		{present:"ride", past:"rode", noun:"bike", done:"biked", continuous:"biking"},
+		{present:"row", past:"rowed", noun:"boat", done:"rowed", continuous:"rowing"},
+		{present:"drive", past:"drove", noun:"car", done:"driven", continuous:"driving"},
+		{present:"walk", past:"walked", noun:"dog", done:"walked", continuous:"walking"}
+	]);
+
+	var indefiniteArticle = function(word) {
+		var vowels = ['a', 'e', 'i', 'o', 'u'];
+		if ( _(vowels).indexOf( word[0].toLowerCase() ) > -1 ) {
+			return 'An ' + word;
+		}
+		return 'A ' + word;
+	};
+
 	jQuery.extend( KhanUtil, {
 
 		person: function( i ) {
@@ -447,6 +616,7 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
         },
 
 		he: function( i ) {
+<<<<<<< HEAD
 			return people[i - 1][1] == "m" ? "on" : "ona";
 		},
 
@@ -464,6 +634,33 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 
 		His: function( i ) {
 			return people[i - 1][1] == "m" ? "Jego" : "Jej";
+=======
+			return people[i - 1][1] === "m" ? "he" : "she";
+		},
+
+		He: function( i ) {
+			return people[i - 1][1] === "m" ? "He" : "She";
+		},
+
+		him: function( i ) {
+			return people[i - 1][1] === "m" ? "him" : "her";
+		},
+
+		his: function( i ) {
+			return people[i - 1][1] === "m" ? "his" : "her";
+		},
+
+		His: function( i ) {
+			return people[i - 1][1] === "m" ? "His" : "Her";
+		},
+
+		An: function(word) {
+			return indefiniteArticle(word);
+		},
+
+		an: function(word) {
+			return indefiniteArticle(word).toLowerCase();
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 		},
 
         was: function ( i ) {
@@ -538,12 +735,33 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 			return pizzas[i];
 		},
 
+		exercise: function( i ) {
+			return exercises[i - 1];
+		},
+
+		timeofday: function( i ) {
+			return timesofday[i - 1];
+		},
+
+		school: function( i ) {
+			return schools[i - 1];
+		},
+
+		clothing: function( i ) {
+			return clothes[i - 1];
+		},
+
+		color: function( i ) {
+			return colors[i - 1];
+		},
+
 		fruit: function( i ) {
 			return fruits[i];
 		},
 
 		deskItem: function( i ) {
 			return deskItems[i];
+<<<<<<< HEAD
 		},          
 
 		ofDeskItem: function( i ) {
@@ -551,5 +769,52 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		}
 
 
+=======
+		},
+
+		distance: function( i ) {
+			return distances[i - 1];
+		},
+
+		rode: function( i ) {
+			return distanceActivities[i - 1].past;
+		},
+
+		ride: function( i ) {
+			return distanceActivities[i - 1].present;
+		},
+
+		bike: function( i ) {
+			return distanceActivities[i - 1].noun;
+		},
+
+		biked: function( i ) {
+			return distanceActivities[i - 1].done;
+		},
+
+		biking: function( i ) {
+			return distanceActivities[i - 1].continuous;
+		},
+
+		farmer: function( i ) {
+			return farmers[i - 1].farmer;
+		},
+
+		crop: function( i ) {
+			return farmers[i - 1].crops[0];
+		},
+
+		field: function( i ) {
+			return farmers[i - 1].field;
+		},
+
+		side: function( i ) {
+			return sides[i - 1];
+		},
+
+		shirtStyle: function( i ) {
+			return shirtStyles[i - 1];
+		},
+>>>>>>> 67037a196910ca0f4c461094a83eb6e761fd7218
 	});
 };

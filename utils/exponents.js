@@ -48,9 +48,9 @@ jQuery.extend( KhanUtil, {
 			return "";
 		}
 
+		exp = Math.abs( exp );
 		var flip_n = exp > 0 ? base_n : base_d,
 			flip_d = exp > 0 ? base_d : base_n,
-			exp = Math.abs( exp ),
 			parens = function( n, d ) { 
 				return KhanUtil.fraction( n, d, true, true, false, true );
 			}, noParens = function( n, d ) {
@@ -118,10 +118,10 @@ jQuery.extend( KhanUtil, {
 		for ( var i = 0; i < bases.length; i++ ) {
 			var base = bases[ i ];
 			for ( var j = 2; j <= 4; j++ ) {
-				if ( bases_by_root[ j ].indexOf( base ) !== -1 ) {
+				if ( _(bases_by_root[ j ]).indexOf( base ) !== -1 ) {
 					if ( roots_by_base[ base ] === undefined ) {
 						roots_by_base[ base ] = [ j ];
-					} else if ( roots_by_base[ base ].indexOf( j ) === -1 ) {
+					} else if ( _(roots_by_base[ base ]).indexOf( j ) === -1 ) {
 						roots_by_base[ base ].push( j );
 					}
 				}

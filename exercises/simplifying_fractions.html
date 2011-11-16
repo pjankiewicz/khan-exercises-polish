@@ -2,7 +2,7 @@
 <html data-require="math word-problems">
 <head>
 	<meta charset="UTF-8" />
-	<title>Upraszczanie ułamków</title>
+	<title>Simplifying fractions</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -33,38 +33,44 @@
 
 		<div class="problems">
 			<div>
-				<p class="problem">Sprowadź do najprostszej postaci.</p>
+				<p class="problem">Simplify to lowest terms.</p>
 				<p class="question"><code>\dfrac{<var>NUM</var>}{<var>DENOM</var>}</code></p>
 				<p class="solution" data-type="rational"><var>NUM / DENOM</var></p>
 			</div>
 		</div>
 
 		<div class="hints">
-			<p data-if="GCD_FACTORS.length !== 1">Jest kilka sposobów na rozwiązanie tego zadania.</p>
+			<p data-if="GCD_FACTORS.length !== 1">There are several ways to tackle this problem.</p>
 
-			<p>Jaki jest <strong>N</strong>ajwiększy <strong>W<strong>spólny <strong>D</strong>zielnik <var>NUM</var> and <var>DENOM</var>?</p>
+			<p>What is the greatest common factor (GCD) of <var>NUM</var> and <var>DENOM</var>?</p>
 
-			<p>NWD(<var>NUM</var>, <var>DENOM</var>) = <var>GCD</var></p>
+			<p><code><var>NUM</var>   = <var>getPrimeFactorization( NUM   ).join( "\\cdot" )</var></code><br />
+			   <code><var>DENOM</var> = <var>getPrimeFactorization( DENOM ).join( "\\cdot" )</var></code></p>
+
+			<p><code>\mbox{GCD}(<var>NUM</var>, <var>DENOM</var>) = <var>GCD_FACTORS.join( "\\cdot" )</var> = <var>GCD</var></code></p>
 
 			<p>
-				<code>\dfrac{<var>NUM</var>}{<var>DENOM</var>}</code>
+				<code>\dfrac{<var>NUM</var>}{<var>DENOM</var>}
+				= \dfrac{<var>NUM / GCD</var> \cdot <var>GCD</var>}{ <var>DENOM / GCD</var>\cdot <var>GCD</var>}</code>
 			</p>
 
 			<p>
-				<code>= \dfrac{<var>NUM / GCD</var> \cdot <var>GCD</var>}{ <var>DENOM / GCD</var>\cdot <var>GCD</var>}</code>
+				<code>\hphantom{\dfrac{<var>NUM</var>}{<var>DENOM</var>}}
+				= \dfrac{<var>NUM / GCD</var>}{<var>DENOM / GCD</var>} \cdot \dfrac{<var>GCD</var>}{<var>GCD</var>}</code>
 			</p>
 
 			<p>
-				<code>= \dfrac{<var>NUM / GCD</var>}{<var>DENOM / GCD</var>} \cdot \dfrac{<var>GCD</var>}{<var>GCD</var>}</code>
+				<code>\hphantom{\dfrac{<var>NUM</var>}{<var>DENOM</var>}}
+				= \dfrac{<var>NUM / GCD</var>}{<var>DENOM / GCD</var>} \cdot 1</code>
 			</p>
-
 			<p>
-				<code>= \dfrac{<var>NUM / GCD</var>}{<var>DENOM / GCD</var>}</code>
+				<code>\hphantom{\dfrac{<var>NUM</var>}{<var>DENOM</var>}}
+				= \dfrac{<var>NUM / GCD</var>}{<var>DENOM / GCD</var>}</code>
 			</p>
 			<div data-if="GCD_FACTORS.length !== 1" data-unwrap>
-				<p>Możesz też rozwiązać to zadanie rozbijając licznik i mianownik na iloczyny.</p>
+				<p>You can also solve this problem by repeatedly breaking the numerator and denominator into common factors.</p>
 				<div>
-					<p>Na przykład:</p>
+					<p>For example:</p>
 					<p><code><var>HINT</var></code></p>
 				</div>
 			</div>

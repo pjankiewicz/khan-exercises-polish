@@ -67,7 +67,7 @@
 			</div>
 
 			<div class="question">
-				<p>A fair six-sided die is rolled. Ile to jest the probability that the
+				<p>A fair six-sided die is rolled. What is the probability that the
 				result is <var>RESULT_DESC</var>?  Write your answer as a simplified fraction.</p>
 			</div>
 
@@ -75,8 +75,8 @@
 
 			<div class="hints">
 				<p>When rolling a die, there are <code>6</code> possibilities: 1, 2, 3, 4, 5, and 6.</p>
-				<p data-if="RESULT_COUNT == 1">W tym przypadku  only <code>1</code> result is favorable: the number <var>RESULT_POSSIBLE[0]</var>.</p>
-				<p data-else>W tym przypadku  <code><var>RESULT_COUNT</var></code> results are favorable: <var>toSentence(RESULT_POSSIBLE)</var>.</p>
+				<p data-if="RESULT_COUNT == 1">In this case, only <code>1</code> result is favorable: the number <var>RESULT_POSSIBLE[0]</var>.</p>
+				<p data-else>In this case, <code><var>RESULT_COUNT</var></code> results are favorable: <var>toSentence(RESULT_POSSIBLE)</var>.</p>
 				<p>The probability is <code>\displaystyle <var>fractionSimplification(RESULT_COUNT, 6)</var></code>.</p>
 			</div>
 		</div>
@@ -133,7 +133,7 @@
 			</div>
 
 			<div class="question">
-				<p>A fair coin is flipped <var>REPS == 3 ? "three" : "four"</var> times. Ile to jest the
+				<p>A fair coin is flipped <var>REPS == 3 ? "three" : "four"</var> times. What is the
 				probability of getting <var>DESC</var>?  Write your answer as a simplified fraction.</p>
 			</div>
 
@@ -171,7 +171,7 @@
 
 			<div class="question">
 				<p>A positive integer is picked randomly from <var>LOW</var> to <var>HIGH</var>, inclusive.</p>
-				<p>Ile to jest the probability that it is <strong><var>COND_DESC</var></strong>?  Write your answer as a simplified fraction.</p>
+				<p>What is the probability that it is <strong><var>COND_DESC</var></strong>?  Write your answer as a simplified fraction.</p>
 			</div>
 
 			<div class="solution"><var>WANTED_COUNT / POSSIBLE.length</var></div>

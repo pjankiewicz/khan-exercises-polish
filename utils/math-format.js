@@ -73,6 +73,58 @@ jQuery.extend(KhanUtil, {
 		return begin + main + end;
 	},
 
+	mixedFractionFromImproper: function( n, d, defraction, reduce, small, parens ) {
+		return KhanUtil.mixedFraction( Math.floor( n / d ), n % d, d, defraction, reduce, small, parens );
+	},
+
+	/* Format the latex of the mixed fraction 'num n/d"
+	 * - For negative numbers, if it is a mixed fraction, make sure the whole
+	 * number portion is negative.  '-5, 2/3' should be 'mixedFraction(-5,2,3)'
+	 * do not put negative for both whole number and numerator portion.
+	 * - Will use latex's `dfrac` unless `small` is specified as truthy.
+	 * - Will wrap the fraction in parentheses if necessary (ie, unless the
+	 * fraction reduces to a positive integer) if `parens` is specified as
+	 * truthy.
+	 * - Will reduce the fraction `n`/`d` if `reduce` is specified as truthy.
+	 * - Will defraction (spit out 0 if `n` is 0, spit out `n` if `d` is 1, or
+	 * spit out `undefined` if `d` is 0) if `defraction` is specified as
+	 * truthy. */
+	mixedFraction: function( number, n, d, defraction, reduce, small, parens ) {
+		var wholeNum = number ? number : 0;
+		var numerator = n ? n : 0;
+		var denominator = d ? d : 1;
+
+		if ( wholeNum < 0 && numerator < 0 ) {
+			throw "NumberFormatException: Both integer portion and fraction cannot both be negative.";
+		}
+		if ( denominator < 0 ) {
+			throw "NumberFormatException: Denominator cannot be be negative.";
+		}
+		if ( denominator === 0 ) {
+			throw "NumberFormatException: Denominator cannot be be 0.";
+		}
+
+		if ( reduce ) {
+			if( wholeNum < 0 ) {
+				wholeNum -= Math.floor( numerator / denominator );
+			} else {
+				wholeNum += Math.floor( numerator / denominator );
+			}
+
+			numerator = numerator % denominator;
+		}
+
+		if ( wholeNum !== 0 && numerator !== 0 ) {
+			return wholeNum + " " + KhanUtil.fraction( n, d, defraction, reduce, small, parens );
+		} else if ( wholeNum !== 0 && numerator === 0 ) {
+			return wholeNum;
+		} else if ( wholeNum === 0 && numerator !== 0 ) {
+			return KhanUtil.fraction( n, d, defraction, reduce, small, parens );
+		} else {
+			return 0;
+		}
+	},
+
 	/* Calls fraction with the reduce and defraction flag enabled. Additional
 	 * parameters correspond to the remaining fraction flags. */
 	fractionReduce: function( n, d, small, parens ) {
@@ -114,6 +166,38 @@ jQuery.extend(KhanUtil, {
 		return result;
 	},
 
+	// Randomly return the fraction in its mixed or improper form.
+	mixedOrImproper: function( n, d ) {
+		// mixed
+		if ( n < d || KhanUtil.rand( 2 ) > 0 ) {
+			return KhanUtil.fraction( n, d );
+
+		// improper
+		} else {
+			var imp = Math.floor( n / d );		
+			return imp + KhanUtil.fraction( n - ( d * imp ), d );
+		}
+	},
+
+	// splitRadical( 24 ) gives [ 2, 6 ] to mean 2 sqrt(6)
+	splitRadical: function( n ) {
+		if ( n === 0 ) {
+			return [ 0, 1 ];
+		}
+
+		var coefficient = 1;
+		var radical = n;
+
+		for(var i = 2; i * i <= n; i++) {
+			while(radical % (i * i) === 0) {
+				radical /= i * i;
+				coefficient *= i;
+			}
+		}
+
+		return [coefficient, radical];
+	},
+
 	// formattedSquareRootOf(24) gives 2\sqrt{6}
 	formattedSquareRootOf: function( n ) {
 		if( n === 1 || n === 0 ) {
@@ -121,15 +205,97 @@ jQuery.extend(KhanUtil, {
 			return n.toString();
 		} else {
 			var split = KhanUtil.splitRadical( n );
-			var coefficient = split[0] == 1 ? "" : split[0].toString();
-			var radical = split[1] == 1 ? "" : "\\sqrt{" + split[1] + "}";
+			var coefficient = split[0] === 1 ? "" : split[0].toString();
+			var radical = split[1] === 1 ? "" : "\\sqrt{" + split[1] + "}";
 
 			return coefficient + radical;
 		}
 	},
 
 	squareRootCanSimplify: function(n) {
-		return KhanUtil.formattedSquareRootOf(n) != ("\\sqrt{" + n + "}");
+		return KhanUtil.formattedSquareRootOf(n) !== ("\\sqrt{" + n + "}");
+	},
+
+	// Ported from https://github.com/clojure/clojure/blob/master/src/clj/clojure/pprint/cl_format.clj#L285
+	cardinal: function( n ) {
+		var cardinalScales = ["", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion", "octillion", "nonillion", "decillion", "undecillion", "duodecillion", "tredecillion", "quattuordecillion", "quindecillion", "sexdecillion", "septendecillion", "octodecillion", "novemdecillion", "vigintillion"];
+		var cardinalUnits = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+		var cardinalTens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+		// For formatting numbers less than 1000
+		var smallNumberWords = function( n ) {
+			var hundredDigit = Math.floor( n / 100 );
+			var rest = n % 100;
+			var str = "";
+
+			if ( hundredDigit ) {
+				str += cardinalUnits[ hundredDigit ] + " hundred";
+			}
+
+			if ( hundredDigit && rest ) {
+				str += " ";
+			}
+
+			if ( rest ) {
+				if ( rest < 20 ) {
+					str += cardinalUnits [ rest ];
+				} else {
+					var tenDigit = Math.floor( rest / 10 );
+					var unitDigit = rest % 10;
+
+					if ( tenDigit ) {
+						str += cardinalTens [ tenDigit ];
+					}
+
+					if ( tenDigit && unitDigit ) {
+						str += "-";
+					}
+
+					if ( unitDigit ) {
+						str += cardinalUnits [ unitDigit ];
+					}
+				}
+			}
+
+			return str;
+		};
+
+		if ( n === 0 ) {
+			return "zero";
+		} else {
+			var neg = false;
+			if ( n < 0 ) {
+				neg = true;
+				n = Math.abs( n );
+			}
+
+			var words = [];
+			var scale = 0;
+			while ( n > 0 ) {
+				var end = n % 1000;
+
+				if ( end > 0 ) {
+					if ( scale > 0 ) {
+						words.unshift( cardinalScales[ scale ] );
+					}
+
+					words.unshift( smallNumberWords( end ) );
+				}
+
+				n = Math.floor( n / 1000 );
+				scale += 1;
+			}
+
+			if ( neg ) {
+				words.unshift( "negative" );
+			}
+
+			return words.join( " " );
+		}
+	},
+
+	Cardinal: function( n ) {
+		var card = KhanUtil.cardinal( n );
+		return card.charAt(0).toUpperCase() + card.slice(1);
 	},
 
 	// Depends on expressions.js for expression formatting
@@ -197,15 +363,18 @@ jQuery.extend(KhanUtil, {
 
 		for ( var i = 0; i < arguments.length; i++ ) {
 			s = KhanUtil._plusTrim( arguments[i] );
-			if ( s ) args.push( s );
+			if ( s ) {
+				args.push( s );
+			}
 		}
 
 		return args.length > 0 ? args.join( " + " ) : "0";
 	},
 
 	_plusTrim: function( s ) {
+
 		if ( typeof s === "string" && isNaN( s ) ) {
-			
+
 			// extract color, so we can handle stripping the 1 out of \color{blue}{1xy}
 			if ( s.indexOf( "{" ) !== -1 ) {
 
@@ -216,7 +385,11 @@ jQuery.extend(KhanUtil, {
 
 				// if we've encountered \color{blue}{1}\color{xy} somehow
 				if ( l !== s.lastIndexOf( "{" ) + 1 && +KhanUtil._plusTrim( s.slice( l, r ) ) === 1 ) {
-					return s.slice( r + 1 );
+					if ( s.indexOf( "\\" ) !== -1 ) {
+						return s.slice( 0, s.indexOf( "\\" ) ) + s.slice( r + 1 );
+					} else {
+						return s.slice( r + 1 );
+					}
 				}
 
 				return s.slice( 0, l ) + KhanUtil._plusTrim( s.slice( l, r ) ) + s.slice( r );
@@ -245,6 +418,10 @@ jQuery.extend(KhanUtil, {
 
 		}
 
+	},
+
+	randVar: function() {
+		return KhanUtil.randFromArray([ "x", "k", "y", "a", "n", "r", "p", "u", "v" ])
 	}
 });
 

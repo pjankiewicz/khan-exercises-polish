@@ -2,7 +2,7 @@
 <html data-require="math graphie graphie-helpers graphie-geometry math-format">
 <head>
 	<meta charset="UTF-8" />
-	<title>Trójkąty podobne 1</title>
+	<title>Similar Triangles 1</title>
 	<script src="../khan-exercise.js"></script>
 	<script>
 		function randomTriangle( current ){
@@ -48,6 +48,7 @@
 					var trA = new Triangle( [ 2, -8 ],  B, randRange( 400, 600 )/100, { } );
 					trA.labels = { "name" : "B", "angles" : clearArray( trA.niceAngles,  [  0, 1 ] ) };
 					trA.rotate( randRange( 0, 360 ) );
+					trA.color = "blue";
 					trA.boxOut( [ [ [ -1, -10  ], [ -1, 20 ] ] ], [ 0.5, 0 ] );
 					trA.boxOut( TR.sides, [ 0, -1 ] );
 					return trA;
@@ -58,6 +59,7 @@
 					var trB = new Triangle( [ 7, -6 ],  C, randRange( 400, 600 )/100, {} );
 					trB.labels = { "name" : "C", "angles" : clearArray( trB.niceAngles,  [ 0, 2 ] ) };
 					trB.rotate( randRange( 0, 360 ) );
+					trB.color = "red";
 					trB.boxOut( [ [ [ 13, -10  ], [ 13, 20 ] ] ], [ -0.5, 0 ] );
 					trB.boxOut( TR.sides, [ 0, -1 ] );
 					trB.boxOut( TR_A.sides, [ 0, -1 ] );
@@ -74,15 +76,21 @@
 			<div class="question">
 				<div class="graphie" id="triangles" >
 					init({
-						range: [ [-1, 13 ], [ -11, 2.5 ] ]
+						range: [ [-1, 13 ], [ -14, 2.5 ] ]
 					})
 					
 					TR.draw();
 					TR.drawLabels();
-					
+
+					style({
+					    stroke: "blue",
+					});
 					TR_A.draw();
 					TR_A.drawLabels();
-					
+
+					style({
+					    stroke: "red",
+					});
 					TR_B.draw();
 					TR_B.drawLabels();
 				</div>
@@ -95,9 +103,9 @@
 				<li>None</li>
 			</ul>
 			<div class="hints">
-				<p>Trójkąty są podobne jeżeli wszystkie ich kąty są sobie równe.</p>
+				<p>Two triangles are similar if their angles are congruent (equal).</p>
 				<div>
-					<p>Widzimy, że trójkąt <code>A</code> ma kąty <code><var>MAIN[ 0 ]</var></code> i <code><var>MAIN[ 2 ]</var></code>. Trzeci kąt wynosi zatem <code>180 - <var>MAIN[ 0 ]</var> - <var>MAIN[ 2 ]</var> = <var>MAIN[ 1 ]</var></code></p>
+					<p>We see that triangle <code>A</code> has angles of <code><var>MAIN[ 0 ]</var></code> and <code><var>MAIN[ 2 ]</var></code>. The third angle is therefore <code>180 - <var>MAIN[ 0 ]</var> - <var>MAIN[ 2 ]</var> = <var>MAIN[ 1 ]</var></code></p>
 	
 					<div class="graphie" data-update="triangles">
 						TR.labels.angles = TR.niceAngles;
@@ -106,15 +114,21 @@
 				</div>
 
 				<div>	
-					<p>Trojkąt <code>B</code> ma kąty <code><var>B[ 0 ]</var></code> i <code><var>B[ 1 ]</var></code>. Trzeci kąt jest równy <code>180 - <var>B[ 0 ]</var> -  <var>B[ 1 ]</var> = <var>B[ 2 ]</var></code>. Więc trójkąt <code>B</code> <span data-if="ANSWER === 'None' || ANSWER === 'C'" >nie</span> jest podobny do trójkąta <code>A</code>.</p>
+					<p>Triangle <code>B</code> has angles of <code><var>B[ 0 ]</var></code> and <code><var>B[ 1 ]</var></code>. The third angle is <code>180 - <var>B[ 0 ]</var> -  <var>B[ 1 ]</var> = <var>B[ 2 ]</var></code>. Therefore triangle <code>B</code> is <span data-if="ANSWER === 'None' || ANSWER === 'C'" >not</span> similar to triangle <code>A</code>.</p>
 					<div class="graphie" data-update="triangles">
+						style({
+						    stroke: "blue",
+						});
 						TR_A.labels.angles = TR_A.niceAngles;
 						TR_A.drawLabels();
 					</div>
 				</div>
 				<div>	
-					<p>Trójkąt <code>C</code> ma kąty <code><var>C[ 0 ]</var></code> i <code><var>C[ 2 ]</var></code>. Trzeci kąt wynosi <code>180 - <var>C[ 0 ]</var> -  <var>B[ 2 ]</var> = <var>C[ 1 ]</var></code>. Dlatego trójkąt <code>C</code> <span data-if="ANSWER === 'None' || ANSWER === 'B'" >nie</span> jest trójkątem podobnym do <code>A</code>.</p>
+					<p>Triangle <code>C</code> has angles of <code><var>C[ 0 ]</var></code> and <code><var>C[ 2 ]</var></code>. The third angle is <code>180 - <var>C[ 0 ]</var> -  <var>B[ 2 ]</var> = <var>C[ 1 ]</var></code>. Therefore triangle <code>C</code> is <span data-if="ANSWER === 'None' || ANSWER === 'B'" >not</span>  similar to triangle <code>A</code>.</p>
 					<div class="graphie" data-update="triangles">
+						style({
+							 stroke: "red",
+						});
 						TR_B.labels.angles = TR_B.niceAngles;
 						TR_B.drawLabels();
 					</div>

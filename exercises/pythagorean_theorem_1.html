@@ -2,7 +2,7 @@
 <html data-require="math graphie math-format">
 <head>
 	<meta charset="UTF-8" />
-	<title>Twierdzenie Pitagorasa 1</title>
+	<title>Pythagorean theorem 1</title>
 	<script src="../khan-exercise.js"></script>
 	<script>
 		function betterTriangle(width, height, A, B, C, a, b, c) {
@@ -40,8 +40,8 @@
 			</div>
 
 			<div class="question">
-				<p>W trójkącie prostopadłym pokazanym poniżej <code>AC = <var>AC</var></code> and
-				<code>BC = <var>BC</var></code>. Ile wynosi <code>AB</code>?</p>
+				<p>In the right triangle shown, <code>AC = <var>AC</var></code> and
+				<code>BC = <var>BC</var></code>. What is <code>AB</code>?</p>
 
 				<div class="graphie">
 					betterTriangle( BC, AC, "A", "B", "C", BC, AC, "?" );
@@ -51,10 +51,10 @@
 			<div class="solution" data-type="radical"><var>AB2</var></div>
 
 			<div class="hints" data-apply="appendContents">
-				<p>Chcemy znaleźć <code>c</code>; niech <code>a = <var>BC</var></code> i <code>b = <var>AC</var></code>.</p>
-				<p>Więc <code>c^2 = <var>BC</var>^2 + <var>AC</var>^2 = <var>AB2</var></code>.</p>
-				<p><code>c = \sqrt{<var>AB2</var>}</code>.</p>
-				<p data-if="squareRootCanSimplify(AB2)">Upraszając pierwiastek otrzymujemy <code>c = <var>formattedSquareRootOf(AB2)</var>.</code></p>
+				<p>We want to find <code>c</code>; let <code>a = <var>BC</var></code> and <code>b = <var>AC</var></code>.</p>
+				<p>So <code>c^2 = <var>BC</var>^2 + <var>AC</var>^2 = <var>AB2</var></code>.</p>
+				<p>Then, <code>c = \sqrt{<var>AB2</var>}</code>.</p>
+				<p data-if="squareRootCanSimplify(AB2)">Simplifying the radical gives <code>c = <var>formattedSquareRootOf(AB2)</var>.</code></p>
 			</div>
 		</div>
 
@@ -71,8 +71,8 @@
 			</div>
 
 			<div class="question">
-				<p>W trójkącie prostopadłym pokazanym poniżej <code><var>bside</var> = <var>AC</var></code> and
-				<code>AB = <var>AB</var></code>. Ile wynosi <code><var>aside</var></code>?</p>
+				<p>In the right triangle shown, <code><var>bside</var> = <var>AC</var></code> and
+				<code>AB = <var>AB</var></code>. What is <code><var>aside</var></code>?</p>
 
 				<div class="graphie">
 					betterTriangle( alen, blen, "A", "B", "C", alabel, blabel, AB );
@@ -82,16 +82,16 @@
 			<div class="solution" data-type="radical"><var>BC2</var></div>
 
 			<div class="hints" data-apply="appendContents">
-				<p>Chcemy znaleźć <code><var>a</var></code>; let <code><var>b</var> = <var>AC</var></code> i <code>c = <var>AB</var></code>.</p>
-				<p>Więc <code><var>a</var>^2 = c^2 - <var>b</var>^2 = <var>AB</var>^2 - <var>AC</var>^2 = <var>BC2</var></code>.</p>
-				<p><code><var>a</var> = \sqrt{<var>BC2</var>}</code>.</p>
-				<p data-if="squareRootCanSimplify(BC2)">Upraszając pierwiastek otrzymujemy <code><var>a</var> = <var>formattedSquareRootOf(BC2)</var>.</code></p>
+				<p>We want to find <code><var>a</var></code>; let <code><var>b</var> = <var>AC</var></code> and <code>c = <var>AB</var></code>.</p>
+				<p>So <code><var>a</var>^2 = c^2 - <var>b</var>^2 = <var>AB</var>^2 - <var>AC</var>^2 = <var>BC2</var></code>.</p>
+				<p>Then, <code><var>a</var> = \sqrt{<var>BC2</var>}</code>.</p>
+				<p data-if="squareRootCanSimplify(BC2)">Simplifying the radical gives <code><var>a</var> = <var>formattedSquareRootOf(BC2)</var>.</code></p>
 			</div>
 		</div>
 	</div>
 
 	<div class="hints">
-		<p>Wiemy, że <code>a^2 + b^2 = c^2</code>.</p>
+		<p>We know <code>a^2 + b^2 = c^2</code>.</p>
 	</div>
 	</div>
 </body>

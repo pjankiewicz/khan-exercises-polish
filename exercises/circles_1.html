@@ -2,7 +2,7 @@
 <html data-require="math graphie">
 <head>
 	<meta charset="UTF-8" />
-	<title>Okręgi 1</title>
+	<title>Circles 1</title>
 	<script src="../khan-exercise.js"></script>
 	<script type="text/javascript">
 		var R_COLOR = "purple";
@@ -61,8 +61,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że promień okręgu wynosi <code>\color{<var>R_COLOR</var>}{<var>R</var>}</code>. Ile wynosi średnica?
-</p>
+				<p>Suppose the radius of a circle is <code>\color{<var>R_COLOR</var>}{<var>R</var>}</code>. What is its diameter?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>2 * R</var></div>
@@ -74,7 +73,7 @@
 					drawRadius( R );
 				</div>
 				<div>
-					<p>Wiemy, że <code>d = 2r</code>, więc <code>d = 2 \cdot \color{<var>R_COLOR</var>}{<var>R</var>} = \color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>.</p>
+					<p>We know <code>d = 2r</code>, so <code>d = 2 \cdot \color{<var>R_COLOR</var>}{<var>R</var>} = \color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawDiameter( R );
@@ -89,7 +88,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że średnica okręgu wynosi <code>\color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>. Ile wynosi jego promień?</p>
+				<p>Suppose the diameter of a circle is <code>\color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>. What is its radius?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>R</var></div>
@@ -101,7 +100,7 @@
 					drawDiameter( R );
 				</div>
 				<div>
-					<p>Wiemy, że <code>d = 2r</code>, więc <code>r = d / 2</code> i <code>r = \color{<var>D_COLOR</var>}{<var>2 * R</var>} / 2 = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
+					<p>We know <code>d = 2r</code>, so <code>r = d / 2</code> and <code>r = \color{<var>D_COLOR</var>}{<var>2 * R</var>} / 2 = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawRadius( R );
@@ -116,7 +115,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że promień okręgu wynosi <code>\color{<var>R_COLOR</var>}{<var>R</var>}</code>. Ile wynosi jego obwód?</p>
+				<p>Suppose the radius of a circle is <code>\color{<var>R_COLOR</var>}{<var>R</var>}</code>. What is its circumference?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>Math.PI * 2 * R</var></div>
@@ -128,7 +127,7 @@
 					drawRadius( R );
 				</div>
 				<div>
-					<p>Wiemy, że <code>c = 2\pi r</code>, więc <code>c = 2 \pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>} = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>.</p>
+					<p>We know <code>c = 2\pi r</code>, so <code>c = 2 \pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>} = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawCircumference( R );
@@ -143,7 +142,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że obwód okręgu wynosi <code>\color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>. Ile wynosi jego promień?</p>
+				<p>Suppose the circumference of a circle is <code>\color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>. What is its radius?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>R</var></div>
@@ -155,7 +154,7 @@
 					drawCircumference( R );
 				</div>
 				<div>
-					<p>Wiemy, że <code>c = 2\pi r</code>, więc <code>r = c / 2\pi = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi} / 2 \pi = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
+					<p>We know <code>c = 2\pi r</code>, so <code>r = c / 2\pi = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi} / 2 \pi = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawRadius( R );
@@ -170,7 +169,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że średnica okręgu wynosi <code>\color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>. Ile wynosi jego obwód?</p>
+				<p>Suppose the diameter of a circle is <code>\color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>. What is its circumference?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>Math.PI * 2 * R</var></div>
@@ -182,7 +181,7 @@
 					drawDiameter( R );
 				</div>
 				<div>
-					<p>Wiemy, że <code>c = \pi d</code>, więc <code>c = \pi \cdot \color{<var>D_COLOR</var>}{<var>2 * R</var>} = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>.</p>
+					<p>We know <code>c = \pi d</code>, so <code>c = \pi \cdot \color{<var>D_COLOR</var>}{<var>2 * R</var>} = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawCircumference( R );
@@ -197,7 +196,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że obwód okręgu wynosi <code>\color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>. Ile wynosi jego średnica?</p>
+				<p>Suppose the circumference of a circle is <code>\color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>. What is its diameter?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>2 * R</var></div>
@@ -209,7 +208,7 @@
 					drawCircumference( R );
 				</div>
 				<div>
-					<p>Wiemy, że <code>c = \pi d</code>, więc <code>d = c / \pi = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi} / \pi = \color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>.</p>
+					<p>We know <code>c = \pi d</code>, so <code>d = c / \pi = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi} / \pi = \color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawDiameter( R );
@@ -224,7 +223,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że promień okręgu wynosi <code>\color{<var>R_COLOR</var>}{<var>R</var>}</code>. Ile wynosi jego powierzchnia?</p>
+				<p>Suppose the radius of a circle is <code>\color{<var>R_COLOR</var>}{<var>R</var>}</code>. What is its area?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>Math.PI * R * R</var></div>
@@ -236,7 +235,7 @@
 					drawRadius( R );
 				</div>
 				<div>
-					<p>Wiemy, że <code>K = \pi r^2</code>, więc <code>K = \pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>}^2 = \color{<var>K_COLOR</var>}{<var>R * R</var>\pi}</code>.</p>
+					<p>We know <code>K = \pi r^2</code>, so <code>K = \pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>}^2 = \color{<var>K_COLOR</var>}{<var>R * R</var>\pi}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawArea( R );
@@ -251,7 +250,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że powierzchnia okręgu wynosi <code>\color{<var>K_COLOR</var>}{<var>R === 1 ? "" : R * R</var>\pi}</code>. Ile wynosi jego promień?</p>
+				<p>Suppose the area of a circle is <code>\color{<var>K_COLOR</var>}{<var>R === 1 ? "" : R * R</var>\pi}</code>. What is its radius?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>R</var></div>
@@ -263,7 +262,7 @@
 					drawArea( R );
 				</div>
 				<div>
-					<p>Wiemy, że <code>K = \pi r^2</code>, więc <code>r = \sqrt{K / \pi} = \sqrt{\color{<var>K_COLOR</var>}{<var>R * R</var>\pi} / \pi} = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
+					<p>We know <code>K = \pi r^2</code>, so <code>r = \sqrt{K / \pi} = \sqrt{\color{<var>K_COLOR</var>}{<var>R * R</var>\pi} / \pi} = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawRadius( R );
@@ -278,7 +277,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że średnica okręgu wynosi <code>\color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>. Ile wynosi jego powierzchnia?</p>
+				<p>Suppose the diameter of a circle is <code>\color{<var>D_COLOR</var>}{<var>2 * R</var>}</code>. What is its area?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>Math.PI * R * R</var></div>
@@ -289,9 +288,9 @@
 					
 					drawDiameter( R );
 				</div>
-				<p>Na początku obliczmy promień: <code>r = d/2 = \color{<var>D_COLOR</var>}{<var>2 * R</var>}/2 = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
+				<p>First, find the radius: <code>r = d/2 = \color{<var>D_COLOR</var>}{<var>2 * R</var>}/2 = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
 				<div>
-					<p>Oblicz powierzchnie: <code>K = \pi r^2</code>, więc <code>K = \pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>}^2 = \color{<var>K_COLOR</var>}{<var>R * R</var>\pi}</code>.</p>
+					<p>Now find the area: <code>K = \pi r^2</code>, so <code>K = \pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>}^2 = \color{<var>K_COLOR</var>}{<var>R * R</var>\pi}</code>.</p>
 					
 					<div class="graphie" data-update="circle">
 						drawArea( R );
@@ -306,7 +305,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że powierzchnia okręgu wynosi <code>\color{<var>K_COLOR</var>}{<var>R === 1 ? "" : R * R</var>\pi}</code>. Ile wynosi jego średnica?</p>
+				<p>Suppose the area of a circle is <code>\color{<var>K_COLOR</var>}{<var>R === 1 ? "" : R * R</var>\pi}</code>. What is its diameter?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>2 * R</var></div>
@@ -317,9 +316,9 @@
 					
 					drawArea( R );
 				</div>
-				<p>Na początku obliczmy promień: <code>K = \pi r^2</code>, więc <code>r = \sqrt{K / \pi} = \sqrt{\color{<var>K_COLOR</var>}{<var>R * R</var>\pi} / \pi} = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
+				<p>First, find the radius: <code>K = \pi r^2</code>, so <code>r = \sqrt{K / \pi} = \sqrt{\color{<var>K_COLOR</var>}{<var>R * R</var>\pi} / \pi} = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
 				<div>
-					<p>Teraz obliczmy średnicę: <code>d = 2r = 2\cdot \color{<var>R_COLOR</var>}{<var>R</var>} = \color{<var>D_COLOR</var>}{<var>2*R</var>}</code>.</p>
+					<p>Now find the diameter: <code>d = 2r = 2\cdot \color{<var>R_COLOR</var>}{<var>R</var>} = \color{<var>D_COLOR</var>}{<var>2*R</var>}</code>.</p>
 					
 					<div class="graphie" data-update="circle">
 						drawDiameter( R );
@@ -334,7 +333,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że obwód okręgu wynosi <code>\color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>. Ile wynosi jego powierzchnia?</p>
+				<p>Suppose the circumference of a circle is <code>\color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}</code>. What is its area?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>Math.PI * R * R</var></div>
@@ -345,9 +344,9 @@
 
 					drawCircumference( R );
 				</div>
-				<p>Na początku policzmy promień: <code>r = c/2\pi = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}/2\pi = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
+				<p>First, find the radius: <code>r = c/2\pi = \color{<var>C_COLOR</var>}{<var>2 * R</var>\pi}/2\pi = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
 				<div>
-					<p>Oblicz powierzchnie: <code>K = \pi r^2</code>, więc <code>K = \pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>}^2 = \color{<var>K_COLOR</var>}{<var>R * R</var>\pi}</code>.</p>
+					<p>Now find the area: <code>K = \pi r^2</code>, so <code>K = \pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>}^2 = \color{<var>K_COLOR</var>}{<var>R * R</var>\pi}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawArea( R );
@@ -362,7 +361,7 @@
 			</div>
 
 			<div class="question">
-				<p>Załóżmy, że powierzchnia okręgu wynosi <code>\color{<var>K_COLOR</var>}{<var>R === 1 ? "" : R * R</var>\pi}</code>. Ile wynosi jego obwód?</p>
+				<p>Suppose the area of a circle is <code>\color{<var>K_COLOR</var>}{<var>R === 1 ? "" : R * R</var>\pi}</code>. What is its circumference?</p>
 			</div>
 
 			<div class="solution" data-forms="integer, proper, improper, mixed, decimal, pi"><var>Math.PI * 2 * R</var></div>
@@ -373,9 +372,9 @@
 					
 					drawArea( R );
 				</div>
-				<p>Na początku obliczmy promień: <code>K = \pi r^2</code>, więc <code>r = \sqrt{K / \pi} = \sqrt{\color{<var>K_COLOR</var>}{<var>R * R</var>\pi} / \pi} = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
+				<p>First, find the radius: <code>K = \pi r^2</code>, so <code>r = \sqrt{K / \pi} = \sqrt{\color{<var>K_COLOR</var>}{<var>R * R</var>\pi} / \pi} = \color{<var>R_COLOR</var>}{<var>R</var>}</code>.</p>
 				<div>
-					<p>Teraz oblicz obwód: <code>c = 2\pi r = 2\pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>} = \color{<var>C_COLOR</var>}{<var>2*R</var>\pi}</code>.</p>
+					<p>Now find the circumference: <code>c = 2\pi r = 2\pi \cdot \color{<var>R_COLOR</var>}{<var>R</var>} = \color{<var>C_COLOR</var>}{<var>2*R</var>\pi}</code>.</p>
 
 					<div class="graphie" data-update="circle">
 						drawCircumference( R );

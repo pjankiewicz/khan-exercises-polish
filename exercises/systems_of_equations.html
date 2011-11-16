@@ -2,7 +2,7 @@
 <html data-require="math math-format expressions">
 <head>
 	<meta charset="UTF-8" />
-	<title>Układy równań</title>
+	<title>Systems of equations</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -38,7 +38,7 @@
 
 		<div class="problems">
 			<div>
-				<p class="problem">Policz <code>x</code> i <code>y</code> metodą przeciwnych współczynników.</p>
+				<p class="problem">Solve for <code>x</code> and <code>y</code> using elimination.</p>
 				<p class="question"><code>\begin{align*}<var>expr(["+", ["*", A1, "x"], ["*", B1, "y"]])</var> &= <var>C1</var> \\
 					                <var>expr(["+", ["*", A2, "x"], ["*", B2, "y"]])</var> &= <var>C2</var>\end{align*}</code></p>
 				<div class="solution" data-type="multiple">
@@ -49,26 +49,26 @@
 		</div>
 
 		<div class="hints">
-			<p>Możemy wyeliminować z równania <code><var>( XY_FLAG ? "x" : "y" )</var></code> kiedy współczynniki przy nich mają odwrotne znaki.</p>
+			<p>We can eliminate <code><var>( XY_FLAG ? "x" : "y" )</var></code> when its corresponding coefficients are negative inverses.</p>
 
 			<div data-unwrap data-if="XY_FLAG"> 
 				<div data-if="MULT_1 !== 1 || MULT_2 !== 1">
-					<p>Przypominając sobie naszą wiedzę o najmniejszych wspólnych wielokrotnościach, pomnóż górne równanie przez <code><var>MULT_1</var></code>, a dolne przez <code><var>MULT_2</var></code>.</p>
+					<p>Recalling our knowledge of least common multiples, multiply the top equation by <code><var>MULT_1</var></code> and the bottom equation by <code><var>MULT_2</var></code>.</p>
 					<p><code>\begin{align*}<var>expr(["+", ["*", A1*MULT_1, "x"], ["*", B1*MULT_1, "y"]])</var> &= <var>C1*MULT_1</var>\\
 					   <var>expr(["+", ["*", A2*MULT_2, "x"], ["*", B2*MULT_2, "y"]])</var> &= <var>C2*MULT_2</var>\end{align*}</code></p>
 				</div>
 				<div>
-					<p>Dodaj do siebie górne i dolne równanie.</p>
+					<p>Add the top and bottom equations.</p>
 					<p><code><var>expr(["*", B1*MULT_1+B2*MULT_2, "y"])</var> = <var>C1*MULT_1+C2*MULT_2</var></code></p>
 				</div>
 
 				<div data-if="(B1*MULT_1+B2*MULT_2) !== 1">
-					<p>Podziel obie strony <code><var>B1*MULT_1+B2*MULT_2</var></code> i zredukuj (jeżeli będzie to możliwe).</p>
+					<p>Divide both sides by <code><var>B1*MULT_1+B2*MULT_2</var></code> and reduce as necessary.</p>
 					<p><code>y = <var>fractionReduce( Y_NUMER, Y_DENOM )</var></code></p>
 				</div>
 
 				<div>
-					<p>Podstaw <code><var>fractionReduce( Y_NUMER, Y_DENOM )</var></code> pod <code>y</code> w górnym równaniu.</p>
+					<p>Substitute <code><var>fractionReduce( Y_NUMER, Y_DENOM )</var></code> for <code>y</code> in the top equation.</p>
 					<p><code><var>expr(["+", ["*", A1, "x"], ["*", B1, " " + fractionReduce( Y_NUMER, Y_DENOM )]])</var> = <var>C1</var></code></p>
 					<p><code><var>expr(["+", ["*", A1, "x"], fractionReduce( B1 * Y_NUMER, Y_DENOM )])</var> = <var>C1</var></code></p>
 					<p><code><var>expr(["*", A1, "x"])</var> = <var>fractionReduce( C1 * Y_DENOM - B1 * Y_NUMER, Y_DENOM )</var></code></p>
@@ -79,23 +79,23 @@
 
 			<div data-unwrap data-else>
 				<div data-if="MULT_3 !== 1 || MULT_4 !== 1">
-					<p>Przypominając sobie naszą wiedzę o najmniejszych wspólnych wielokrotnościach, pomnóż górne równanie przez <code><var>MULT_3</var></code>, a dolne przez <code><var>MULT_4</var></code>.</p>
+					<p>Recalling our knowledge of least common multiples, multiply the top equation by <code><var>MULT_3</var></code> and the bottom equation by <code><var>MULT_4</var></code>.</p>
 					<p><code>\begin{align*}<var>expr(["+", ["*", A1*MULT_3, "x"], ["*", B1*MULT_3, "y"]])</var> &= <var>C1*MULT_3</var>\\
 						<var>expr(["+", ["*", A2*MULT_4, "x"], ["*", B2*MULT_4, "y"]])</var> &= <var>C2*MULT_4</var>\end{align*}</code></p>
 				</div>
 
 				<div>
-					<p>Dodaj do siebie górne i dolne równanie.</p>
+					<p>Add the top and bottom equations.</p>
 					<p><code><var>expr(["*", A1*MULT_3+A2*MULT_4, "x"])</var> = <var>C1*MULT_3+C2*MULT_4</var></code></p>
 				</div>
 
 				<div>
-					<p data-if="(A1*MULT_3+A2*MULT_4) !==1 ">Podziel obie strony przez <code><var>A1*MULT_3+A2*MULT_4</var></code> i zredukuj (jeżeli będzie to możliwe).</p>
+					<p data-if="(A1*MULT_3+A2*MULT_4) !==1 ">Divide both sides by <code><var>A1*MULT_3+A2*MULT_4</var></code> and reduce as necessary.</p>
 					<p><code>x = <var>fractionReduce( X_NUMER, X_DENOM )</var></code></p>
 				</div>
 
 				<div>
-					<p>Podstaw <code><var>fractionReduce( X_NUMER, X_DENOM )</var></code> pod <code>x</code> w górnym równaniu.</p>
+					<p>Substitute <code><var>fractionReduce( X_NUMER, X_DENOM )</var></code> for <code>x</code> in the top equation.</p>
 					<p><code><var>expr(["+", ["*", A1, " " + fractionReduce( X_NUMER, X_DENOM )], ["*", B1, "y"]])</var> = <var>C1</var></code></p>
 					<p><code><var>expr(["+", fractionReduce( A1 * X_NUMER, X_DENOM ), ["*", B1, "y"]])</var> = <var>C1</var></code></p>
 					<p><code><var>expr(["*", B1, "y"])</var> = <var>fractionReduce( C1 * X_DENOM - A1 * X_NUMER, X_DENOM )</var></code></p>

@@ -2,7 +2,7 @@
 <html data-require="math math-format">
 <head>
 	<meta charset="UTF-8" />
-	<title>Obliczanie wyrażeń z pierwiastkami</title>
+	<title>Radical equations</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -50,7 +50,7 @@
 
 		<div class="problems">
 			<div>
-				<p class="question">Policz <code>x</code>:</p>
+				<p class="question">Solve for <code>x</code>:</p>
 				<div><code><var>A</var>\sqrt{x} + <var>B</var> = <var>C</var>\sqrt{x} + <var>D</var></code></div>
 
 				<p class="solution"><var>SOLUTION</var></p>
@@ -64,58 +64,58 @@
 		<div class="hints">
 			<div data-if="A > C" data-unwrap>
 				<div>
-					<p>Odejmij <code><var>C</var>\sqrt{x}</code> od obu stron równania:</p>
+					<p>Subtract <code><var>C</var>\sqrt{x}</code> from both sides:</p>
 					<p><code>(<var>A</var>\sqrt{x} + <var>B</var>) - <var>C</var>\sqrt{x} = (<var>C</var>\sqrt{x} + <var>D</var>) - <var>C</var>\sqrt{x}</code></p>
 					<p><code><var>A - C</var>\sqrt{x} + <var>B</var> = <var>D</var></code></p>
 				</div>
 				<div>
-					<p><var>B > 0 ? "Odejmij" : "Dodaj"</var> <code><var>abs(B)</var></code> <var>B > 0 ? "od" : "do"</var> obu stron:</p>
+					<p><var>B > 0 ? "Subtract" : "Add"</var> <code><var>abs(B)</var></code> <var>B > 0 ? "from" : "to"</var> both sides:</p>
 					<p><code>(<var>A - C</var>\sqrt{x} + <var>B</var>) + <var>-B</var> = <var>D</var> + <var>-B</var></code></p>
 					<p><code><var>A - C</var>\sqrt{x} = <var>D - B</var></code></p>
 				</div>
 				<div>
-					<p>Podziel obie strony równania przez <code><var>A - C</var></code>.</p>
+					<p>Divide both sides by <code><var>A - C</var></code>.</p>
 					<p><code>\frac{<var>A - C</var>\sqrt{x}}{<var>A - C</var>} = \frac{<var>D - B</var>}{<var>A - C</var>}</code></p>
 				</div>
 				<div>
-					<p>Uprość.</p>
+					<p>Simplify.</p>
 					<p><code>\sqrt{x} = <var>SIMPLIFIED</var></code></p>
 				</div>
 				<div data-if="( D - B ) / ( A - C ) > 0">
-					<p>Podnieś do kwadratu obie strony równania.</p>
+					<p>Square both sides.</p>
 					<p><code>\sqrt{x} \cdot \sqrt{x} = <var>SIMPLIFIED</var> \cdot <var>SIMPLIFIED</var></code></p>
 					<p><var>SOLUTION</var></p>
 				</div>
 				<p data-else>
-					Kwadrat z pierwiastka nie może być liczbą ujemną. Nie ma rozwiązania.
+					The principal root of a number cannot be negative. So, there is no solution.
 				</p>
 			</div>
 			<div data-else data-unwrap>
 				<div>
-					<p>Odejmij <code><var>A</var>\sqrt{x}</code> od obu stron równania:</p>
+					<p>Subtract <code><var>A</var>\sqrt{x}</code> from both sides:</p>
 					<p><code>(<var>A</var>\sqrt{x} + <var>B</var>) - <var>A</var>\sqrt{x} = (<var>C</var>\sqrt{x} + <var>D</var>) - <var>A</var>\sqrt{x}</code></p>
 					<p><code><var>B</var> = <var>C - A</var>\sqrt{x} + <var>D</var></code></p>
 				</div>
 				<div>
-					<p><var>D > 0 ? "Odejmij" : "Dodaj"</var> <code><var>abs(D)</var></code> <var>D > 0 ? "od" : "do"</var> obu stron:</p>
+					<p><var>D > 0 ? "Subtract" : "Add"</var> <code><var>abs(D)</var></code> <var>D > 0 ? "from" : "to"</var> both sides:</p>
 					<p><code><var>B</var> + <var>-D</var> = (<var>C - A</var>\sqrt{x} + <var>D</var>) + <var>-D</var></code></p>
 					<p><code><var>B - D</var> = <var>C - A</var>\sqrt{x}</code></p>
 				</div>
 				<div>
-					<p>Podziel obie strony przez <code><var>C - A</var></code>.</p>
+					<p>Divide both sides by <code><var>C - A</var></code>.</p>
 					<p><code>\frac{<var>B - D</var>}{<var>C - A</var>} = \frac{<var>C - A</var>\sqrt{x}}{<var>C - A</var>}</code></p>
 				</div>
 				<div>
-					<p>Uprość.</p>
+					<p>Simplify.</p>
 					<p><code><var>SIMPLIFIED</var> = \sqrt{x}</code></p>
 				</div>
 				<div data-if="( D - B ) / ( A - C ) > 0">
-					<p>Podnieś do kwadratu obie strony równania.</p>
+					<p>Square both sides.</p>
 					<p><code><var>SIMPLIFIED</var> \cdot <var>SIMPLIFIED</var> = \sqrt{x} \cdot \sqrt{x}</code></p>
 					<p><var>SOLUTION</var></p>
 				</div>
 				<p data-else>
-					Kwadrat z pierwiastka nie może być liczbą ujemną. Nie ma rozwiązania.
+					The principal root of a number cannot be negative. So, there is no solution.
 				</p>
 			</div>
 		</div>

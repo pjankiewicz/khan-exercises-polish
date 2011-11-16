@@ -2,7 +2,7 @@
 <html data-require="math graphie">
 <head>
 	<meta charset="UTF-8" />
-	<title>Funkcje 1</title>
+	<title>Functions 1</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -40,7 +40,7 @@
 
 		<div class="problems">
 			<div>
-				<p class="question">Na wykresie jest funkcja <code>f(x)</code>. Znajdź funkcję <code>f(<var>CORRECT_X</var>)</code>.</p>
+				<p class="question">The function <code>f(x)</code> is graphed. Find <code>f(<var>CORRECT_X</var>)</code>.</p>
 
 				<div id="graph" class="graphie">
 					graphInit({
@@ -62,7 +62,7 @@
 
 		<div class="hints">
 			<div>
-				<p>W którym punkcie funkcja <code>f(x)</code> przetnie <code>x = <var>CORRECT_X</var></code>?</p>
+				<p>At what point does <code>f(x)</code> intersect <code>x = <var>CORRECT_X</var></code>?</p>
 				<div class="graphie" data-update="graph">
 					graph.vert = line( [CORRECT_X, -10], [CORRECT_X, 10], {
 						stroke: "#28ae7b",
@@ -76,10 +76,10 @@
 				</div>
 			</div>
 
-			<p>Funkcja przetnie się w punkcie <code>(<var>CORRECT_X</var>, <var>CORRECT_Y</var>)</code>.</p>
+			<p>They intersect at <code>(<var>CORRECT_X</var>, <var>CORRECT_Y</var>)</code>.</p>
 
 			<div>
-				<p>Stąd <code>f(<var>CORRECT_X</var>) = <var>CORRECT_Y</var></code>.</p>
+				<p>Thus, <code>f(<var>CORRECT_X</var>) = <var>CORRECT_Y</var></code>.</p>
 				<div class="graphie" data-update="graph">
 					graph.vert.remove();
 				</div>
