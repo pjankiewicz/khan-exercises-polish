@@ -115,7 +115,7 @@ function Adder( a, b, digitsA, digitsB ) {
 				graph.ellipse( [ pos.max - Math.max( deciA, deciB ) + 0.5, i - 0.2 ], [ 0.09, 0.06 ] );
 			});
 		}
-		this.showSideLabel( "\\text{Make sure the decimals are lined up.}" );
+		this.showSideLabel( "\\text{Upewnij się, że liczby dziesiętne są w jednej linii.}" );
 	}
 }
 
@@ -252,7 +252,7 @@ function Subtractor( a, b, digitsA, digitsB ) {
 				graph.ellipse( [ pos.max - Math.max( deciA, deciB ) + 0.5, i - 0.2 ], [ 0.09, 0.06 ] );
 			});
 		}
-		this.showSideLabel( "\\text{Make sure the decimals are lined up.}" );
+		this.showSideLabel( "\\text{Upewnij się, że liczby dziesiętne są w jednej linii.}" );
 	};
 }
 
@@ -455,12 +455,12 @@ function Multiplier( a, b, digitsA, digitsB, deciA, deciB ) {
 		var x = -maxNumDigits;
 		var y = -digitsB.length * digitsA.length;
 		graph.label( [ x, y + 2 ],
-			"\\text{The top number has " + KhanUtil.plural( deciA, "digit" ) + " to the right of the decimal.}", "right" );
+			"\\text{Górna liczba ma " + KhanUtil.plural( deciA, "digit" ) + " na prawo od przecinka.}", "right" );
 		graph.label( [ x,  y + 1 ],
-			"\\text{The bottom number has " + KhanUtil.plural( deciB, "digit" ) + " to the right of the decimal.}", "right" );
+			"\\text{Dolna liczba ma " + KhanUtil.plural( deciB, "digit" ) + " na prawo od przecinka.}", "right" );
 		graph.label( [ x,  y ],
-			"\\text{The product has " + deciA + " + " + deciB + " = " + ( deciA + deciB )
-			 + " digits to the right of the decimal.}", "right" );
+			"\\text{Iloczyn ma " + deciA + " + " + deciB + " = " + ( deciA + deciB )
+			 + " liczb na prawo od przecinka.}", "right" );
 		graph.style({
 			fill: "#000"
 		}, function() {
@@ -506,9 +506,11 @@ function Divider( divisor, dividend, deciDivisor, deciDividend ) {
 			}
 		});
 
-		drawDigits( paddedDivisor, -0.5 - paddedDivisor.length, 0 );
+		drawDigits( paddedDivisor, digitsDividend.length + ( deciDiff > 0 ? deciDiff : 0 ) + 1, 0 );
+		drawDigits( ":", digitsDividend.length + ( deciDiff > 0 ? deciDiff : 0 ) + 0.25, 0 );
 		drawDigits( digitsDividend, 0, 0 );
-		graph.path( [ [ -0.75, -0.5 ], [ -0.75, 0.5 ], [ digitsDividend.length + ( deciDiff > 0 ? deciDiff : 0 ), 0.5 ] ] );
+		//graph.path( [ [ -0.75, -0.5 ], [ -0.75, 0.5 ], [ digitsDividend.length + ( deciDiff > 0 ? deciDiff : 0 ), 0.5 ] ] );
+		graph.path( [ [ -0.75, 0.5 ], [ digitsDividend.length + ( deciDiff > 0 ? deciDiff : 0 ), 0.5 ] ] );
 	};
 
 	this.showHint = function() {
@@ -538,9 +540,9 @@ function Divider( divisor, dividend, deciDivisor, deciDividend ) {
 			highlights = highlights.concat( drawDigits( totalDigits , index - totalDigits.length + 1, -2 * index, KhanUtil.BLUE ) );
 
 			graph.label( [ digitsDividend.length + 1, -2 * index ],
-				"\\text{How many times does }"
+				"\\text{Ile razy }"
 				+ divisor
-				+ "\\text{ go into }"
+				+ "\\text{ mieści się w }"
 				+ "\\color{#6495ED}{" + total + "}"
 				+ "\\text{?}", "right" );
 
@@ -572,7 +574,7 @@ function Divider( divisor, dividend, deciDivisor, deciDividend ) {
 				+ "\\div"
 				+ divisor + "="
 				+ "\\color{#28AE7B}{" + quotient + "}"
-				+ "\\text{ or }"
+				+ "\\text{ albo }"
 				+ divisor
 				+ "\\times"
 				+ "\\color{#28AE7B}{" + quotient + "}"
@@ -600,7 +602,7 @@ function Divider( divisor, dividend, deciDivisor, deciDividend ) {
 
 		if ( deciDivisor !== 0 ) {
 			graph.label( [ digitsDividend.length + 1 + ( deciDiff > 0 ? deciDiff : 0 ), 1 ],
-				"\\text{Shift the decimal " + deciDivisor + " to the right.}", "right" );
+				"\\text{Przesuń liczbę dziesiętną " + deciDivisor + " w prawo.}", "right" );
 			graph.style({
 				fill: "#000"
 			}, function() {
@@ -608,7 +610,7 @@ function Divider( divisor, dividend, deciDivisor, deciDividend ) {
 			});
 		} else {
 			graph.label( [ digitsDividend.length + 1, 1 ],
-				"\\text{Bring the decimal up into the answer (the quotient).}", "right" );
+				"\\text{Przesuń przecinek do górę do odpowiedzi}", "right" );
 		}
 
 		graph.style({
