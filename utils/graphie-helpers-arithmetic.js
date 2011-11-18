@@ -539,7 +539,7 @@ function Divider( divisor, dividend, deciDivisor, deciDividend ) {
 			var totalDigits = KhanUtil.integerToDigits( total );
 			highlights = highlights.concat( drawDigits( totalDigits , index - totalDigits.length + 1, -2 * index, KhanUtil.BLUE ) );
 
-			graph.label( [ digitsDividend.length + 1, -2 * index ],
+			graph.label( [ digitsDividend.length + 2, -2 * index ],
 				"\\text{Ile razy }"
 				+ divisor
 				+ "\\text{ mieści się w }"
